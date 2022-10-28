@@ -1,4 +1,4 @@
-package com.example.gamemakingpractice;
+package com.example.groupproject;
 
 import org.junit.Test;
 
