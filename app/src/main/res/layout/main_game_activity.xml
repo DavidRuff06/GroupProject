@@ -7,12 +7,27 @@
     tools:context=".MainGameActivity">
 
     <TextView
+        android:id="@+id/cryptoCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Crypto Count"
+        android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <ImageButton
+        android:id="@+id/cryptoClicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodge Coin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_dogecoin_doge_logo"
+        android:onClick="cryptoButtonClicked"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

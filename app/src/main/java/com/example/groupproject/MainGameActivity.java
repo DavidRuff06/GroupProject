@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainGameActivity extends AppCompatActivity {
+    int cryptoCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +17,8 @@ public class MainGameActivity extends AppCompatActivity {
 
 
     public void cryptoButtonClicked(View view){
-
+        cryptoCount ++;
+        TextView count = findViewById(R.id.cryptoCount);
+        count.setText(cryptoCount + " Crypto");
     }
 }
