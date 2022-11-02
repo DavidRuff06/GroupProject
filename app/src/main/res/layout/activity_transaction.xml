@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.918" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/sellButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sell"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.288" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/buyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buy"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.288" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/quantityOfOneHundred"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="100"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.433" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/quantityOfTen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10"
@@ -79,7 +79,7 @@
         app:layout_constraintVertical_bias="0.433" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/quantityOfOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
@@ -91,7 +91,7 @@
         app:layout_constraintVertical_bias="0.433" />
 
     <EditText
-        android:id="@+id/customAmountEditText"
+        android:id="@+id/customQuantityEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
