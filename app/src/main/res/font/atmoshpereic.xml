@@ -4,4 +4,6 @@
         android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/atmosphereic_font" />
+<!--    https://developer.android.com/develop/ui/views/text-and-emoji/fonts-in-xml-->
+<!--    Tutorial on how to implement custom fonts-->
 </font-family>
