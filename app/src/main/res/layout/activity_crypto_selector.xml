@@ -1,37 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/blac_shade_1"
     tools:context=".CryptoSelectorActivity">
 
-    <!--edit text for searching our currency-->
-    <EditText
-        android:id="@+id/idEdtCurrency"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:focusable="auto"
-        android:hint="Search Currency"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
 
-    <!--recycler view for displaying the list of currencies-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVcurrency"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/idEdtCurrency"
-        tools:listitem="@layout/currency_rv_item" />
-
-    <!--progress bar for loading indicator-->
-    <ProgressBar
-        android:id="@+id/idPBLoading"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idCVcurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:layout_margin="4dp"
+        app:cardBackgroundColor="@color/black_shade_2"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/idRLCurrency"
+            android:layout_width="144dp"
+            android:layout_height="match_parent">
+
+            <!--text view for displaying symbol-->
+            <TextView
+                android:id="@+id/idTVSymbol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+
+                android:layout_toStartOf="@id/idTVRate"
+                android:layout_toLeftOf="@id/idTVRate"
+                android:padding="3dp"
+                android:text="Symbol"
+                android:textStyle="bold" />
+
+            <!--text view for displaying currency name-->
+            <TextView
+                android:id="@+id/idTVName"
+                android:layout_width="142dp"
+                android:layout_height="51dp"
+                android:layout_below="@id/idTVSymbol"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:padding="3dp"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <!--text view for displaying currency rate-->
+            <TextView
+                android:id="@+id/idTVRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="2dp"
+                android:padding="3dp"
+                android:text="123456"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+></androidx.constraintlayout.widget.ConstraintLayout>

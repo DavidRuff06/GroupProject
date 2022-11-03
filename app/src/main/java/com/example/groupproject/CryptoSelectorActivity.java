@@ -41,10 +41,8 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_selector);
-        searchEdt = findViewById(R.id.idEdtCurrency);
 
         // initializing all our variables and array list.
-        loadingPB = findViewById(R.id.idPBLoading);
         currencyRV = findViewById(R.id.idRVcurrency);
         currencyModalArrayList = new ArrayList<>();
 
@@ -52,7 +50,6 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this);
 
         // setting layout manager to recycler view.
-        currencyRV.setLayoutManager(new LinearLayoutManager(this));
 
         // setting adapter to recycler view.
         currencyRV.setAdapter(currencyRVAdapter);
@@ -62,24 +59,6 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
         // on below line we are adding text watcher for our
         // edit text to check the data entered in edittext.
-        searchEdt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // on below line calling a
-                // method to filter our array list
-                filter(s.toString());
-            }
-        });
     }
 
     private void filter(String filter) {
@@ -119,7 +98,6 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                 // from response and passing it to array list
                 // on below line we are making our progress
                 // bar visibility to gone.
-                loadingPB.setVisibility(View.GONE);
                 try {
                     // extracting data from json.
                     JSONArray dataArray = response.getJSONArray("data");
@@ -131,7 +109,9 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                         JSONObject USD = quote.getJSONObject("USD");
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
-                        currencyModalArrayList.add(new CurrencyModal(name, symbol, price));
+                        if(name.equals("Bitcoin")) {
+                            currencyModalArrayList.add(new CurrencyModal(name, symbol, price));
+                        }
                     }
                     // notifying adapter on data change.
                     currencyRVAdapter.notifyDataSetChanged();
