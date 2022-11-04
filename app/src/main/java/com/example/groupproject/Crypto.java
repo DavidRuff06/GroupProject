@@ -71,7 +71,7 @@ public class Crypto {
 
 
 
-    // Getter and setters
+    // Getter and setters hi
 
     public String getCryptoName() {
         return cryptoName;
