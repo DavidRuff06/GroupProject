@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogInActivity">
+    tools:context=".SignInActivity">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/passwordEditText"
@@ -49,6 +49,7 @@
         android:layout_height="60dp"
         android:fontFamily="@font/atmosphereic_font"
         android:text="Log In"
+        android:onClick="logInClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
@@ -62,6 +63,7 @@
         android:layout_height="60dp"
         android:fontFamily="@font/atmosphereic_font"
         android:text="Sign Up"
+        android:onClick="signUpClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.885"
