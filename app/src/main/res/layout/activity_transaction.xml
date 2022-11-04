@@ -92,8 +92,8 @@
 
     <EditText
         android:id="@+id/customQuantityEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="265dp"
+        android:layout_height="41dp"
         android:ems="10"
         android:hint="Custom Amount: "
         android:inputType="textPersonName"

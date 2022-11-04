@@ -6,4 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".UpgradesActivity">
 
+    <ImageButton
+        android:id="@+id/minerUpgrade"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/miner_200x200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056" />
+
+    <TextView
+        android:id="@+id/minerUpgradeDescription"
+        android:layout_width="202dp"
+        android:layout_height="76dp"
+        android:text="User will make 50% of the current revenue per second when they are idle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+    <!--        android:onClick="idk yet"/>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
