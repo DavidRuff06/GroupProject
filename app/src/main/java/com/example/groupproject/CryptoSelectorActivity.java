@@ -42,7 +42,10 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_selector);
 
+        searchEdt = findViewById(R.id.idEdtCurrency);
+
         // initializing all our variables and array list.
+        loadingPB = findViewById(R.id.idPBLoading);
         currencyRV = findViewById(R.id.idRVcurrency);
         currencyModalArrayList = new ArrayList<>();
 
@@ -50,6 +53,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this);
 
         // setting layout manager to recycler view.
+        currencyRV.setLayoutManager(new LinearLayoutManager(this));
 
         // setting adapter to recycler view.
         currencyRV.setAdapter(currencyRVAdapter);
@@ -59,6 +63,24 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
         // on below line we are adding text watcher for our
         // edit text to check the data entered in edittext.
+        searchEdt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // on below line calling a
+                // method to filter our array list
+                filter(s.toString());
+            }
+        });
     }
 
     private void filter(String filter) {
