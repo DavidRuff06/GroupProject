@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blac_shade_1"
     tools:context=".CryptoSelectorActivity">
 
-    <!--edit text for searching our currency-->
-    <EditText
-        android:id="@+id/idEdtCurrency"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:focusable="auto"
-        android:hint="Search Currency"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
 
-    <!--recycler view for displaying the list of currencies-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVcurrency"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/idEdtCurrency"
-        tools:listitem="@layout/currency_rv_item" />
-
-    <!--progress bar for loading indicator-->
-    <ProgressBar
-        android:id="@+id/idPBLoading"
+    <TextView
+        android:id="@+id/bitCoinPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.281" />
 
-</RelativeLayout>
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="123dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.088"
+        app:srcCompat="@drawable/ic_bitcoin_logo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

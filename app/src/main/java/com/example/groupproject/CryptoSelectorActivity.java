@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,81 +33,21 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
     // creating variable for recycler view,
     // adapter, array list, progress bar
-    private RecyclerView currencyRV;
-    private EditText searchEdt;
-    private ArrayList<CurrencyModal> currencyModalArrayList;
-    private CurrencyRVAdapter currencyRVAdapter;
-    private ProgressBar loadingPB;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+    private static ArrayList<CurrencyModal> currencyModalArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_selector);
 
-        searchEdt = findViewById(R.id.idEdtCurrency);
 
-        // initializing all our variables and array list.
-        loadingPB = findViewById(R.id.idPBLoading);
-        currencyRV = findViewById(R.id.idRVcurrency);
         currencyModalArrayList = new ArrayList<>();
-
-        // initializing our adapter class.
-        currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this);
-
-        // setting layout manager to recycler view.
-        currencyRV.setLayoutManager(new LinearLayoutManager(this));
-
-        // setting adapter to recycler view.
-        currencyRV.setAdapter(currencyRVAdapter);
-
-        // calling get data method to get data from API.
         getData();
 
-        // on below line we are adding text watcher for our
-        // edit text to check the data entered in edittext.
-        searchEdt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // on below line calling a
-                // method to filter our array list
-                filter(s.toString());
-            }
-        });
     }
 
-    private void filter(String filter) {
-        // on below line we are creating a new array list
-        // for storing our filtered data.
-        ArrayList<CurrencyModal> filteredlist = new ArrayList<>();
-        // running a for loop to search the data from our array list.
-        for (CurrencyModal item : currencyModalArrayList) {
-            // on below line we are getting the item which are
-            // filtered and adding it to filtered list.
-            if (item.getName().toLowerCase().contains(filter.toLowerCase())) {
-                filteredlist.add(item);
-            }
-        }
-        // on below line we are checking
-        // weather the list is empty or not.
-        if (filteredlist.isEmpty()) {
-            // if list is empty we are displaying a toast message.
-            Toast.makeText(this, "No currency found..", Toast.LENGTH_SHORT).show();
-        } else {
-            // on below line we are calling a filter
-            // list method to filter our list.
-            currencyRVAdapter.filterList(filteredlist);
-        }
-    }
+
 
     private void getData() {
         // creating a variable for storing our string.
@@ -132,11 +74,12 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
                         if(name.equals("Bitcoin")) {
-                            currencyModalArrayList.add(new CurrencyModal(name, symbol, price));
+                            currencyModalArrayList.add(0, new CurrencyModal(name, symbol, price));
                         }
+                        TextView bitCoinPrice = findViewById(R.id.bitCoinPrice);
+                        bitCoinPrice.setText(df2.format(getBitCoinPrice()));
                     }
                     // notifying adapter on data change.
-                    currencyRVAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     // handling json exception.
                     e.printStackTrace();
@@ -166,5 +109,14 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     }
     public ArrayList getArrayList(){
         return currencyModalArrayList;
+    }
+
+    public static double getBitCoinPrice(){
+        CurrencyModal bitcoin = currencyModalArrayList.get(0);
+        return bitcoin.getPrice();
+    }
+
+    public void bitCoinClick(){
+
     }
 }
