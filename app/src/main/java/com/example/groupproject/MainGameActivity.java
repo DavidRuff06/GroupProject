@@ -15,6 +15,7 @@ public class MainGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent= new Intent(this, SignInActivity.class);
         setContentView(R.layout.main_game_activity);
     }
 
@@ -30,9 +31,14 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void logOutClicked(View view) {
-        SignInActivity.firebaseHelper.logOutUser();
-        Log.i(TAG, "user logged out");
-        Intent intent = new Intent(MainGameActivity.this, SignInActivity.class);
-        startActivity(intent);
+        boolean isFirstTime = true;
+        if(!isFirstTime) {
+            SignInActivity.firebaseHelper.logOutUser();
+            Log.i(TAG, "user logged out");
+        }else {
+            Intent intent = new Intent(MainGameActivity.this, SignInActivity.class);
+            startActivity(intent);
+            isFirstTime= false;
+        }
     }
 }
