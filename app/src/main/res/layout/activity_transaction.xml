@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".TransactionActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/totalCost"
-        android:layout_width="130dp"
-        android:layout_height="27dp"
+        android:layout_width="338dp"
+        android:layout_height="52dp"
         android:text="Cost of Trade: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.874" />
 
     <Button
         android:id="@+id/sendOrder"
@@ -25,34 +25,10 @@
         android:text="Send Order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918" />
-
-    <Button
-        android:id="@+id/sellButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sell"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.715"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288" />
-
-    <Button
-        android:id="@+id/buyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288" />
+        app:layout_constraintVertical_bias="0.945" />
 
     <Button
         android:id="@+id/quantityOfOneHundred"
@@ -92,53 +68,53 @@
 
     <EditText
         android:id="@+id/customQuantityEditText"
-        android:layout_width="265dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:hint="Custom Amount: "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.558" />
-
-    <TextView
-        android:id="@+id/purchaseQuantity"
-        android:layout_width="130dp"
-        android:layout_height="27dp"
+        android:layout_width="142dp"
+        android:layout_height="36dp"
         android:text="Quantity: "
+        android:hint="Custom Amount: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintVertical_bias="0.802" />
 
-    <TextView
+
+    <EditText
+        android:id="@+id/purchaseQuantity"
+        android:layout_width="379dp"
+        android:layout_height="58dp"
+        android:text="CUSTOM AMOUNT: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <EditText
         android:id="@+id/buying_selling_price"
-        android:layout_width="130dp"
-        android:layout_height="27dp"
+        android:layout_width="374dp"
+        android:layout_height="40dp"
         android:text="Buying/Selling price: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.756"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.749" />
 
-    <TextView
+    <EditText
         android:id="@+id/cryptoTicker"
-        android:layout_width="130dp"
-        android:layout_height="27dp"
+        android:layout_width="126dp"
+        android:layout_height="69dp"
         android:text="Crypto Ticker: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintVertical_bias="0.657" />
 
     <TextView
         android:id="@+id/orderInformationTitle"
@@ -148,10 +124,9 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <Switch
         android:id="@+id/buy_sell_switch"
@@ -159,12 +134,14 @@
         android:layout_height="wrap_content"
         android:text="Buy/Sell"
         android:textOn="Buy"
+        android:textOff="Sell"
+        android:checked="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintVertical_bias="0.305" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
