@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainGameActivity extends AppCompatActivity {
+    private static boolean bitCoinOn;
     int cryptoCount;
     public final String TAG = "Group";
-    public boolean bitCoinOn = true;
     SharedPreferences prefs = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class MainGameActivity extends AppCompatActivity {
 
 
     public void cryptoButtonClicked(View view){
+        if(bitCoinOn){
+            cryptoCount += CryptoSelectorActivity.getBitCoinPrice();
+        }
         cryptoCount++;
         TextView count = findViewById(R.id.cryptoCount);
         count.setText(cryptoCount + " Crypto");
@@ -47,7 +52,7 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     // https://stackoverflow.com/questions/7217578/check-if-application-is-on-its-first-run
-    // This is a shor tutorial on how to implement a boolean to see if it is the users first time opening the app.
+    // This is a short tutorial on how to implement a boolean to see if it is the users first time opening the app.
     protected void onResume() {
         super.onResume();
 
@@ -58,5 +63,11 @@ public class MainGameActivity extends AppCompatActivity {
             // using the following line to edit/commit prefs
             prefs.edit().putBoolean("firstrun", false).commit();
         }
+    }
+    public static void setBitCoinOn(boolean b) {
+        bitCoinOn = b;
+    }
+    public static boolean getBitCoinOn() {
+        return bitCoinOn;
     }
 }

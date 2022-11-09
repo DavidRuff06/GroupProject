@@ -36,6 +36,10 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     public static ArrayList<CurrencyModal> currencyModalArrayList;
 
+
+    public int bitCoinCount;
+    public int dogeCoinCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +79,9 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                         // adding all data to our array list.
                         if(name.equals("Bitcoin")) {
                             currencyModalArrayList.add(0, new CurrencyModal(name, symbol, price));
+                        }
+                        if(name.equals("Dogecoin")){
+                            currencyModalArrayList.add(1, new CurrencyModal(name, symbol, price));
                         }
                         TextView bitCoinPrice = findViewById(R.id.bitCoinPrice);
                         bitCoinPrice.setText(df2.format(getBitCoinPrice()));
@@ -116,7 +123,10 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         return bitcoin.getPrice();
     }
 
-    public void bitCoinClick(){
-
+    public void bitCoinClick(View view){
+        if(!MainGameActivity.getBitCoinOn())
+        MainGameActivity.setBitCoinOn(true);
+        else
+            MainGameActivity.setBitCoinOn(false);
     }
 }
