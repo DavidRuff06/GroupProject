@@ -34,7 +34,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     // creating variable for recycler view,
     // adapter, array list, progress bar
     private static DecimalFormat df2 = new DecimalFormat("#.##");
-    private static ArrayList<CurrencyModal> currencyModalArrayList;
+    public static ArrayList<CurrencyModal> currencyModalArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

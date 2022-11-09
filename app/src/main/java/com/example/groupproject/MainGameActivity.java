@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class MainGameActivity extends AppCompatActivity {
     int cryptoCount;
     public final String TAG = "Group";
+    public boolean bitCoinOn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,9 @@ public class MainGameActivity extends AppCompatActivity {
 
 
     public void cryptoButtonClicked(View view){
-        cryptoCount ++;
+        if(bitCoinOn){
+            cryptoCount += CryptoSelectorActivity.getBitCoinPrice();
+        }
         TextView count = findViewById(R.id.cryptoCount);
         count.setText(cryptoCount + " Crypto");
     }
