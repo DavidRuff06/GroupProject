@@ -3,6 +3,7 @@ package com.example.groupproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,12 +13,14 @@ public class MainGameActivity extends AppCompatActivity {
     int cryptoCount;
     public final String TAG = "Group";
     public boolean bitCoinOn = true;
+    SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent= new Intent(this, SignInActivity.class);
         setContentView(R.layout.main_game_activity);
+
+        prefs = getSharedPreferences("com.example.groupproject", MODE_PRIVATE);
     }
 
 
@@ -40,6 +43,18 @@ public class MainGameActivity extends AppCompatActivity {
             Intent intent = new Intent(MainGameActivity.this, SignInActivity.class);
             startActivity(intent);
             isFirstTime= false;
+        }
+    }
+
+    protected void onResume() {
+        super.onResume();
+
+        if (prefs.getBoolean("firstrun", true)) {
+            // Do first run stuff here then set 'firstrun' as false
+            Intent intent = new Intent(MainGameActivity.this, SignInActivity.class);
+            startActivity(intent);
+            // using the following line to edit/commit prefs
+            prefs.edit().putBoolean("firstrun", false).commit();
         }
     }
 }
