@@ -46,6 +46,8 @@ public class MainGameActivity extends AppCompatActivity {
         }
     }
 
+    // https://stackoverflow.com/questions/7217578/check-if-application-is-on-its-first-run
+    // This is a shor tutorial on how to implement a boolean to see if it is the users first time opening the app.
     protected void onResume() {
         super.onResume();
 
