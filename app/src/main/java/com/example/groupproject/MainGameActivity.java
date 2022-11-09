@@ -22,9 +22,7 @@ public class MainGameActivity extends AppCompatActivity {
 
 
     public void cryptoButtonClicked(View view){
-        if(bitCoinOn){
-            cryptoCount += CryptoSelectorActivity.getBitCoinPrice();
-        }
+        cryptoCount++;
         TextView count = findViewById(R.id.cryptoCount);
         count.setText(cryptoCount + " Crypto");
     }
