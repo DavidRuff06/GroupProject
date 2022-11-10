@@ -23,4 +23,10 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#000000</color>
 
+    <color name="sellButtonColor">#CD1010</color>
+    <color name="buyButtonColor">#0F9D58</color>
+
+
+
+
 </resources>

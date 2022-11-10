@@ -13,10 +13,10 @@
         android:text="Cost of Trade: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874" />
+        app:layout_constraintVertical_bias="0.805" />
 
     <Button
         android:id="@+id/sendOrder"
@@ -28,69 +28,73 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintVertical_bias="0.894" />
 
     <Button
         android:id="@+id/quantityOfOneHundred"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="addOneHundredQuantity"
         android:text="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintHorizontal_bias="0.823"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.322" />
 
     <Button
         android:id="@+id/quantityOfTen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="addTenQuantity"
         android:text="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.322" />
 
     <Button
         android:id="@+id/quantityOfOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="addOneQuantity"
         android:text="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.322" />
+
 
     <EditText
         android:id="@+id/customQuantityEditText"
-        android:layout_width="142dp"
-        android:layout_height="36dp"
-        android:text="Quantity: "
+        android:layout_width="144dp"
+        android:layout_height="47dp"
         android:hint="Custom Amount: "
+        android:text="Quantity: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
-
+        app:layout_constraintVertical_bias="0.72" />
 
     <EditText
-        android:id="@+id/purchaseQuantity"
+        android:id="@+id/customQuantity"
         android:layout_width="379dp"
         android:layout_height="58dp"
-        android:text="CUSTOM AMOUNT: "
+        android:onClick="addCustomQuantity"
+        android:hint="CUSTOM AMOUNT: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.438" />
 
     <EditText
         android:id="@+id/buying_selling_price"
@@ -99,22 +103,22 @@
         android:text="Buying/Selling price: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.749" />
+        app:layout_constraintVertical_bias="0.632" />
 
     <EditText
         android:id="@+id/cryptoTicker"
-        android:layout_width="126dp"
-        android:layout_height="69dp"
+        android:layout_width="358dp"
+        android:layout_height="53dp"
         android:text="Crypto Ticker: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.396"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657" />
+        app:layout_constraintVertical_bias="0.541" />
 
     <TextView
         android:id="@+id/orderInformationTitle"
@@ -132,16 +136,16 @@
         android:id="@+id/buy_sell_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buy/Sell"
-        android:textOn="Buy"
-        android:textOff="Sell"
         android:checked="true"
+        android:text="Buy/Sell"
+        android:textOff="Sell"
+        android:textOn="Buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintVertical_bias="0.244" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
