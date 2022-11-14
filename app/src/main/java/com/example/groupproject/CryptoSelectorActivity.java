@@ -84,7 +84,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                             currencyModalArrayList.add(1, new CurrencyModal(name, symbol, price));
                         }
                         TextView bitCoinPrice = findViewById(R.id.bitCoinPrice);
-                        bitCoinPrice.setText(df2.format(getBitCoinPrice()));
+                        bitCoinPrice.setText(df2.format(getBitcoinPrice()));
                     }
                     // notifying adapter on data change.
                 } catch (JSONException e) {
@@ -118,7 +118,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         return currencyModalArrayList;
     }
 
-    public static double getBitCoinPrice(){
+    public static double getBitcoinPrice(){
         CurrencyModal bitcoin = currencyModalArrayList.get(0);
         return bitcoin.getPrice();
     }
