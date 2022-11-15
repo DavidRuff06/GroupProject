@@ -1,10 +1,14 @@
 package com.example.groupproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +52,6 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
         currencyModalArrayList = new ArrayList<>();
         getData();
-
     }
 
 
@@ -123,10 +126,14 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         return bitcoin.getPrice();
     }
 
+
     public void bitCoinClick(View view){
         if(!MainGameActivity.getBitCoinOn())
         MainGameActivity.setBitCoinOn(true);
         else
             MainGameActivity.setBitCoinOn(false);
     }
+
+
+
 }

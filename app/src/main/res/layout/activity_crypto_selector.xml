@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.recyclerview.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,44 +9,47 @@
     tools:context=".CryptoSelectorActivity">
 
 
-    <TextView
-        android:id="@+id/bitCoinPrice"
-        android:layout_width="119dp"
-        android:layout_height="32dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267"
-        android:textAlignment="center"/>
+<!--    <TextView-->
+<!--        android:id="@+id/bitCoinPrice"-->
+<!--        android:layout_width="119dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:text="TextView"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.181"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.267" />-->
+
+    <!--recycler view for displaying the list of currencies-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRVcurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:listitem="@layout/crypto_cardview" />
+
+    <ProgressBar
+        android:id="@+id/idPBLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 <!--    <ImageButton-->
-<!--        android:id="@+id/imageButton2"-->
+<!--        android:id="@+id/button"-->
 <!--        android:layout_width="119dp"-->
 <!--        android:layout_height="115dp"-->
+<!--        android:onClick="bitCoinClick"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintHorizontal_bias="0.181"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="0.103"-->
-<!--        app:srcCompat="@drawable/ic_bitcoin_logo"-->
-<!--        android:onClick="bitCoinClick"/>-->
+<!--        app:srcCompat="@drawable/ic_bitcoin" />-->
 
-    <ImageButton
-        android:id="@+id/button"
-        android:layout_width="119dp"
-        android:layout_height="115dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103"
-        app:srcCompat="@drawable/ic_bitcoin"
-        android:onClick="bitCoinClick"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.recyclerview.widget.RecyclerView>
