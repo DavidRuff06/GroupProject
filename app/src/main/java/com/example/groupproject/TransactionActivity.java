@@ -26,12 +26,7 @@ public class TransactionActivity extends AppCompatActivity {
     //else --> sellCrypto
 
 
-    Button oneQuantity = findViewById(R.id.quantityOfOne);
-    Button tenQuantity = findViewById(R.id.quantityOfTen);
-    Button oneHundredQuantity = findViewById(R.id.quantityOfOneHundred);
-
-
-    // These methods will keep track of the user's total purchase quantity
+    // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
     int totalQuantity = 0;
     public void addOneQuantity(View view){
         totalQuantity += 1;
@@ -54,9 +49,22 @@ public class TransactionActivity extends AppCompatActivity {
     // need to get price of Crypto we're buying
     // need to get name of Crypto
     public void calculateTotal(View view) {
-        EditText customQuantity = findViewById(R.id.customQuantity);
-        EditText cryptoTicker = findViewById(R.id.cryptoTicker);
-        EditText buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
+        TextView cryptoTicker = findViewById(R.id.cryptoTicker);
+        TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
+        TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
+        TextView totalCostTV = findViewById(R.id.totalCost);
+
+
+
+        double bitcoinPrice = CryptoSelectorActivity.getBitcoinPrice();
+        userTotalQuantity.setText("Quantity: " + totalQuantity);
+//      TextView bitcoinName = CryptoSelectorActivity.getArrayList().get(0).getName();
+
+
+        buyingOrSellingPrice.setText("Buying/Selling price: $" + bitcoinPrice);
+
+
+
 
 
 
