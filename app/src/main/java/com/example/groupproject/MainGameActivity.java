@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -32,12 +33,23 @@ public class MainGameActivity extends AppCompatActivity {
         }
         cryptoCount++;
         TextView count = findViewById(R.id.cryptoCount);
+
         count.setText(cryptoCount + " Crypto");
+        /*
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        if(count.getTextSize() > 1){
+            count.setTextSize(count.getTextSize()-);
+        }
+        */
+
     }
     public void cryptoSelectorClicked(View view){
         Intent intent = new Intent(this, CryptoSelectorActivity.class);
         startActivity(intent);
     }
+
 
     public void logOutClicked(View view) {
         boolean isFirstTime = true;
