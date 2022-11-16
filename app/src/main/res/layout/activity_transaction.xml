@@ -11,6 +11,7 @@
         android:id="@+id/sendOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="sendOrder"
         android:text="Send Order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,35 +64,47 @@
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
         android:hint="CUSTOM AMOUNT: "
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
+        app:layout_constraintVertical_bias="0.408"
+        tools:ignore="RtlCompat" />/>
 
     <TextView
         android:id="@+id/totalCost"
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:gravity="center"
         android:text="Cost of Trade: "
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.766" />
+        app:layout_constraintVertical_bias="0.766"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/totalQuantityTextView"
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:gravity="center"
+        android:text="Quantity: "
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintVertical_bias="0.676"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/cryptoTicker"
@@ -113,12 +126,17 @@
         android:id="@+id/buying_selling_price"
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:text="Buying/Selling price: "
+        android:gravity="center"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
+        app:layout_constraintVertical_bias="0.587"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/orderInformationTitle"
@@ -143,7 +161,6 @@
         android:textOn="Buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.173" />

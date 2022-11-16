@@ -28,6 +28,7 @@ public class TransactionActivity extends AppCompatActivity {
 
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
     int totalQuantity = 0;
+    double totalCost;
     public void addOneQuantity(View view){
         totalQuantity += 1;
     }
@@ -40,11 +41,6 @@ public class TransactionActivity extends AppCompatActivity {
         totalQuantity += 100;
     }
 
-    public void addCustomQuantity(View view){
-        EditText customQuantity = findViewById(R.id.customQuantity);
-        int customQty = Integer.parseInt(customQuantity.getText().toString());
-        totalQuantity += customQty;
-    }
 
     // need to get price of Crypto we're buying
     // need to get name of Crypto
@@ -53,22 +49,30 @@ public class TransactionActivity extends AppCompatActivity {
         TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
         TextView totalCostTV = findViewById(R.id.totalCost);
-
-
+        EditText customQuantity = findViewById(R.id.customQuantity);
+        int customQty = Integer.parseInt(customQuantity.getText().toString());
+        totalQuantity += customQty;
 
         double bitcoinPrice = CryptoSelectorActivity.getBitcoinPrice();
-        userTotalQuantity.setText("Quantity: " + totalQuantity);
-//      TextView bitcoinName = CryptoSelectorActivity.getArrayList().get(0).getName();
-
-
         buyingOrSellingPrice.setText("Buying/Selling price: $" + bitcoinPrice);
+        userTotalQuantity.setText("Quantity: " + totalQuantity);
+
+        totalCost = totalQuantity * bitcoinPrice;
 
 
+        totalCostTV.setText("Total Cost: $" + totalCost);
 
+//    TextView bitcoinName = CryptoSelectorActivity.getArrayList().get(0).getName();
+//    TextView bitcoinTickerSymbol = CryptoSelectorActivity.getArrayList().get(0).getTicker();
 
+    }
 
-
-
+    public void sendOrder(View view){
+        if(switchState == true){
+            MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() - totalCost);
+        }else{
+            MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() + totalCost);
+        }
     }
 
 
