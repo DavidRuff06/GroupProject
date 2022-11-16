@@ -5,14 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class MainGameActivity extends AppCompatActivity {
     private static boolean bitCoinOn;
-    int cryptoCount;
+    public static double cryptoCount;
     public final String TAG = "Group";
     SharedPreferences prefs = null;
 
@@ -26,6 +25,13 @@ public class MainGameActivity extends AppCompatActivity {
         prefs = getSharedPreferences("com.example.groupproject", MODE_PRIVATE);
     }
 
+    public static double getCryptoCount() {
+        return cryptoCount;
+    }
+
+    public static void setCryptoCount(double cryptoCount) {
+        MainGameActivity.cryptoCount = cryptoCount;
+    }
 
     public void cryptoButtonClicked(View view){
         if(bitCoinOn){
