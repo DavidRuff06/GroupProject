@@ -35,25 +35,39 @@ import java.util.Map;
 
 public class CryptoSelectorActivity extends AppCompatActivity {
 
+
     // creating variable for recycler view,
     // adapter, array list, progress bar
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
-    public static ArrayList<CurrencyModal> currencyModalArrayList;
-
-
-    public int bitCoinCount;
-    public int dogeCoinCount;
+    private RecyclerView currencyRV;
+    private EditText searchEdt;
+    private static ArrayList<CurrencyModal> currencyModalArrayList;
+    private CurrencyRVAdapter currencyRVAdapter;
+    private ProgressBar loadingPB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_selector);
 
-
+        // initializing all our variables and array list.
+        loadingPB = findViewById(R.id.idPBLoading);
+        currencyRV = findViewById(R.id.idRVcurrency);
         currencyModalArrayList = new ArrayList<>();
-        getData();
-    }
 
+        // initializing our adapter class.
+        currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this);
+
+        // setting layout manager to recycler view.
+        currencyRV.setLayoutManager(new LinearLayoutManager(this));
+
+        // setting adapter to recycler view.
+        currencyRV.setAdapter(currencyRVAdapter);
+
+        // calling get data method to get data from API.
+        getData();
+
+
+    }
 
 
     private void getData() {
@@ -69,6 +83,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                 // from response and passing it to array list
                 // on below line we are making our progress
                 // bar visibility to gone.
+                loadingPB.setVisibility(View.GONE);
                 try {
                     // extracting data from json.
                     JSONArray dataArray = response.getJSONArray("data");
@@ -86,10 +101,9 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                         if(name.equals("Dogecoin")){
                             currencyModalArrayList.add(1, new CurrencyModal(name, symbol, price));
                         }
-                        TextView bitCoinPrice = findViewById(R.id.bitCoinPrice);
-                        bitCoinPrice.setText(df2.format(getBitcoinPrice()));
                     }
                     // notifying adapter on data change.
+                    currencyRVAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     // handling json exception.
                     e.printStackTrace();
@@ -129,11 +143,8 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
     public void bitCoinClick(View view){
         if(!MainGameActivity.getBitCoinOn())
-        MainGameActivity.setBitCoinOn(true);
+            MainGameActivity.setBitCoinOn(true);
         else
             MainGameActivity.setBitCoinOn(false);
     }
-
-
-
 }

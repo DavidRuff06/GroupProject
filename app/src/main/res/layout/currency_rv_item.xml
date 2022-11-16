@@ -35,7 +35,7 @@
 
         <!--text view for displaying currency name-->
         <TextView
-            android:id="@id/idTVName"
+            android:id="@+id/idTVName"
             android:layout_width="197dp"
             android:layout_height="27dp"
             android:layout_alignParentStart="true"
@@ -54,18 +54,18 @@
         <!--text view for displaying currency rate-->
         <TextView
             android:id="@+id/idTVRate"
-            android:layout_width="88dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="22.5dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="22.5dp"
+            android:layout_marginStart="166dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="30dp"
             android:padding="3dp"
             android:text="123456"
             android:textColor="@color/white" />
