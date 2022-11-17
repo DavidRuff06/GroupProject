@@ -60,6 +60,10 @@ public class MainGameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void transactionClicked(View view){
+        Intent intent = new Intent(this, TransactionActivity.class);
+        startActivity(intent);
+    }
 
     public void logOutClicked(View view) {
         boolean isFirstTime = true;
