@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -140,11 +141,26 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         return bitcoin.getPrice();
     }
 
-
-    public void bitCoinClick(View view){
-        if(!MainGameActivity.getBitCoinOn())
-            MainGameActivity.setBitCoinOn(true);
-        else
-            MainGameActivity.setBitCoinOn(false);
+    public static double getDogeCoinPrice(){
+        CurrencyModal dogeCoin = currencyModalArrayList.get(1);
+        return dogeCoin.getPrice();
     }
+
+
+    public void bitCoinClick(View view) {
+        CardView rv = findViewById(R.id.idRVcurrency);
+        if (view.getId() == rv.getId()) {
+            if (!MainGameActivity.getBitCoinOn())
+                MainGameActivity.setBitCoinOn(true);
+            else
+                MainGameActivity.setBitCoinOn(false);
+
+            if (!MainGameActivity.getDogeCoinOn())
+                MainGameActivity.setDogeCoinOn(true);
+            else
+                MainGameActivity.setDogeCoinOn(false);
+        }
+    }
+
+
 }

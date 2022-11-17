@@ -10,7 +10,8 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="3dp"
     android:background="@drawable/layout_bg"
-    card_view:cardCornerRadius="15dp">
+    card_view:cardCornerRadius="15dp"
+    android:onClick="bitCoinClick">
 
     <RelativeLayout
         android:id="@+id/idRLCurrency"

@@ -13,6 +13,9 @@ import java.text.DecimalFormat;
 
 public class MainGameActivity extends AppCompatActivity {
     private static boolean bitCoinOn;
+    private static boolean dogeCoinOn;
+
+
     public static double cryptoCount;
     public final String TAG = "Group";
     SharedPreferences prefs = null;
@@ -39,8 +42,11 @@ public class MainGameActivity extends AppCompatActivity {
     public void cryptoButtonClicked(View view){
         if(bitCoinOn){
             cryptoCount += CryptoSelectorActivity.getBitcoinPrice();
-        } else {
+        } else if(dogeCoinOn){
+            cryptoCount += CryptoSelectorActivity.getDogeCoinPrice();
+        }else {
             cryptoCount++;
+
         }
         TextView count = findViewById(R.id.cryptoCount);
 
@@ -95,5 +101,13 @@ public class MainGameActivity extends AppCompatActivity {
     }
     public static boolean getBitCoinOn() {
         return bitCoinOn;
+    }
+
+    public static boolean getDogeCoinOn() {
+        return dogeCoinOn;
+    }
+
+    public static void setDogeCoinOn(boolean dogeCoinOn) {
+        MainGameActivity.dogeCoinOn = dogeCoinOn;
     }
 }
