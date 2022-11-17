@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainGameActivity extends AppCompatActivity {
     private static boolean bitCoinOn;
     public static double cryptoCount;
     public final String TAG = "Group";
     SharedPreferences prefs = null;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
 
 
 
@@ -36,11 +39,12 @@ public class MainGameActivity extends AppCompatActivity {
     public void cryptoButtonClicked(View view){
         if(bitCoinOn){
             cryptoCount += CryptoSelectorActivity.getBitcoinPrice();
+        } else {
+            cryptoCount++;
         }
-        cryptoCount++;
         TextView count = findViewById(R.id.cryptoCount);
 
-        count.setText(cryptoCount + " Crypto");
+        count.setText("$" + df2.format(cryptoCount));
         /*
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
