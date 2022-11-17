@@ -48,13 +48,13 @@ public class FirebaseHelper {
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private int usersCurrency;
+    private double usersCurrency;
 
 
     public FirebaseHelper() {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        usersCurrency = (int) MainGameActivity.getCryptoCount();
+        usersCurrency = MainGameActivity.getCryptoCount();
     }
 
     public FirebaseAuth getmAuth() {
@@ -88,7 +88,26 @@ public class FirebaseHelper {
                         Log.w(TAG, "Error adding user account", e);
                     }
                 });
-        db.collection("users").document("users-currency-amt").set(usersCurrency);
+        addCurrencyAmt();
+
+    }
+
+    public void addCurrencyAmt(){
+        db.collection("users").document(uid)
+                .set(usersCurrency)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "user has: " + usersCurrency + " currency");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding user account", e);
+                    }
+                });
+
     }
 
 
