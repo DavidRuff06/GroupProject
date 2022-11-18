@@ -11,19 +11,18 @@ import android.widget.TextView;
 
 public class TransactionActivity extends AppCompatActivity {
 
+    private Switch buy_sell_switch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
+        buy_sell_switch = (Switch) findViewById(R.id.buy_sell_switch);
+
     }
 
-    //Switch button stuff
-    Switch buy_sell_switch = (Switch) findViewById(R.id.buy_sell_switch);
-    // check current state of a Switch (true or false).
-    Boolean switchState = buy_sell_switch.isChecked();
 
-    //if buy_sell_button = true --> buyCrypto
-    //else --> sellCrypto
+
 
 
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
@@ -68,7 +67,7 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     public void sendOrder(View view){
-        if(switchState == true){
+        if(buy_sell_switch.isChecked() == true){
             MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() - totalCost);
         }else{
             MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() + totalCost);
@@ -86,16 +85,4 @@ public class TransactionActivity extends AppCompatActivity {
 
     }
 
-
-    public Boolean getSwitchState() {
-        return switchState;
-    }
-
-    public void setSwitchState(Boolean switchState) {
-        this.switchState = switchState;
-    }
-
-    public Switch getBuy_sell_switch() {
-        return buy_sell_switch;
-    }
 }
