@@ -88,12 +88,7 @@ public class FirebaseHelper {
                         Log.w(TAG, "Error adding user account", e);
                     }
                 });
-        addCurrencyAmt();
-
-    }
-
-    public void addCurrencyAmt(){
-        db.collection("users").document(uid)
+        db.collection("users").document("users-currency-amt")
                 .set(usersCurrency)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -104,11 +99,12 @@ public class FirebaseHelper {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding user account", e);
+                        Log.w(TAG, "Error calculating users currency", e);
                     }
                 });
-
     }
+
+
 
 
 
