@@ -96,10 +96,10 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                         JSONObject USD = quote.getJSONObject("USD");
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
-                        if(name.equals("Bitcoin")) {
+                        if (name.equals("Bitcoin")) {
                             currencyModalArrayList.add(0, new CurrencyModal(name, symbol, price));
                         }
-                        if(name.equals("Dogecoin")){
+                        if (name.equals("Dogecoin")) {
                             currencyModalArrayList.add(1, new CurrencyModal(name, symbol, price));
                         }
                     }
@@ -132,35 +132,44 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         // json object request to our queue.
         queue.add(jsonObjectRequest);
     }
-    public ArrayList getArrayList(){
+
+    public ArrayList getArrayList() {
         return currencyModalArrayList;
     }
 
-    public static double getBitcoinPrice(){
+    public static double getBitcoinPrice() {
         CurrencyModal bitcoin = currencyModalArrayList.get(0);
         return bitcoin.getPrice();
     }
 
-    public static double getDogeCoinPrice(){
+    public static double getDogeCoinPrice() {
         CurrencyModal dogeCoin = currencyModalArrayList.get(1);
         return dogeCoin.getPrice();
     }
 
 
     public void bitCoinClick(View view) {
-        CardView rv = findViewById(R.id.idRVcurrency);
-        if (view.getId() == rv.getId()) {
-            if (!MainGameActivity.getBitCoinOn())
+        TextView tv = findViewById(R.id.idTVName);
+        RecyclerView rv = findViewById(R.id.idRVcurrency)
+        if (tv.getText().equals("Bitcoin")) {
+//                rv.getChildItemId()
+            if (!MainGameActivity.getBitCoinOn()) {
                 MainGameActivity.setBitCoinOn(true);
-            else
-                MainGameActivity.setBitCoinOn(false);
-
-            if (!MainGameActivity.getDogeCoinOn())
-                MainGameActivity.setDogeCoinOn(true);
-            else
                 MainGameActivity.setDogeCoinOn(false);
+            } else {
+                MainGameActivity.setBitCoinOn(false);
+            }
+
+        } else {
+            if (tv.getText().equals("Dogecoin")) {
+
+                if (!MainGameActivity.getDogeCoinOn()) {
+                    MainGameActivity.setDogeCoinOn(true);
+                    MainGameActivity.setBitCoinOn(false);
+                } else {
+                    MainGameActivity.setDogeCoinOn(false);
+                }
+            }
         }
     }
-
-
 }
