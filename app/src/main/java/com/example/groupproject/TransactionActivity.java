@@ -12,12 +12,15 @@ import android.widget.TextView;
 public class TransactionActivity extends AppCompatActivity {
 
     private Switch buy_sell_switch;
+    private TextView cryptoTicker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
-        buy_sell_switch = (Switch) findViewById(R.id.buy_sell_switch);
+        buy_sell_switch = findViewById(R.id.buy_sell_switch);
+        cryptoTicker = findViewById(R.id.cryptoTicker);
 
     }
 
@@ -41,10 +44,21 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
 
+
+   public void onSwitch(View view){
+
+
+       //calculateTotal(view);
+       changeTheme(view);
+   }
+
+
     // need to get price of Crypto we're buying
     // need to get name of Crypto
+
+
     public void calculateTotal(View view) {
-        TextView cryptoTicker = findViewById(R.id.cryptoTicker);
+
         TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
         TextView totalCostTV = findViewById(R.id.totalCost);
@@ -60,6 +74,7 @@ public class TransactionActivity extends AppCompatActivity {
 
 
         totalCostTV.setText("Total Cost: $" + totalCost);
+        changeTheme(view);
 
 //    TextView bitcoinName = CryptoSelectorActivity.getArrayList().get(0).getName();
 //    TextView bitcoinTickerSymbol = CryptoSelectorActivity.getArrayList().get(0).getTicker();
@@ -75,14 +90,18 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
 
-    public void changeToGreenTheme(View view) {
+    public void changeTheme(View view) {
+        if(buy_sell_switch.isChecked() == true){
+            TextView orderInformation = findViewById(R.id.orderInformationTitle);
+            orderInformation.setTextColor(orderInformation.getContext().getResources().getColor(R.color.sellButtonColor));
+
+        }else{
+            TextView orderInformation = findViewById(R.id.orderInformationTitle);
+            orderInformation.setTextColor(orderInformation.getContext().getResources().getColor(R.color.buyButtonColor));
+        }
 
 
     }
 
-    public void changeToRedTheme(View view) {
-
-
-    }
 
 }

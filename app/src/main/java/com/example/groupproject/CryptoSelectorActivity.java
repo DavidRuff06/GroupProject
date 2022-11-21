@@ -150,7 +150,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
     public void bitCoinClick(View view) {
         TextView tv = findViewById(R.id.idTVName);
-        RecyclerView rv = findViewById(R.id.idRVcurrency)
+        RecyclerView rv = findViewById(R.id.idRVcurrency);
         if (tv.getText().equals("Bitcoin")) {
 //                rv.getChildItemId()
             if (!MainGameActivity.getBitCoinOn()) {
