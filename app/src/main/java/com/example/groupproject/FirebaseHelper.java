@@ -88,6 +88,8 @@ public class FirebaseHelper {
                         Log.w(TAG, "Error adding user account", e);
                     }
                 });
+
+        // Make separate method
         db.collection("users").document("users-currency-amt")
                 .set(usersCurrency)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
