@@ -48,7 +48,7 @@ public class TransactionActivity extends AppCompatActivity {
    public void onSwitch(View view){
 
 
-       //calculateTotal(view);
+       //calculateTotal(view); app crashes when calling this right now
        changeTheme(view);
    }
 
@@ -91,16 +91,23 @@ public class TransactionActivity extends AppCompatActivity {
 
 
     public void changeTheme(View view) {
+        Button oneQty = findViewById(R.id.quantityOfOne);
+        Button tenQty = findViewById(R.id.quantityOfTen);
+        Button hundredQty = findViewById(R.id.quantityOfOneHundred);
+        Button sendOrder = findViewById(R.id.sendOrder);
+
         if(buy_sell_switch.isChecked() == true){
-            TextView orderInformation = findViewById(R.id.orderInformationTitle);
-            orderInformation.setTextColor(orderInformation.getContext().getResources().getColor(R.color.sellButtonColor));
+            oneQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
+            tenQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
+            hundredQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
+            sendOrder.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
 
         }else{
-            TextView orderInformation = findViewById(R.id.orderInformationTitle);
-            orderInformation.setTextColor(orderInformation.getContext().getResources().getColor(R.color.buyButtonColor));
+            oneQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
+            tenQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
+            hundredQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
+            sendOrder.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
         }
-
-
     }
 
 

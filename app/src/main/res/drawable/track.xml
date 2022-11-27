@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/buyButtonColor"/>
+            <corners android:radius="100dp"/>
+            <stroke android:width="10dp"
+                android:color="@color/buyButtonColor"/>
+            <size android:height="20dp"/>
+        </shape>
+    </item>
+
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/sellButtonColor"/>
+            <corners android:radius="100dp"/>
+            <stroke android:width="10dp"
+                android:color="@color/sellButtonColor"/>
+            <size android:height="20dp"/>
+        </shape>
+    </item>
+
+</selector>

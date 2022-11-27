@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="transactionPageTextViewWidth">400dp</dimen>
+    <dimen name="transactionPageTextViewWidth">350dp</dimen>
     <dimen name="transactionPageTextViewHeight">60dp</dimen>
 
 
