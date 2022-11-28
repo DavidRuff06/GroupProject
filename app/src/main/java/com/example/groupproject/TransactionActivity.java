@@ -2,12 +2,15 @@ package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import org.checkerframework.checker.units.qual.C;
 
 public class TransactionActivity extends AppCompatActivity {
 
@@ -48,7 +51,7 @@ public class TransactionActivity extends AppCompatActivity {
    public void onSwitch(View view){
 
 
-       //calculateTotal(view); app crashes when calling this right now
+       calculateTotal(view); //app crashes when calling this right now
        changeTheme(view);
    }
 
@@ -63,23 +66,34 @@ public class TransactionActivity extends AppCompatActivity {
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
         TextView totalCostTV = findViewById(R.id.totalCost);
         EditText customQuantity = findViewById(R.id.customQuantity);
-        int customQty = Integer.parseInt(customQuantity.getText().toString());
-        totalQuantity += customQty;
+//        int customQty = Integer.parseInt(customQuantity.getText().toString());
+//        totalQuantity += customQty;
 
-        double bitcoinPrice = CryptoSelectorActivity.getBitcoinPrice();
-        buyingOrSellingPrice.setText("Buying/Selling price: $" + bitcoinPrice);
+
+        buyingOrSellingPrice.setText("Buying/Selling price: $" + MainGameActivity.getBitcoinPrice());
         userTotalQuantity.setText("Quantity: " + totalQuantity);
 
-        totalCost = totalQuantity * bitcoinPrice;
+        totalCost = totalQuantity * MainGameActivity.getBitcoinPrice();
 
 
         totalCostTV.setText("Total Cost: $" + totalCost);
         changeTheme(view);
 
-//    TextView bitcoinName = CryptoSelectorActivity.getArrayList().get(0).getName();
-//    TextView bitcoinTickerSymbol = CryptoSelectorActivity.getArrayList().get(0).getTicker();
+        String bitcoinName = MainGameActivity.getCurrencyModalArrayList().get(0).getName();
+        String bitcoinTickerSymbol = MainGameActivity.getCurrencyModalArrayList().get(0).getSymbol();
 
     }
+
+//    public void displayCurrentInfo(View view) {
+//
+//        String bitcoinName = MainGameActivity.getCurrencyModalArrayList().get(0).getName();
+//        String bitcoinTickerSymbol = MainGameActivity.getCurrencyModalArrayList().get(0).getSymbol();
+//        TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
+//
+//
+//        buyingOrSellingPrice.setText("Buying/Selling price: $" + CryptoSelectorActivity.getBitcoinPrice());
+//
+//    }
 
     public void sendOrder(View view){
         if(buy_sell_switch.isChecked() == true){
@@ -87,6 +101,8 @@ public class TransactionActivity extends AppCompatActivity {
         }else{
             MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() + totalCost);
         }
+        Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
+        startActivity(intent);
     }
 
 
