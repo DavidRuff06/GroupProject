@@ -189,4 +189,12 @@ public class MainGameActivity extends AppCompatActivity {
         // json object request to our queue.
         queue.add(jsonObjectRequest);
     }
+
+    public static ArrayList<CurrencyModal> getCurrencyModalArrayList() {
+        return currencyModalArrayList;
+    }
+
+    public static void setCurrencyModalArrayList(ArrayList<CurrencyModal> currencyModalArrayList) {
+        MainGameActivity.currencyModalArrayList = currencyModalArrayList;
+    }
 }
