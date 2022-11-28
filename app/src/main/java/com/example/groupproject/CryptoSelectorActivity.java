@@ -45,6 +45,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     private CurrencyRVAdapter currencyRVAdapter;
     private ProgressBar loadingPB;
     private static int totalBitcoin;
+    private TextView bitCointot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         // initializing all our variables and array list.
         loadingPB = findViewById(R.id.idPBLoading);
         currencyRV = findViewById(R.id.idRVcurrency);
+        bitCointot = findViewById(R.id.bitCointotal);
         currencyModalArrayList = new ArrayList<>();
 
         // initializing our adapter class.
@@ -67,10 +69,14 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
         // calling get data method to get data from API.
         getData();
+        bitSet();
 
 
     }
 
+    public void bitSet(){
+        bitCointot.setText(getTotalBitcoin());
+    }
 
     private void getData() {
         // creating a variable for storing our string.
