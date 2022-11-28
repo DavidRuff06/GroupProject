@@ -45,8 +45,8 @@ public class MainGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_game_activity);
-
-       // getData();
+        currencyModalArrayList = new ArrayList<>();
+       getData();
         prefs = getSharedPreferences("com.example.groupproject", MODE_PRIVATE);
     }
 
@@ -164,7 +164,6 @@ public class MainGameActivity extends AppCompatActivity {
                         }
                     }
                     // notifying adapter on data change.
-                    currencyRVAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     // handling json exception.
                     e.printStackTrace();
