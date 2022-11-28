@@ -200,4 +200,15 @@ public class MainGameActivity extends AppCompatActivity {
     public static void setCurrencyModalArrayList(ArrayList<CurrencyModal> currencyModalArrayList) {
         MainGameActivity.currencyModalArrayList = currencyModalArrayList;
     }
+    public static double getBitcoinPrice() {
+        CurrencyModal bitcoin = currencyModalArrayList.get(0);
+        return bitcoin.getPrice();
+    }
+
+    public static double getDogeCoinPrice() {
+        CurrencyModal dogeCoin = currencyModalArrayList.get(1);
+        return dogeCoin.getPrice();
+    }
+
+
 }
