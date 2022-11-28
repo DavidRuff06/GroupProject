@@ -26,10 +26,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class MainGameActivity extends AppCompatActivity {
     private static ArrayList<CurrencyModal> currencyModalArrayList;
     private static boolean bitCoinOn = true;
     private static boolean dogeCoinOn;
+    private CurrencyRVAdapter currencyRVAdapter;
 
 
     public static double cryptoCount;
@@ -44,7 +46,7 @@ public class MainGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_game_activity);
 
-        getData();
+       // getData();
         prefs = getSharedPreferences("com.example.groupproject", MODE_PRIVATE);
     }
 
@@ -162,6 +164,7 @@ public class MainGameActivity extends AppCompatActivity {
                         }
                     }
                     // notifying adapter on data change.
+                    currencyRVAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     // handling json exception.
                     e.printStackTrace();
