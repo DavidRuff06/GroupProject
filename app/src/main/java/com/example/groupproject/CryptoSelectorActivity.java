@@ -44,6 +44,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     private static ArrayList<CurrencyModal> currencyModalArrayList;
     private CurrencyRVAdapter currencyRVAdapter;
     private ProgressBar loadingPB;
+    private static int totalBitcoin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,5 +172,13 @@ public class CryptoSelectorActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public static int getTotalBitcoin() {
+        return totalBitcoin;
+    }
+
+    public static void setTotalBitcoin(int totalBitcoin) {
+        CryptoSelectorActivity.totalBitcoin = totalBitcoin;
     }
 }
