@@ -68,5 +68,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78" />
 
+    <ImageButton
+        android:id="@+id/upgradesButton"
+        android:layout_width="52dp"
+        android:layout_height="51dp"
+        android:src="@android:drawable/arrow_up_float"
+        android:onClick="upgradesButtonClicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
