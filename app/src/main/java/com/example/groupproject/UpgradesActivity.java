@@ -23,7 +23,9 @@ public class UpgradesActivity extends AppCompatActivity {
         Upgrade miner = new Upgrade("Miner",0.1, 0,  getResources().getIdentifier("miner_200x200" , "drawable" ,
                 getPackageName()));
         for (int i = 0; i < listOfUpgrades.length; i++){
-            listOfUpgrades[i].getUpgradeName().
+            name.setText(listOfUpgrades[i].getUpgradeName());
+            cpsMult.setText("" + listOfUpgrades[i].getCpsMult());
+            amtOwned.setText("" + listOfUpgrades[i].getAmtOwned());
         }
     }
 
