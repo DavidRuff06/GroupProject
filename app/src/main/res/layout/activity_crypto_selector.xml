@@ -8,6 +8,8 @@
 
 
     <!--recycler view for displaying the list of currencies-->
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVcurrency"
         android:layout_width="307dp"
@@ -26,18 +28,17 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="320dp"
-
-        android:layout_height="69dp"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
         android:layout_alignTop="@+id/idRVcurrency"
         android:layout_alignBottom="@+id/idRVcurrency"
         android:layout_alignParentStart="true"
 
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="-144dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="412dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="263dp"
         android:onClick="bitCoinClick"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,15 +60,15 @@
         android:id="@+id/bitCointotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/idPBLoading"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="263dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="324dp"
-        android:text="0" />
+        android:layout_marginStart="325dp"
+        android:layout_marginTop="254dp"
+        android:layout_marginBottom="323dp"
+        android:text="0"
+        android:textSize="25sp" />
 
 
 </RelativeLayout>

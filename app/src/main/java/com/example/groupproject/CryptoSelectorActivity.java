@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -67,6 +68,24 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         // setting adapter to recycler view.
         currencyRV.setAdapter(currencyRVAdapter);
 
+
+/*
+Need to research how to get an onItemClickListener for the recyclerview.  Need to add it to the recyclerview
+Try adding this to currencyRV
+
+recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(AddCustomerActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            et_kodepos.setText(data.get(position).getPosKode());
+            et_kota.setText(data.get(position).getPosKota());
+            et_provinsi.setText(data.get(position).getPosProp());
+            et_kecamatan.setText(data.get(position).getPosCamat());
+            et_kelurahan.setText(data.get(position).getPosLurah());
+        }
+    }));
+ */
+
+
         // calling get data method to get data from API.
         getData();
         bitSet();
@@ -75,7 +94,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     }
 
     public void bitSet(){
-        bitCointot.setText(getTotalBitcoin());
+        bitCointot.setText("" + (int)MainGameActivity.getCryptoCount());
     }
 
     private void getData() {

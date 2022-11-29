@@ -75,3 +75,18 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         }
     }
 }
+
+/*
+Need to research how to get an onItemClickListener for the recyclerview.  Need to add it to the recyclerview
+
+recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(AddCustomerActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            et_kodepos.setText(data.get(position).getPosKode());
+            et_kota.setText(data.get(position).getPosKota());
+            et_provinsi.setText(data.get(position).getPosProp());
+            et_kecamatan.setText(data.get(position).getPosCamat());
+            et_kelurahan.setText(data.get(position).getPosLurah());
+        }
+    }));
+ */
