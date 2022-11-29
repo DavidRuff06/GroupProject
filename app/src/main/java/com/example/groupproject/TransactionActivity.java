@@ -15,7 +15,7 @@ import org.checkerframework.checker.units.qual.C;
 public class TransactionActivity extends AppCompatActivity {
 
     private Switch buy_sell_switch;
-    private TextView cryptoTicker;
+
 
 
     @Override
@@ -23,13 +23,9 @@ public class TransactionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
         buy_sell_switch = findViewById(R.id.buy_sell_switch);
-        cryptoTicker = findViewById(R.id.cryptoTicker);
+
 
     }
-
-
-
-
 
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
     int totalQuantity = 0;
@@ -49,7 +45,6 @@ public class TransactionActivity extends AppCompatActivity {
 
 
    public void onSwitch(View view){
-
 
        calculateTotal(view); //app crashes when calling this right now
        changeTheme(view);
@@ -84,16 +79,19 @@ public class TransactionActivity extends AppCompatActivity {
 
     }
 
-//    public void displayCurrentInfo(View view) {
-//
-//        String bitcoinName = MainGameActivity.getCurrencyModalArrayList().get(0).getName();
-//        String bitcoinTickerSymbol = MainGameActivity.getCurrencyModalArrayList().get(0).getSymbol();
-//        TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
-//
-//
-//        buyingOrSellingPrice.setText("Buying/Selling price: $" + CryptoSelectorActivity.getBitcoinPrice());
-//
-//    }
+    public void displayCurrentInfo(View view) {
+        TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
+        TextView currencyName = findViewById(R.id.cryptoName);
+        TextView currencySymbol = findViewById(R.id.cryptoSymbol);
+
+        String bitcoinName = MainGameActivity.getCurrencyModalArrayList().get(0).getName();
+        String bitcoinTickerSymbol = MainGameActivity.getCurrencyModalArrayList().get(0).getSymbol();
+
+        buyingOrSellingPrice.setText("Buying/Selling price: $" + CryptoSelectorActivity.getBitcoinPrice());
+        currencyName.setText("Crypto Name: " + bitcoinName);
+        currencySymbol.setText("Crypto Ticker: " + bitcoinTickerSymbol);
+
+    }
 
     public void sendOrder(View view){
         if(buy_sell_switch.isChecked() == true){

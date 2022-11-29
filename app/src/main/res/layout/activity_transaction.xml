@@ -8,119 +8,17 @@
 
 
     <Button
-        android:id="@+id/sendOrder"
+        android:id="@+id/calculateTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="sendOrder"
-        android:text="Send Order"
+        android:onClick="calculateTotal"
+        android:text="Calculate Total"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.846" />
-
-    <Button
-        android:id="@+id/quantityOfOneHundred"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addOneHundredQuantity"
-        android:text="+100"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.798"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
-
-    <Button
-        android:id="@+id/quantityOfTen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addTenQuantity"
-        android:text="+10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
-
-    <Button
-        android:id="@+id/quantityOfOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addOneQuantity"
-        android:text="+1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
-
-    <TextView
-        android:id="@+id/totalQuantityTextView"
-        android:layout_width="@dimen/transactionPageTextViewWidth"
-        android:layout_height="@dimen/transactionPageTextViewHeight"
-        android:gravity="center"
-        android:text="Total Quantity: "
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:ignore="RtlCompat" />
-
-    <TextView
-        android:id="@+id/buying_selling_price"
-        android:layout_width="@dimen/transactionPageTextViewWidth"
-        android:layout_height="@dimen/transactionPageTextViewHeight"
-        android:gravity="center"
-        android:text="Buying/Selling price: "
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615"
-        tools:ignore="RtlCompat" />
-
-    <TextView
-        android:id="@+id/totalCost"
-        android:layout_width="@dimen/transactionPageTextViewWidth"
-        android:layout_height="@dimen/transactionPageTextViewHeight"
-        android:gravity="center"
-        android:text="Cost of Trade: "
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/customQuantity"
-        android:layout_width="254dp"
-        android:layout_height="49dp"
-        android:hint="CUSTOM QUANTITY: "
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291"
-        tools:ignore="RtlCompat" />
+        app:layout_constraintVertical_bias="0.855" />
 
     <TextView
         android:id="@+id/cryptoTicker"
@@ -135,20 +33,68 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168"
+        app:layout_constraintVertical_bias="0.241"
         tools:ignore="RtlCompat" />
 
     <TextView
-        android:id="@+id/orderInformationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Order Information"
-        android:textSize="28sp"
+        android:id="@+id/totalQuantityTextView"
+        android:layout_width="@dimen/transactionPageTextViewWidth"
+        android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:gravity="center"
+        android:text="Total Quantity: "
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.552"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/sendOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="sendOrder"
+        android:text="Send Order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.925" />
+
+    <TextView
+        android:id="@+id/cryptoName"
+        android:layout_width="@dimen/transactionPageTextViewWidth"
+        android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:gravity="center"
+        android:text="Crypto Name: "
+        android:textAlignment="textStart"
+        android:textSize="@dimen/fontSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.138"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/customQuantity"
+        android:layout_width="254dp"
+        android:layout_height="49dp"
+        android:hint="CUSTOM QUANTITY: "
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.341"
+        tools:ignore="RtlCompat" />
 
     <Switch
         android:id="@+id/buy_sell_switch"
@@ -169,7 +115,90 @@
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintVertical_bias="0.34" />
+
+    <Button
+        android:id="@+id/quantityOfTen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addTenQuantity"
+        android:text="+10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <Button
+        android:id="@+id/quantityOfOneHundred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addOneHundredQuantity"
+        android:text="+100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <TextView
+        android:id="@+id/buying_selling_price"
+        android:layout_width="@dimen/transactionPageTextViewWidth"
+        android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:gravity="center"
+        android:text="Buying/Selling price: "
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/totalCost"
+        android:layout_width="@dimen/transactionPageTextViewWidth"
+        android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:gravity="center"
+        android:text="Cost of Trade: "
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/fontSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/quantityOfOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addOneQuantity"
+        android:text="+1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <TextView
+        android:id="@+id/orderInformationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Information"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
