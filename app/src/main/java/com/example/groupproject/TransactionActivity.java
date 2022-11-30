@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
 public class TransactionActivity extends AppCompatActivity {
 
     private Switch buy_sell_switch;
-
-
 
 
 
@@ -28,14 +27,15 @@ public class TransactionActivity extends AppCompatActivity {
 
     }
 
-    public int getCryptoIndex(String cryptoName){
-        for (int i = 0; i < MainGameActivity.getCurrencyModalArrayList().size(); i++) {
-            if(MainGameActivity.getCurrencyModalArrayList().get(i).getName().equalsIgnoreCase(cryptoName)){
-                return i;
-            }
-        }
-        return 0;
-    }
+
+//    public int getCryptoIndex(String cryptoName){
+//        for (int i = 0; i < MainGameActivity.getCurrencyModalArrayList().size(); i++) {
+//            if(MainGameActivity.getCurrencyModalArrayList().get(i).getName().equalsIgnoreCase(cryptoName)){
+//                return i;
+//            }
+//        }
+//        return 0;
+//    }
 
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
     int totalQuantity = 0;
@@ -61,11 +61,10 @@ public class TransactionActivity extends AppCompatActivity {
         calculateTotal(view);
     }
 
-    //int cryptoIndex = getCryptoIndex()
 
-   public void onSwitch(View view){
-       changeTheme(view);
-   }
+    public void onSwitch(View view){
+        changeTheme(view);
+    }
 
     public void calculateTotal(View view) {
 //        EditText customQuantity = findViewById(R.id.customQuantity);
@@ -76,7 +75,7 @@ public class TransactionActivity extends AppCompatActivity {
         TextView totalCostTV = findViewById(R.id.totalCost);
 
         userTotalQuantity.setText("Quantity: " + totalQuantity);
-        totalCost = totalQuantity * MainGameActivity.getBitcoinPrice();
+        totalCost = totalQuantity * MainGameActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getPrice();
 
         if(buy_sell_switch.isChecked()){
             // user is buying
@@ -91,13 +90,12 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     public void displayCurrentInfo() {
-
         TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
-        TextView cryptoName = findViewById(R.id.cryptoName);
-        String bitcoinName = MainGameActivity.getCurrencyModalArrayList().get(0).getName();
+        TextView crypto = findViewById(R.id.cryptoName);
+        String cryptoName = MainGameActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getName();
 
-        buyingOrSellingPrice.setText("Buying/Selling price: $" + MainGameActivity.getBitcoinPrice());
-        cryptoName.setText("Crypto Name: " + bitcoinName);
+        buyingOrSellingPrice.setText("Buying/Selling price: $" + MainGameActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getPrice());
+        crypto.setText("Crypto Name: " + cryptoName);
 
     }
 

@@ -46,6 +46,9 @@ public class CryptoSelectorActivity extends AppCompatActivity {
     private ProgressBar loadingPB;
     private static int totalBitcoin;
     private TextView bitCointot;
+    public static int cryptoIndex;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +113,7 @@ Try adding this to currencyRV
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
                         if (name.equals("Bitcoin")) {
+                            cryptoIndex = 0;
                             currencyModalArrayList.add(0, new CurrencyModal(name, symbol, price));
                         }
                         if (name.equals("Dogecoin")) {
@@ -177,5 +181,9 @@ Try adding this to currencyRV
 
     public static void setTotalBitcoin(int totalBitcoin) {
         CryptoSelectorActivity.totalBitcoin = totalBitcoin;
+    }
+
+    public static int getCryptoIndex() {
+        return cryptoIndex;
     }
 }
