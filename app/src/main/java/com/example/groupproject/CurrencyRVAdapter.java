@@ -1,6 +1,7 @@
 package com.example.groupproject;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         notifyDataSetChanged();
     }
 
+
     @NonNull
     @Override
     public CurrencyRVAdapter.CurrencyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,7 +53,16 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         holder.nameTV.setText(modal.getName());
         holder.rateTV.setText("$ " + df2.format(modal.getPrice()));
         holder.symbolTV.setText(modal.getSymbol());
+
+//        public static void onItemClick(){
+//            if(position == 0){
+//                Log.i("David", "BitCoin is here");
+//            } if (position == 1){
+//                Log.i("David", "Dogecoin is here");
+//            }
+//        }
     }
+
 
     @Override
     public int getItemCount() {
@@ -72,6 +83,14 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
             symbolTV = itemView.findViewById(R.id.idTVSymbol);
             rateTV = itemView.findViewById(R.id.idTVRate);
             nameTV = itemView.findViewById(R.id.idTVName);
+        }
+    }
+
+    public static void onItemClick(View view, ArrayList<CurrencyModal> al){
+        if(al.get(0).getName().equals("Bitcoin")){
+            Log.i("David", "BitCoin is here");
+        } if (al.get(1).getName().equals("Dogecoin")){
+            Log.i("David", "Dogecoin is here");
         }
     }
 }

@@ -34,7 +34,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 public class CryptoSelectorActivity extends AppCompatActivity {
 
 
@@ -72,19 +71,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 /*
 Need to research how to get an onItemClickListener for the recyclerview.  Need to add it to the recyclerview
 Try adding this to currencyRV
-
-recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(AddCustomerActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
-        @Override
-        public void onItemClick(View view, int position) {
-            et_kodepos.setText(data.get(position).getPosKode());
-            et_kota.setText(data.get(position).getPosKota());
-            et_provinsi.setText(data.get(position).getPosProp());
-            et_kecamatan.setText(data.get(position).getPosCamat());
-            et_kelurahan.setText(data.get(position).getPosLurah());
-        }
-    }));
- */
-
+*/
 
         // calling get data method to get data from API.
         getData();
@@ -175,28 +162,7 @@ recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(AddCustomerAct
 
 
     public void bitCoinClick(View view) {
-        TextView tv = findViewById(R.id.idTVName);
-        RecyclerView rv = findViewById(R.id.idRVcurrency);
-        if (tv.getText().equals("Bitcoin")) {
-//                rv.getChildItemId()
-            if (!MainGameActivity.getBitCoinOn()) {
-                MainGameActivity.setBitCoinOn(true);
-                MainGameActivity.setDogeCoinOn(false);
-            } else {
-                MainGameActivity.setBitCoinOn(false);
-            }
-
-        } else {
-            if (tv.getText().equals("Dogecoin")) {
-
-                if (!MainGameActivity.getDogeCoinOn()) {
-                    MainGameActivity.setDogeCoinOn(true);
-                    MainGameActivity.setBitCoinOn(false);
-                } else {
-                    MainGameActivity.setDogeCoinOn(false);
-                }
-            }
-        }
+        CurrencyRVAdapter.onItemClick(view, currencyModalArrayList);
         transactionClicked(view);
     }
 
