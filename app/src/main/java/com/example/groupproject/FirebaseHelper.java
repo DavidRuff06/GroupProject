@@ -88,8 +88,11 @@ public class FirebaseHelper {
                         Log.w(TAG, "Error adding user account", e);
                     }
                 });
+    }
 
-        // Make separate method
+    // ghost method
+    /*
+    public void updateFirebase() {
         db.collection("users").document("users-currency-amt")
                 .set(usersCurrency)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -102,6 +105,65 @@ public class FirebaseHelper {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error calculating users currency", e);
+                    }
+                });
+    }
+*/
+    public interface FirestoreCallback {
+        void onCallback(double usersCurrency);
+    }
+    public void addData(double usersCurrency) {
+        // add Memory m to the database
+        // this method is overloaded and incorporates the interface to handle the asynch calls
+        addData(usersCurrency, new FirestoreCallback() {
+            @Override
+            public void onCallback(double usersCurrency) {
+                Log.i(TAG, "Inside addData, onCallback :" + usersCurrency);
+            }
+
+        });
+    }
+
+
+    private void addData(double usersCurrency, FirestoreCallback firestoreCallback) {
+        db.collection("users").document(uid).collection("users-currency-amt")
+                .add(usersCurrency)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        // This will set the docID key for the Memory that was just added.
+                        db.collection("users").document(uid).collection("users-currency-amt").
+                                document(documentReference.getId()).update("docID", documentReference.getId());
+                        Log.i(TAG, "just added " + usersCurrency);
+                        readData(firestoreCallback);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i(TAG, "Error adding document", e);
+                    }
+                });
+    }
+
+    private void readData(FirestoreCallback firestoreCallback) {
+        usersCurrency = 0;        // empties the AL so that it can get a fresh copy of data
+        db.collection("users").document(uid).collection("users-currency-amt")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot doc: task.getResult()) {
+                                int usersCurrency = (int) MainGameActivity.getCryptoCount();
+                            }
+
+                            Log.i(TAG, "Success reading data: "+ usersCurrency);
+                            firestoreCallback.onCallback(usersCurrency);
+                        }
+                        else {
+                            Log.d(TAG, "Error getting documents: " + task.getException());
+                        }
                     }
                 });
     }
