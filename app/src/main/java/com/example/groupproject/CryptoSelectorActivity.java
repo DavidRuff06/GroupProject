@@ -197,6 +197,12 @@ recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(AddCustomerAct
                 }
             }
         }
+        transactionClicked(view);
+    }
+
+    public void transactionClicked(View view){
+        Intent intent = new Intent(this, TransactionActivity.class);
+        startActivity(intent);
     }
 
     public static int getTotalBitcoin() {

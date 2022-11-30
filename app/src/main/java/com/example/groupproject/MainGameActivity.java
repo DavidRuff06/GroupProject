@@ -86,10 +86,7 @@ public class MainGameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void transactionClicked(View view){
-        Intent intent = new Intent(this, TransactionActivity.class);
-        startActivity(intent);
-    }
+
     public void upgradesButtonClicked(View view){
         Intent intent = new Intent(this, UpgradesActivity.class);
         startActivity(intent);

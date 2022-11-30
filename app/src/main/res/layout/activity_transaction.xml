@@ -7,35 +7,6 @@
     tools:context=".TransactionActivity">
 
 
-    <Button
-        android:id="@+id/calculateTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="calculateTotal"
-        android:text="Calculate Total"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.855" />
-
-    <TextView
-        android:id="@+id/cryptoTicker"
-        android:layout_width="@dimen/transactionPageTextViewWidth"
-        android:layout_height="@dimen/transactionPageTextViewHeight"
-        android:gravity="center"
-        android:text="Crypto Ticker: "
-        android:textAlignment="textStart"
-        android:textSize="@dimen/fontSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241"
-        tools:ignore="RtlCompat" />
-
     <TextView
         android:id="@+id/totalQuantityTextView"
         android:layout_width="@dimen/transactionPageTextViewWidth"
@@ -49,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552"
+        app:layout_constraintVertical_bias="0.52"
         tools:ignore="RtlCompat" />
 
     <Button
@@ -63,7 +34,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.877" />
 
     <TextView
         android:id="@+id/cryptoName"
@@ -93,18 +64,18 @@
         app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341"
+        app:layout_constraintVertical_bias="0.291"
         tools:ignore="RtlCompat" />
 
     <Switch
         android:id="@+id/buy_sell_switch"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:checked="true"
         android:onClick="onSwitch"
         android:showText="true"
         android:textOff="Sell"
         android:textOn="Buy"
+        android:checked="true"
 
 
         android:thumb="@drawable/thumb"
@@ -115,7 +86,7 @@
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintVertical_bias="0.29" />
 
     <Button
         android:id="@+id/quantityOfTen"
@@ -128,7 +99,7 @@
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.405" />
 
     <Button
         android:id="@+id/quantityOfOneHundred"
@@ -141,7 +112,7 @@
         app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.405" />
 
     <TextView
         android:id="@+id/buying_selling_price"
@@ -156,7 +127,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66"
+        app:layout_constraintVertical_bias="0.639"
         tools:ignore="RtlCompat" />
 
     <TextView
@@ -172,7 +143,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77"
+        app:layout_constraintVertical_bias="0.755"
         tools:ignore="RtlCompat" />
 
     <Button
@@ -186,7 +157,7 @@
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.405" />
 
     <TextView
         android:id="@+id/orderInformationTitle"
