@@ -6,15 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-
-import org.checkerframework.checker.units.qual.C;
 
 public class TransactionActivity extends AppCompatActivity {
 
     private Switch buy_sell_switch;
+
+
 
 
 
@@ -27,6 +26,15 @@ public class TransactionActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public int getCryptoIndex(String cryptoName){
+        for (int i = 0; i < MainGameActivity.getCurrencyModalArrayList().size(); i++) {
+            if(MainGameActivity.getCurrencyModalArrayList().get(i).getName().equalsIgnoreCase(cryptoName)){
+                return i;
+            }
+        }
+        return 0;
     }
 
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
@@ -53,16 +61,11 @@ public class TransactionActivity extends AppCompatActivity {
         calculateTotal(view);
     }
 
-
+    //int cryptoIndex = getCryptoIndex()
 
    public void onSwitch(View view){
        changeTheme(view);
    }
-
-
-    // need to get price of Crypto we're buying
-    // need to get name of Crypto
-
 
     public void calculateTotal(View view) {
 //        EditText customQuantity = findViewById(R.id.customQuantity);

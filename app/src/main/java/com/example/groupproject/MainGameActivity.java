@@ -34,6 +34,7 @@ public class MainGameActivity extends AppCompatActivity {
     private CurrencyRVAdapter currencyRVAdapter;
 
 
+
     public static double cryptoCount;
     public final String TAG = "Group";
     SharedPreferences prefs = null;
@@ -90,6 +91,10 @@ public class MainGameActivity extends AppCompatActivity {
     public void upgradesButtonClicked(View view){
         Intent intent = new Intent(this, UpgradesActivity.class);
         startActivity(intent);
+    }
+
+    public void saveProgressButtonClicked(View view){
+        SignInActivity.firebaseHelper.addData(cryptoCount);
     }
 
     public void logOutClicked(View view) {
