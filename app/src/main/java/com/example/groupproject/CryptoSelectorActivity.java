@@ -119,6 +119,7 @@ Try adding this to currencyRV
                         if (name.equals("Dogecoin")) {
                             currencyModalArrayList.add(1, new CurrencyModal(name, symbol, price));
                         }
+                        // Cosmos
                     }
                     // notifying adapter on data change.
                     currencyRVAdapter.notifyDataSetChanged();
