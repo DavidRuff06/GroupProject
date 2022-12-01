@@ -34,7 +34,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-public class CryptoSelectorActivity extends AppCompatActivity {
+public class CryptoSelectorActivity extends AppCompatActivity implements SelectListener{
 
 
     // creating variable for recycler view,
@@ -50,6 +50,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class CryptoSelectorActivity extends AppCompatActivity {
         currencyModalArrayList = new ArrayList<>();
 
         // initializing our adapter class.
-        currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this);
+        currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this, this);
 
         // setting layout manager to recycler view.
         currencyRV.setLayoutManager(new LinearLayoutManager(this));
@@ -113,7 +114,6 @@ Try adding this to currencyRV
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
                         if (name.equals("Bitcoin")) {
-                            cryptoIndex = 0;
                             currencyModalArrayList.add(0, new CurrencyModal(name, symbol, price));
                         }
                         if (name.equals("Dogecoin")) {
@@ -167,7 +167,7 @@ Try adding this to currencyRV
 
     public void bitCoinClick(View view) {
         CurrencyRVAdapter.onItemClick(view, currencyModalArrayList);
-        transactionClicked(view);
+//        transactionClicked(view);
     }
 
     public void transactionClicked(View view){
@@ -185,5 +185,16 @@ Try adding this to currencyRV
 
     public static int getCryptoIndex() {
         return cryptoIndex;
+    }
+
+    @Override
+    public void onItemClicked(CurrencyModal currencyModal) {
+        Toast.makeText(this, currencyModal.getName(), Toast.LENGTH_SHORT).show();
+        if(currencyModal.getName().equals("Bitcoin"))
+            cryptoIndex = 0;
+        else if(currencyModal.getName().equals("Dogecoin"))
+            cryptoIndex = 1;
+        Intent intent = new Intent(this, TransactionActivity.class);
+        startActivity(intent);
     }
 }

@@ -23,7 +23,8 @@
         android:layout_marginTop="234dp"
         android:layout_marginEnd="104dp"
         android:layout_marginBottom="39dp"
-        tools:listitem="@layout/currency_rv_item" />
+        tools:listitem="@layout/currency_rv_item"
+        />
 
 
 <!--    <Button-->

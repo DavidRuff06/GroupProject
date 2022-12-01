@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
@@ -20,10 +21,12 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     private ArrayList<CurrencyModal> currencyModals;
     private Context context;
+    private SelectListener listener;
 
-    public CurrencyRVAdapter(ArrayList<CurrencyModal> currencyModals, Context context) {
+    public CurrencyRVAdapter(ArrayList<CurrencyModal> currencyModals, Context context, SelectListener listener) {
         this.currencyModals = currencyModals;
         this.context = context;
+        this.listener = listener;
     }
 
     // below is the method to filter our list.
@@ -54,13 +57,21 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         holder.rateTV.setText("$ " + df2.format(modal.getPrice()));
         holder.symbolTV.setText(modal.getSymbol());
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClicked(currencyModals.get(position));
+            }
+        });
+
 //        public static void onItemClick(){
 //            if(position == 0){
 //                Log.i("David", "BitCoin is here");
 //            } if (position == 1){
 //                Log.i("David", "Dogecoin is here");
 //            }
-//        }
+//        }..
+
     }
 
 
@@ -75,6 +86,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
     // which will be used to initialize each view of our layout file.
     public class CurrencyViewholder extends RecyclerView.ViewHolder {
         private TextView symbolTV, rateTV, nameTV;
+        public CardView cardView;
 
         public CurrencyViewholder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +95,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
             symbolTV = itemView.findViewById(R.id.idTVSymbol);
             rateTV = itemView.findViewById(R.id.idTVRate);
             nameTV = itemView.findViewById(R.id.idTVName);
+            cardView = itemView.findViewById(R.id.idCVCurrency);
         }
     }
 
