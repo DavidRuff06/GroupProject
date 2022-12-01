@@ -26,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class FirebaseHelper {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private double usersCurrency;
+    private Map<String, Object> user;
 
 
     public FirebaseHelper() {
@@ -71,7 +73,7 @@ public class FirebaseHelper {
 
     public void addUserToFirestore(String name, String newUID) {
         // Create a new user with their name
-        Map<String, Object> user = new HashMap<>();
+        user = new HashMap<>();
         user.put("name", name);
         // Add a new document with a docID = to the authenticated user's UID
         db.collection("users").document(newUID)
@@ -91,10 +93,12 @@ public class FirebaseHelper {
     }
 
     // ghost method
-    /*
-    public void updateFirebase() {
+    public void updateFirebase(double cryptoCount) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("currency", usersCurrency);
+        user.put("currency", data);
         db.collection("users").document("users-currency-amt")
-                .set(usersCurrency)
+                .set(data, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -108,7 +112,7 @@ public class FirebaseHelper {
                     }
                 });
     }
-*/
+/*
     public interface FirestoreCallback {
         void onCallback(double usersCurrency);
     }
@@ -167,83 +171,7 @@ public class FirebaseHelper {
                     }
                 });
     }
-
-
-
-
-
-/*
-    public void attachReadDataToUser() {
-        // This is necessary to avoid the issues we ran into with data displaying before it
-        // returned from the asynch method calls
-        if (mAuth.getCurrentUser() != null) {
-            uid = mAuth.getUid();
-            readData(new FirestoreCallback() {
-                @Override
-                public void onCallback(int usersCurrency) {
-                    Log.d(TAG, "Inside attachReadDataToUser, onCallback " + usersCurrency);
-                }
-            });
-        }
-        else {
-            Log.d(TAG, "No one logged in");
-        }
-    }
 */
-
-
-
-    /*
-    public void addUserToFirestore(String name, String newUID) {
-        // Create a new user with their name
-        Map<String, Object> user = new HashMap<>();
-        user.put("name", name);
-        // Add a new document with a docID = to the authenticated user's UID
-        db.collection("users").document(newUID)
-                .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Log.d(TAG, name + "'s user account added");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding user account", e);
-                    }
-                });
-    }
-
-    public void addCurrency(int m){
-        addCurrency(m, new FirestoreCallBack(){
-public void
-        });
-    }
-    private void readData(FirestoreCallback firestoreCallback) {
-        db.collection("users").document(uid).collection("myMemoryList")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (DocumentSnapshot doc: task.getResult()) {
-                                Memory memory = doc.toObject(Memory.class);
-                                myMemories.add(memory);
-                            }
-
-                            Log.i(TAG, "Success reading data: "+ myMemories.toString());
-                            firestoreCallback.onCallback(myMemories);
-                        }
-                        else {
-                            Log.d(TAG, "Error getting documents: " + task.getException());
-                        }
-                    }
-                });
-    }
-
-*/
-
 
 }
 

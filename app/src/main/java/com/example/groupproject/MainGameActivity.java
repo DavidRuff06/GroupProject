@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.SingleLineTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 
 
 public class MainGameActivity extends AppCompatActivity {
@@ -94,7 +96,8 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void saveProgressButtonClicked(View view){
-        SignInActivity.firebaseHelper.addData(cryptoCount);
+        Log.i("not working", "" + SignInActivity.firebaseHelper);
+        // SignInActivity.firebaseHelper.updateFirebase(cryptoCount);
     }
 
     public void logOutClicked(View view) {
