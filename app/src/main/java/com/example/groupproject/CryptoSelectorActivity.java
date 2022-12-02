@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.checkerframework.checker.units.qual.C;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +43,7 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     private RecyclerView currencyRV;
     private EditText searchEdt;
     private static ArrayList<CurrencyModal> currencyModalArrayList;
+    private static ArrayList<CurrencyModal> holderArrayList;
     private CurrencyRVAdapter currencyRVAdapter;
     private ProgressBar loadingPB;
     private static int totalBitcoin;
@@ -60,6 +62,7 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
         loadingPB = findViewById(R.id.idPBLoading);
         currencyRV = findViewById(R.id.idRVcurrency);
         bitCointot = findViewById(R.id.bitCointotal);
+        holderArrayList = new ArrayList<>();
         currencyModalArrayList = new ArrayList<>();
 
         // initializing our adapter class.
@@ -80,6 +83,7 @@ Try adding this to currencyRV
         // calling get data method to get data from API.
         getData();
         bitSet();
+        //fillCurrencyModel();
 
 
     }
@@ -113,14 +117,11 @@ Try adding this to currencyRV
                         JSONObject USD = quote.getJSONObject("USD");
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
-                        if (name.equals("Bitcoin")) {
-                            currencyModalArrayList.add(0, new CurrencyModal(name, symbol, price));
-                        }
-                        if (name.equals("Dogecoin")) {
-                            currencyModalArrayList.add(1, new CurrencyModal(name, symbol, price));
-                        }
-                        // Cosmos
+                        holderArrayList.add(new CurrencyModal(name, symbol, price));
                     }
+                    fillCurrencyModel();
+
+
                     // notifying adapter on data change.
                     currencyRVAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
@@ -128,6 +129,8 @@ Try adding this to currencyRV
                     e.printStackTrace();
                     Toast.makeText(CryptoSelectorActivity.this, "Something went amiss. Please try again later", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -197,5 +200,37 @@ Try adding this to currencyRV
             cryptoIndex = 1;
         Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
+    }
+
+    public void fillCurrencyModel(){
+//        Log.i("David", a+"");
+        for (int a = holderArrayList.size()-1; a > 0; a-- ) {
+            Log.i("David", "Cool");
+            String newName = holderArrayList.get(a).getName();
+            String newSymbol = holderArrayList.get(a).getSymbol();
+            double newPrice = holderArrayList.get(a).getPrice();
+            if (newName.equals("Dogecoin")) {
+                currencyModalArrayList.add(0, new CurrencyModal(newName, newSymbol, newPrice));
+            }
+        }
+
+        for (int a = holderArrayList.size()-1; a > 0; a-- ) {
+            Log.i("David", "Cool");
+            String newName = holderArrayList.get(a).getName();
+            String newSymbol = holderArrayList.get(a).getSymbol();
+            double newPrice = holderArrayList.get(a).getPrice();
+            if (newName.equals("Cosmos")) {
+                currencyModalArrayList.add(1, new CurrencyModal(newName, newSymbol, newPrice));
+            }
+        }
+
+        for (int a = holderArrayList.size()-1; a > 0; a-- ) {
+            String newName = holderArrayList.get(a).getName();
+            String newSymbol = holderArrayList.get(a).getSymbol();
+            double newPrice = holderArrayList.get(a).getPrice();
+            if (newName.equals("Bitcoin")) {
+                currencyModalArrayList.add(2, new CurrencyModal(newName, newSymbol, newPrice));
+            }
+        }
     }
 }
