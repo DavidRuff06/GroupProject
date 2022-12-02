@@ -112,6 +112,49 @@ public class FirebaseHelper {
                     }
                 });
     }
+
+    public void attachReadDataToUser() {
+        // This is necessary to avoid the issues we ran into with data displaying before it
+        // returned from the asynch method calls
+        if (mAuth.getCurrentUser() != null) {
+            uid = mAuth.getUid();
+            readData(new FirestoreCallback() {
+                @Override
+                public void onCallback(double usersCurrency) {
+                    Log.d(TAG, "Inside attachReadDataToUser, onCallback " + usersCurrency);
+                }
+            });
+        }
+        else {
+            Log.d(TAG, "No one logged in");
+        }
+    }
+
+    private void readData(FirestoreCallback firestoreCallback) {
+        usersCurrency = 0;        // empties the AL so that it can get a fresh copy of data
+        db.collection("users").document(uid).collection("users-currency-amt")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot doc: task.getResult()) {
+                                double usersCurrency = MainGameActivity.getCryptoCount();
+                            }
+
+                            Log.i(TAG, "Success reading data: "+ usersCurrency);
+                            firestoreCallback.onCallback(usersCurrency);
+                        }
+                        else {
+                            Log.d(TAG, "Error getting documents: " + task.getException());
+                        }
+                    }
+                });
+
+    }
+    public interface FirestoreCallback {
+        void onCallback(double usersCurrency);
+    }
 /*
     public interface FirestoreCallback {
         void onCallback(double usersCurrency);

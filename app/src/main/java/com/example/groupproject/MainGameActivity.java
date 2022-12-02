@@ -34,6 +34,7 @@ public class MainGameActivity extends AppCompatActivity {
     private static boolean bitCoinOn = true;
     private static boolean dogeCoinOn;
     private CurrencyRVAdapter currencyRVAdapter;
+    private boolean isFirstTime = true;
 
 
 
@@ -62,15 +63,7 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void cryptoButtonClicked(View view){
-        if(bitCoinOn){
-            CryptoSelectorActivity.setTotalBitcoin(CryptoSelectorActivity.getTotalBitcoin() + 1);
-            cryptoCount = CryptoSelectorActivity.getTotalBitcoin();
-        } else if(dogeCoinOn){
-            cryptoCount += CryptoSelectorActivity.getDogeCoinPrice();
-        }else {
-            cryptoCount++;
-
-        }
+        cryptoCount += 100;
         TextView count = findViewById(R.id.cryptoCount);
 
         count.setText("$" + df2.format(cryptoCount));
@@ -101,7 +94,6 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void logOutClicked(View view) {
-        boolean isFirstTime = true;
         if(!isFirstTime) {
             SignInActivity.firebaseHelper.logOutUser();
             Log.i(TAG, "user logged out");
