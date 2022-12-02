@@ -34,6 +34,7 @@ public class MainGameActivity extends AppCompatActivity {
     private static boolean bitCoinOn = true;
     private static boolean dogeCoinOn;
     private CurrencyRVAdapter currencyRVAdapter;
+    private boolean isFirstTime = true;
 
 
 
@@ -93,7 +94,6 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void logOutClicked(View view) {
-        boolean isFirstTime = true;
         if(!isFirstTime) {
             SignInActivity.firebaseHelper.logOutUser();
             Log.i(TAG, "user logged out");
