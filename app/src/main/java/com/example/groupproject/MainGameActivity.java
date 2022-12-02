@@ -62,15 +62,7 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void cryptoButtonClicked(View view){
-        if(bitCoinOn){
-            CryptoSelectorActivity.setTotalBitcoin(CryptoSelectorActivity.getTotalBitcoin() + 1);
-            cryptoCount = CryptoSelectorActivity.getTotalBitcoin();
-        } else if(dogeCoinOn){
-            cryptoCount += CryptoSelectorActivity.getDogeCoinPrice();
-        }else {
-            cryptoCount++;
-
-        }
+        cryptoCount += 100;
         TextView count = findViewById(R.id.cryptoCount);
 
         count.setText("$" + df2.format(cryptoCount));
