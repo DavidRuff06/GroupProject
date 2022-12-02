@@ -4,38 +4,48 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TransactionActivity extends AppCompatActivity {
 
     private Switch buy_sell_switch;
-
-
+    EditText customQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
         buy_sell_switch = findViewById(R.id.buy_sell_switch);
+        customQuantity = findViewById(R.id.customQuantity);
         displayCurrentInfo();
+
+        customQuantity.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    if (event.getAction() == KeyEvent.ACTION_UP) {
+                        customQuantity.clearFocus();
+                        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
 
 
 
     }
-
-
-//    public int getCryptoIndex(String cryptoName){
-//        for (int i = 0; i < MainGameActivity.getCurrencyModalArrayList().size(); i++) {
-//            if(MainGameActivity.getCurrencyModalArrayList().get(i).getName().equalsIgnoreCase(cryptoName)){
-//                return i;
-//            }
-//        }
-//        return 0;
-//    }
 
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
     int totalQuantity = 0;
@@ -61,31 +71,39 @@ public class TransactionActivity extends AppCompatActivity {
         calculateTotal(view);
     }
 
+    public void addCustomQuantity(View view){
+        TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
+        EditText customQuantity = findViewById(R.id.customQuantity);
+        int customQty = Integer.parseInt(customQuantity.getText().toString());
+        totalQuantity += customQty;
+        userTotalQuantity.setText("Quantity: " + totalQuantity);
+        calculateTotal(view);
+    }
+
+
+
+
 
     public void onSwitch(View view){
         changeTheme(view);
     }
 
     public void calculateTotal(View view) {
-//        EditText customQuantity = findViewById(R.id.customQuantity);
-//        int customQty = Integer.parseInt(customQuantity.getText().toString());
-//        totalQuantity += customQty;
+            TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
+            TextView totalCostTV = findViewById(R.id.totalCost);
 
-        TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
-        TextView totalCostTV = findViewById(R.id.totalCost);
+            userTotalQuantity.setText("Quantity: " + totalQuantity);
+            totalCost = totalQuantity * MainGameActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getPrice();
 
-        userTotalQuantity.setText("Quantity: " + totalQuantity);
-        totalCost = totalQuantity * MainGameActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getPrice();
+            if(buy_sell_switch.isChecked()){
+                // user is buying
+                totalCostTV.setText("Total Cost: $" + totalCost);;
+            }else{
+                // user is selling
+                totalCostTV.setText("Total Cost: ($" + totalCost + ")");
+            }
 
-        if(buy_sell_switch.isChecked()){
-            // user is buying
-            totalCostTV.setText("Total Cost: $" + totalCost);;
-        }else{
-            // user is selling
-            totalCostTV.setText("Total Cost: ($" + totalCost + ")");
-        }
-
-        changeTheme(view);
+            changeTheme(view);
 
     }
 
@@ -100,11 +118,12 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     public void sendOrder(View view){
-        // add multiplier
+
+        double d = MainGameActivity.getCryptoCount();
         if(buy_sell_switch.isChecked()){
-            MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() - totalCost);
+            MainGameActivity.setCryptoCount(d - totalCost);
         }else{
-            MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() + totalCost);
+            MainGameActivity.setCryptoCount(d + totalCost);
         }
         Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
         startActivity(intent);
