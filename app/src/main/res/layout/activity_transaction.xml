@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryDarkColor"
     tools:context=".TransactionActivity">
 
 
@@ -15,6 +16,8 @@
         android:text="Total Quantity: "
         android:textAlignment="viewStart"
         android:textSize="@dimen/fontSize"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -43,13 +46,15 @@
         android:gravity="center"
         android:text="Crypto Name: "
         android:textAlignment="textStart"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
         android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138"
+        app:layout_constraintVertical_bias="0.159"
         tools:ignore="RtlCompat" />
 
     <EditText
@@ -57,8 +62,14 @@
         android:layout_width="254dp"
         android:layout_height="49dp"
         android:hint="CUSTOM QUANTITY: "
+        android:inputType="number"
         android:textAlignment="viewStart"
         android:textSize="@dimen/fontSize"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
+        android:imeActionLabel="Done"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.929"
@@ -76,8 +87,6 @@
         android:textOff="Sell"
         android:textOn="Buy"
         android:checked="true"
-
-
         android:thumb="@drawable/thumb"
         android:track="@drawable/track"
 
@@ -122,6 +131,8 @@
         android:text="Buying/Selling price: "
         android:textAlignment="viewStart"
         android:textSize="@dimen/fontSize"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -138,6 +149,8 @@
         android:text="Cost of Trade: "
         android:textAlignment="viewStart"
         android:textSize="@dimen/fontSize"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -163,13 +176,15 @@
         android:id="@+id/orderInformationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order Information"
+        android:text="Order Summary"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.055" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
