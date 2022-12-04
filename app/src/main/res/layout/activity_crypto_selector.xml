@@ -10,24 +10,7 @@
     <!--recycler view for displaying the list of currencies-->
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVcurrency"
-        android:layout_width="307dp"
-        android:layout_height="330dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="234dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="39dp"
-        tools:listitem="@layout/currency_rv_item"
-        />
-
-
-<!--    <Button-->
+    <!--    <Button-->
 <!--        android:id="@+id/button"-->
 <!--        android:layout_width="280dp"-->
 <!--        android:layout_height="75dp"-->
@@ -50,6 +33,21 @@
 <!--        app:layout_constraintVertical_bias="0.103"-->
 <!--        app:rippleColor="#2196F3" />-->
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRVcurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="584dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="2dp"
+        tools:listitem="@layout/currency_rv_item" />
+
     <ProgressBar
         android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"
@@ -59,15 +57,16 @@
 
     <TextView
         android:id="@+id/bitCointotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="76dp"
+        android:layout_height="53dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="325dp"
-        android:layout_marginTop="254dp"
-        android:layout_marginBottom="323dp"
+        android:layout_marginStart="323dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="516dp"
         android:text="0"
         android:textSize="25sp" />
 

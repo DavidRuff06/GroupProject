@@ -110,9 +110,9 @@ public class TransactionActivity extends AppCompatActivity {
     public void displayCurrentInfo() {
         TextView buyingOrSellingPrice = findViewById(R.id.buying_selling_price);
         TextView crypto = findViewById(R.id.cryptoName);
-        String cryptoName = MainGameActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getName();
+        String cryptoName = CryptoSelectorActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getName();
 
-        buyingOrSellingPrice.setText("Buying/Selling price: $" + MainGameActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getPrice());
+        buyingOrSellingPrice.setText("Buying/Selling price: $" + CryptoSelectorActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getPrice());
         crypto.setText("Crypto Name: " + cryptoName);
 
     }

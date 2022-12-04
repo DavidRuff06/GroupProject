@@ -194,18 +194,21 @@ Try adding this to currencyRV
     @Override
     public void onItemClicked(CurrencyModal currencyModal) {
         Toast.makeText(this, currencyModal.getName(), Toast.LENGTH_SHORT).show();
-        if(currencyModal.getName().equals("Bitcoin"))
+        if(currencyModal.getName().equals("Dogecoin"))
             cryptoIndex = 0;
-        else if(currencyModal.getName().equals("Dogecoin"))
+        else if(currencyModal.getName().equals("Cosmos"))
             cryptoIndex = 1;
+        else if(currencyModal.getName().equals("Bitcoin"))
+            cryptoIndex = 2;
+
         Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
     }
 
     public void fillCurrencyModel(){
 //        Log.i("David", a+"");
-        for (int a = holderArrayList.size()-1; a > 0; a-- ) {
-            Log.i("David", "Cool");
+        for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
+//            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
@@ -214,8 +217,8 @@ Try adding this to currencyRV
             }
         }
 
-        for (int a = holderArrayList.size()-1; a > 0; a-- ) {
-            Log.i("David", "Cool");
+        for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
+//            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
@@ -224,7 +227,8 @@ Try adding this to currencyRV
             }
         }
 
-        for (int a = holderArrayList.size()-1; a > 0; a-- ) {
+        for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
+            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
@@ -232,5 +236,9 @@ Try adding this to currencyRV
                 currencyModalArrayList.add(2, new CurrencyModal(newName, newSymbol, newPrice));
             }
         }
+    }
+
+    public static ArrayList<CurrencyModal> getCurrencyModalArrayList() {
+        return currencyModalArrayList;
     }
 }
