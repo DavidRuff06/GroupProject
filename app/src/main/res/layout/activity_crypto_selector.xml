@@ -34,7 +34,7 @@
 <!--        app:rippleColor="#2196F3" />-->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVcurrency"
+        android:id="@+id/cryptoQuantity"
         android:layout_width="wrap_content"
         android:layout_height="584dp"
         android:layout_alignParentStart="true"
@@ -47,6 +47,21 @@
         android:layout_marginEnd="102dp"
         android:layout_marginBottom="2dp"
         tools:listitem="@layout/currency_rv_item" />
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/idRVcurrency"-->
+<!--        android:layout_width="92dp"-->
+<!--        android:layout_height="516dp"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_marginStart="313dp"-->
+<!--        android:layout_marginTop="153dp"-->
+<!--        android:layout_marginEnd="4dp"-->
+<!--        android:layout_marginBottom="-9dp"-->
+<!--        tools:listitem="@layout/crypto_cardview" />-->
 
     <ProgressBar
         android:id="@+id/idPBLoading"

@@ -14,62 +14,30 @@
 
     <RelativeLayout
         android:id="@+id/idRLCurrency"
-        android:layout_width="300dp"
-        android:layout_height="75dp">
+        android:layout_width="75dp"
+        android:layout_height="50dp">
 
 
         <!--text view for displaying currency name-->
 
         <!--text view for displaying currency rate-->
 
-        <TextView
-            android:id="@+id/cryptoSymbol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="27dp"
-            android:layout_marginBottom="25dp"
-            android:padding="3dp"
-            android:text="Symbol"
-            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/CryptoName"
-            android:layout_width="197dp"
-            android:layout_height="27dp"
+            android:id="@+id/textView"
+            android:layout_width="42dp"
+            android:layout_height="19dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="47dp"
-            android:padding="3dp"
-            android:text="Name"
-            android:textColor="@color/white"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/cryptoPrice"
-            android:layout_width="88dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="22.5dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="22.5dp"
-            android:padding="3dp"
-            android:text="123456"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="15dp"
+            android:text="0"
+            android:textAlignment="center"
             android:textColor="@color/white" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

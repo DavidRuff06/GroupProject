@@ -1,6 +1,7 @@
 package com.example.groupproject;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,6 +35,7 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 public class CryptoSelectorActivity extends AppCompatActivity implements SelectListener{
@@ -49,7 +52,7 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     private static int totalBitcoin;
     private TextView bitCointot;
     public static int cryptoIndex;
-    public static int[] cryptoQuantity = new int[3];
+    public static int[] cryptoQuantity = new int[0];
 
 
 
@@ -62,7 +65,7 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
         // initializing all our variables and array list.
         loadingPB = findViewById(R.id.idPBLoading);
         currencyRV = findViewById(R.id.idRVcurrency);
-        bitCointot = findViewById(R.id.bitCointotal);
+//        bitCointot = findViewById(R.id.bitCointotal);
         holderArrayList = new ArrayList<>();
         currencyModalArrayList = new ArrayList<>();
 
@@ -100,6 +103,7 @@ Try adding this to currencyRV
         RequestQueue queue = Volley.newRequestQueue(this);
         // making a json object request to fetch data from API.
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(JSONObject response) {
                 // inside on response method extracting data
@@ -195,17 +199,26 @@ Try adding this to currencyRV
     @Override
     public void onItemClicked(CurrencyModal currencyModal) {
         Toast.makeText(this, currencyModal.getName(), Toast.LENGTH_SHORT).show();
-        if(currencyModal.getName().equals("Dogecoin"))
-            cryptoIndex = 0;
-        else if(currencyModal.getName().equals("Cosmos"))
-            cryptoIndex = 1;
-        else if(currencyModal.getName().equals("Bitcoin"))
-            cryptoIndex = 2;
+        for (CurrencyModal c: currencyModalArrayList){
+            cryptoIndex = currencyModalArrayList.indexOf(c);
+
+        }
+//        if(currencyModal.getName().equals("Dogecoin"))
+//            cryptoIndex = 0;
+//        else if(currencyModal.getName().equals("Helium"))
+//            cryptoIndex = 1;
+//        else if(currencyModal.getName().equals("Balancer"))
+//            cryptoIndex = 2;
+//        else if(currencyModal.getName().equals("Cosmos"))
+//            cryptoIndex = 3;
+//        else if(currencyModal.getName().equals("Bitcoin"))
+//            cryptoIndex = 4;
 
         Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void fillCurrencyModel(){
 //        Log.i("David", a+"");
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
@@ -214,7 +227,27 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Dogecoin")) {
-                currencyModalArrayList.add(0, new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
+            }
+        }
+
+        for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
+//            Log.i("David", "Cool");
+            String newName = holderArrayList.get(a).getName();
+            String newSymbol = holderArrayList.get(a).getSymbol();
+            double newPrice = holderArrayList.get(a).getPrice();
+            if (newName.equals("Helium")) {
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
+            }
+        }
+
+        for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
+//            Log.i("David", "Cool");
+            String newName = holderArrayList.get(a).getName();
+            String newSymbol = holderArrayList.get(a).getSymbol();
+            double newPrice = holderArrayList.get(a).getPrice();
+            if (newName.equals("Balancer")) {
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
             }
         }
 
@@ -224,9 +257,12 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Cosmos")) {
-                currencyModalArrayList.add(1, new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
             }
         }
+
+
+
 
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
             Log.i("David", "Cool");
@@ -234,10 +270,20 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Bitcoin")) {
-                currencyModalArrayList.add(2, new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
             }
         }
+        sort(currencyModalArrayList);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static void sort(ArrayList<CurrencyModal> list) {
+
+        list.sort((o1, o2)
+                -> (int) (o1.getPrice()-(o2.getPrice())));
+    }
+
+
 
     public static ArrayList<CurrencyModal> getCurrencyModalArrayList() {
         return currencyModalArrayList;
