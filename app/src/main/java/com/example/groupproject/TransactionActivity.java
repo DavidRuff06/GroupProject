@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -30,13 +31,10 @@ public class TransactionActivity extends AppCompatActivity {
         customQuantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     addCustomQuantity(v);
-                    handled = true;
                 }
-                customQuantity.setImeOptions(EditorInfo.IME_ACTION_DONE);
-                return handled;
+                return false;
             }
         });
     }
@@ -115,41 +113,35 @@ public class TransactionActivity extends AppCompatActivity {
         double cashBalance = MainGameActivity.getCryptoCount();
         boolean notPurchasedYet = true;
 
-//        while (notPurchasedYet){
-//            if(buy_sell_switch.isChecked()){
-//                // user is buying so their cash balance will decrease
-//                try {
-//                    if(cashBalance < roundedTotalCost){
-//                        //alert message: You have insufficient funds for this transaction
-//                    }else{
-//                        notPurchasedYet = false;
-//                    }
-//                }catch(Exception e) {
-//                    //idk
-//                }
-//                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] += totalQuantity;
-//                MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
-//            }else{
-//                // user is selling so their cash balance will increase
-//                try {
-//                    if (totalQuantity > CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()]) {
-//                        //user is trying to sell more shares than they actually own
-//                    }else{
-//                        notPurchasedYet = false;
-//                    }
-//                }catch (Exception e) {
-//                    //idk
-//                }
-//                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] -= totalQuantity;
-//                MainGameActivity.setCryptoCount(cashBalance + roundedTotalCost);
-//            }
-//        }
-
-        if(buy_sell_switch.isChecked()){
-            MainGameActivity.setCryptoCount(cashBalance - totalCost);
-        }else{
-            MainGameActivity.setCryptoCount(cashBalance + totalCost);
+        while (notPurchasedYet){
+            if(buy_sell_switch.isChecked()){
+                // user is buying so their cash balance will decrease
+                if(cashBalance < roundedTotalCost){
+                    //alert message: You have insufficient funds for this transaction
+                    Toast.makeText(this, "You have insufficient funds for this transaction", Toast.LENGTH_SHORT).show();
+                }else{
+                    notPurchasedYet = false;
+                }
+                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] += totalQuantity;
+                MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
+            }else{
+                // user is selling so their cash balance will increase
+                if (totalQuantity > CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()]) {
+                    //user is trying to sell more shares than they actually own
+                    Toast.makeText(this, "You are trying to sell more shares than you own", Toast.LENGTH_SHORT).show();
+                }else{
+                    notPurchasedYet = false;
+                }
+                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] -= totalQuantity;
+                MainGameActivity.setCryptoCount(cashBalance + roundedTotalCost);
+            }
         }
+
+//        if(buy_sell_switch.isChecked()){
+//            MainGameActivity.setCryptoCount(cashBalance - totalCost);
+//        }else{
+//            MainGameActivity.setCryptoCount(cashBalance + totalCost);
+//        }
         Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
         startActivity(intent);
     }
