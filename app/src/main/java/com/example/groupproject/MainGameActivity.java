@@ -90,7 +90,6 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void saveProgressButtonClicked(View view){
-        Log.i("not working", "" + SignInActivity.firebaseHelper);
         SignInActivity.firebaseHelper.updateFirebase();
     }
 
