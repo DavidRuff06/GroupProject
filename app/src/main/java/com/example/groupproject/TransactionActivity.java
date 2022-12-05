@@ -111,13 +111,14 @@ public class TransactionActivity extends AppCompatActivity {
 
     public void sendOrder(View view){
         double cashBalance = MainGameActivity.getCryptoCount();
+        Toast.makeText(this, "testing toast", Toast.LENGTH_SHORT).show();
 
         if(buy_sell_switch.isChecked()){
             // user is buying so their cash balance will decrease
             if(cashBalance < roundedTotalCost){
                 //alert message: You have insufficient funds for this transaction
                 Toast.makeText(this, "You have insufficient funds for this transaction", Toast.LENGTH_SHORT).show();
-                Log.i("Toast", "" + cashBalance);
+
             }else{
                 CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] += totalQuantity;
                 MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
@@ -138,13 +139,6 @@ public class TransactionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
-
-
-//        if(buy_sell_switch.isChecked()){
-//            MainGameActivity.setCryptoCount(cashBalance - totalCost);
-//        }else{
-//            MainGameActivity.setCryptoCount(cashBalance + totalCost);
-//        }
 
     }
 
