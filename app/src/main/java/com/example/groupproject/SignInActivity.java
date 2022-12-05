@@ -48,6 +48,8 @@ public class SignInActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+
+
         firebaseHelper = new FirebaseHelper();
         logInB = findViewById(R.id.logInButton);
         signUpB = findViewById(R.id.signUpButton);
@@ -88,7 +90,6 @@ public class SignInActivity extends AppCompatActivity  {
                                 Log.d(TAG, userName + " created and logged in");
 
                                 firebaseHelper.addUserToFirestore(userName, firebaseHelper.getmAuth().getUid());
-                                firebaseHelper.attachReadDataToUser();
 
                                 Intent intent = new Intent(SignInActivity.this, MainGameActivity.class);
                                 startActivity(intent);
@@ -143,8 +144,6 @@ public class SignInActivity extends AppCompatActivity  {
                             if (task.isSuccessful()){
                                 // Sign in success, update currently signed in user's info
                                 firebaseHelper.updateUid(firebaseHelper.getmAuth().getUid());
-
-                                firebaseHelper.attachReadDataToUser();
 
                                 Log.d(TAG, userName + " logged in");
 
@@ -244,7 +243,6 @@ public class SignInActivity extends AppCompatActivity  {
         // if the user is already logged in, then they bypass this screen
         Log.d(TAG, "inside updateUI: " + firebaseHelper.getmAuth().getUid());
         if (firebaseHelper.getmAuth().getUid() != null) {
-            firebaseHelper.attachReadDataToUser();
             Intent intent = new Intent(SignInActivity.this, MainGameActivity.class);
             startActivity(intent);
         }

@@ -24,10 +24,10 @@
             android:name=".UpgradesActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".MainGameActivity"
             android:exported="false" />
         <activity
-            android:name=".MainGameActivity"
+            android:name=".SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

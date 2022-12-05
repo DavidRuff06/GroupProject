@@ -6,11 +6,11 @@ public class Upgrade {
     private int amtOwned;
     private int imageResourceId;
 
-    public Upgrade(String upgradeName, double cpsMult, int amtOwned, int imageResourceId) {
+    public Upgrade(String upgradeName, double cpsMult, int amtOwned) {
         this.upgradeName = upgradeName;
         this.cpsMult = cpsMult;
         this.amtOwned = amtOwned;
-        this.imageResourceId = imageResourceId;
+        this.imageResourceId = 0;
     }
 
     public void buyUpgrade(){

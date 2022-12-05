@@ -34,7 +34,6 @@ public class MainGameActivity extends AppCompatActivity {
     private static boolean bitCoinOn = true;
     private static boolean dogeCoinOn;
     private CurrencyRVAdapter currencyRVAdapter;
-    private boolean isFirstTime = true;
 
 
 
@@ -53,6 +52,8 @@ public class MainGameActivity extends AppCompatActivity {
        getData();
         prefs = getSharedPreferences("com.example.groupproject", MODE_PRIVATE);
     }
+
+
 
     public static double getCryptoCount() {
         return cryptoCount;
@@ -90,19 +91,16 @@ public class MainGameActivity extends AppCompatActivity {
 
     public void saveProgressButtonClicked(View view){
         Log.i("not working", "" + SignInActivity.firebaseHelper);
-        // SignInActivity.firebaseHelper.updateFirebase(cryptoCount);
+        SignInActivity.firebaseHelper.updateFirebase();
     }
 
     public void logOutClicked(View view) {
-        if(!isFirstTime) {
             SignInActivity.firebaseHelper.logOutUser();
             Log.i(TAG, "user logged out");
-        }else {
             Intent intent = new Intent(MainGameActivity.this, SignInActivity.class);
             startActivity(intent);
-            isFirstTime= false;
         }
-    }
+
 
     // https://stackoverflow.com/questions/7217578/check-if-application-is-on-its-first-run
     // This is a short tutorial on how to implement a boolean to see if it is the users first time opening the app.
@@ -209,6 +207,5 @@ public class MainGameActivity extends AppCompatActivity {
         CurrencyModal dogeCoin = currencyModalArrayList.get(1);
         return dogeCoin.getPrice();
     }
-
 
 }

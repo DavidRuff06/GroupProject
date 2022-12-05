@@ -45,12 +45,11 @@ import java.util.concurrent.Executor;
  * in many places.  This is MUCH more efficient and less error prone.
  */
 public class FirebaseHelper {
-    public final String TAG = "Logan";
+    public final String TAG = "GroupProject";
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private double usersCurrency;
-    private Map<String, Object> user;
 
 
     public FirebaseHelper() {
@@ -73,15 +72,18 @@ public class FirebaseHelper {
 
     public void addUserToFirestore(String name, String newUID) {
         // Create a new user with their name
-        user = new HashMap<>();
+        Map<String, Object> user = new HashMap<>();
         user.put("name", name);
+        user.put("uid", newUID);
+        user.put("currency", "" + usersCurrency);
         // Add a new document with a docID = to the authenticated user's UID
         db.collection("users").document(newUID)
                 .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void unused) {
-                        Log.d(TAG, name + "'s user account added");
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                                Log.d(TAG, name + "'s user account added");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -92,69 +94,14 @@ public class FirebaseHelper {
                 });
     }
 
-    // ghost method
-    public void updateFirebase(double cryptoCount) {
-        Map<String, Object> data = new HashMap<>();
-        data.put("currency", usersCurrency);
-        user.put("currency", data);
-        db.collection("users").document("users-currency-amt")
-                .set(data, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Log.d(TAG, "user has: " + usersCurrency + " currency");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error calculating users currency", e);
-                    }
-                });
+
+    public void updateFirebase() {
+        DocumentReference ref = db.collection("users").document(uid);
+        ref.update("currency",  (Double.parseDouble(db.document("currency").toString()) + usersCurrency) + "");
     }
 
-    public void attachReadDataToUser() {
-        // This is necessary to avoid the issues we ran into with data displaying before it
-        // returned from the asynch method calls
-        if (mAuth.getCurrentUser() != null) {
-            uid = mAuth.getUid();
-            readData(new FirestoreCallback() {
-                @Override
-                public void onCallback(double usersCurrency) {
-                    Log.d(TAG, "Inside attachReadDataToUser, onCallback " + usersCurrency);
-                }
-            });
-        }
-        else {
-            Log.d(TAG, "No one logged in");
-        }
-    }
 
-    private void readData(FirestoreCallback firestoreCallback) {
-        usersCurrency = 0;        // empties the AL so that it can get a fresh copy of data
-        db.collection("users").document(uid).collection("users-currency-amt")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (DocumentSnapshot doc: task.getResult()) {
-                                double usersCurrency = MainGameActivity.getCryptoCount();
-                            }
 
-                            Log.i(TAG, "Success reading data: "+ usersCurrency);
-                            firestoreCallback.onCallback(usersCurrency);
-                        }
-                        else {
-                            Log.d(TAG, "Error getting documents: " + task.getException());
-                        }
-                    }
-                });
-
-    }
-    public interface FirestoreCallback {
-        void onCallback(double usersCurrency);
-    }
 /*
     public interface FirestoreCallback {
         void onCallback(double usersCurrency);
