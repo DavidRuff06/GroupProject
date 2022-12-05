@@ -35,10 +35,17 @@ public class UpgradesActivity extends AppCompatActivity implements UpgradeSelect
 
         upgradesRV.setAdapter(upgradeRVAdapter);
 
-        fillUpgrade();
-
+        // fillIn();
 
     }
+
+
+    //public void fillIn(){
+    //    upgradeHolderArrayList.add(new Upgrade("Miner", 0.1, 0));
+    //    upgradeHolderArrayList.add(new Upgrade("Up2", 1, 0));
+    //    upgradeHolderArrayList.add(new Upgrade("Up3", 10, 0));
+    //fillUpgrade();
+    //}
 
     public static int getUpgradeIndex() {
         return upgradeIndex;
