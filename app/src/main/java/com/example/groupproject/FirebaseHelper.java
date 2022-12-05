@@ -96,8 +96,13 @@ public class FirebaseHelper {
 
 
     public void updateFirebase() {
-        DocumentReference ref = db.collection("users").document(uid);
-        ref.update("currency",  (Double.parseDouble(db.document("currency").toString()) + usersCurrency) + "");
+        usersCurrency = MainGameActivity.getCryptoCount();
+        DocumentReference ref = db.collection("users").document(mAuth.getUid());
+        ref.update("currency", usersCurrency + "");
+        Log.d("Logan", usersCurrency + " Added to currency");
+        if (MainGameActivity.getCryptoCount() == 0) {
+            //MainGameActivity.setCryptoCount(Double.parseDouble();
+        }
     }
 
 

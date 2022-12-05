@@ -111,39 +111,35 @@ public class TransactionActivity extends AppCompatActivity {
 
     public void sendOrder(View view){
         double cashBalance = MainGameActivity.getCryptoCount();
-        boolean notPurchasedYet = true;
+        Toast.makeText(this, "testing toast", Toast.LENGTH_SHORT).show();
 
-        while (notPurchasedYet){
-            if(buy_sell_switch.isChecked()){
-                // user is buying so their cash balance will decrease
-                if(cashBalance < roundedTotalCost){
-                    //alert message: You have insufficient funds for this transaction
-                    Toast.makeText(this, "You have insufficient funds for this transaction", Toast.LENGTH_SHORT).show();
-                }else{
-                    notPurchasedYet = false;
-                }
+        if(buy_sell_switch.isChecked()){
+            // user is buying so their cash balance will decrease
+            if(cashBalance < roundedTotalCost){
+                //alert message: You have insufficient funds for this transaction
+                Toast.makeText(this, "You have insufficient funds for this transaction", Toast.LENGTH_SHORT).show();
+
+            }else{
                 CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] += totalQuantity;
                 MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
+                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] += totalQuantity;
+                Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
+                startActivity(intent);
+            }
+        }else{
+            // user is selling so their cash balance will increase
+            if (totalQuantity > CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()]) {
+                //user is trying to sell more shares than they actually own
+                Toast.makeText(this, "You are trying to sell more shares than you own", Toast.LENGTH_SHORT).show();
             }else{
-                // user is selling so their cash balance will increase
-                if (totalQuantity > CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()]) {
-                    //user is trying to sell more shares than they actually own
-                    Toast.makeText(this, "You are trying to sell more shares than you own", Toast.LENGTH_SHORT).show();
-                }else{
-                    notPurchasedYet = false;
-                }
                 CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] -= totalQuantity;
                 MainGameActivity.setCryptoCount(cashBalance + roundedTotalCost);
+                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] -= totalQuantity;
+                Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
+                startActivity(intent);
             }
         }
 
-//        if(buy_sell_switch.isChecked()){
-//            MainGameActivity.setCryptoCount(cashBalance - totalCost);
-//        }else{
-//            MainGameActivity.setCryptoCount(cashBalance + totalCost);
-//        }
-        Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
-        startActivity(intent);
     }
 
     public void changeTheme(View view) {
