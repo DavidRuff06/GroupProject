@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -46,6 +47,7 @@ public class TransactionActivity extends AppCompatActivity {
             getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).
             getPrice() * 100) / 100;
     double roundedTotalCost;
+
 
 
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
@@ -107,34 +109,61 @@ public class TransactionActivity extends AppCompatActivity {
         String cryptoName = CryptoSelectorActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getName();
         buyingOrSellingPrice.setText("Buying/Selling price: $" + roundedCryptoValue);
         crypto.setText("Crypto Name: " + cryptoName);
-
     }
 
     public void sendOrder(View view){
+        double cashBalance = MainGameActivity.getCryptoCount();
+        boolean notPurchasedYet = true;
 
-        double d = MainGameActivity.getCryptoCount();
+//        while (notPurchasedYet){
+//            if(buy_sell_switch.isChecked()){
+//                // user is buying so their cash balance will decrease
+//                try {
+//                    if(cashBalance < roundedTotalCost){
+//                        //alert message: You have insufficient funds for this transaction
+//                    }else{
+//                        notPurchasedYet = false;
+//                    }
+//                }catch(Exception e) {
+//                    //idk
+//                }
+//                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] += totalQuantity;
+//                MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
+//            }else{
+//                // user is selling so their cash balance will increase
+//                try {
+//                    if (totalQuantity > CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()]) {
+//                        //user is trying to sell more shares than they actually own
+//                    }else{
+//                        notPurchasedYet = false;
+//                    }
+//                }catch (Exception e) {
+//                    //idk
+//                }
+//                CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] -= totalQuantity;
+//                MainGameActivity.setCryptoCount(cashBalance + roundedTotalCost);
+//            }
+//        }
+
         if(buy_sell_switch.isChecked()){
-            MainGameActivity.setCryptoCount(d - roundedTotalCost);
+            MainGameActivity.setCryptoCount(cashBalance - totalCost);
         }else{
-            MainGameActivity.setCryptoCount(d + roundedTotalCost);
+            MainGameActivity.setCryptoCount(cashBalance + totalCost);
         }
         Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
         startActivity(intent);
     }
-
 
     public void changeTheme(View view) {
         Button oneQty = findViewById(R.id.quantityOfOne);
         Button tenQty = findViewById(R.id.quantityOfTen);
         Button hundredQty = findViewById(R.id.quantityOfOneHundred);
         Button sendOrder = findViewById(R.id.sendOrder);
-
         if(buy_sell_switch.isChecked()){
             oneQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
             tenQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
             hundredQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
             sendOrder.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
-
         }else{
             oneQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
             tenQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
@@ -142,6 +171,4 @@ public class TransactionActivity extends AppCompatActivity {
             sendOrder.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
         }
     }
-
-
 }
