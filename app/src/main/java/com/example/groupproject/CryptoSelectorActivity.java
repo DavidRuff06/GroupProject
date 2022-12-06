@@ -174,11 +174,6 @@ Try adding this to currencyRV
     }
 
 
-    public void bitCoinClick(View view) {
-        CurrencyRVAdapter.onItemClick(view, currencyModalArrayList);
-//        transactionClicked(view);
-    }
-
     public void transactionClicked(View view){
         Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
@@ -200,20 +195,10 @@ Try adding this to currencyRV
     public void onItemClicked(CurrencyModal currencyModal) {
         Toast.makeText(this, currencyModal.getName(), Toast.LENGTH_SHORT).show();
         for (CurrencyModal c: currencyModalArrayList){
+            if(c.getPrice() == currencyModalArrayList.get(CurrencyRVAdapter.getP()).getPrice())
             cryptoIndex = currencyModalArrayList.indexOf(c);
 
         }
-//        if(currencyModal.getName().equals("Dogecoin"))
-//            cryptoIndex = 0;
-//        else if(currencyModal.getName().equals("Helium"))
-//            cryptoIndex = 1;
-//        else if(currencyModal.getName().equals("Balancer"))
-//            cryptoIndex = 2;
-//        else if(currencyModal.getName().equals("Cosmos"))
-//            cryptoIndex = 3;
-//        else if(currencyModal.getName().equals("Bitcoin"))
-//            cryptoIndex = 4;
-
         Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
     }

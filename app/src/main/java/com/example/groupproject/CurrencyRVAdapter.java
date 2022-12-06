@@ -22,6 +22,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
     private ArrayList<CurrencyModal> currencyModals;
     private Context context;
     private SelectListener listener;
+    private static int p;
 
     public CurrencyRVAdapter(ArrayList<CurrencyModal> currencyModals, Context context, SelectListener listener) {
         this.currencyModals = currencyModals;
@@ -56,10 +57,10 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         holder.nameTV.setText(modal.getName());
         holder.rateTV.setText("$ " + df2.format(modal.getPrice()));
         holder.symbolTV.setText(modal.getSymbol());
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                p = position;
                 listener.onItemClicked(currencyModals.get(position));
             }
         });
@@ -99,12 +100,8 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         }
     }
 
-    public static void onItemClick(View view, ArrayList<CurrencyModal> al){
-        if(al.get(0).getName().equals("Bitcoin")){
-            Log.i("David", "BitCoin is here");
-        } if (al.get(1).getName().equals("Dogecoin")){
-            Log.i("David", "Dogecoin is here");
-        }
+    public static int getP() {
+        return p;
     }
 }
 
