@@ -15,29 +15,29 @@
         android:gravity="center"
         android:text="Total Quantity: "
         android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52"
+        app:layout_constraintVertical_bias="0.649"
         tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/sendOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Order"
         android:onClick="sendOrder"
+        android:text="Send Order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.877" />
+        app:layout_constraintVertical_bias="0.923" />
 
     <TextView
         android:id="@+id/cryptoName"
@@ -54,48 +54,49 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159"
+        app:layout_constraintVertical_bias="0.15"
         tools:ignore="RtlCompat" />
 
     <EditText
         android:id="@+id/customQuantity"
-        android:layout_width="254dp"
-        android:layout_height="49dp"
-        android:hint="CUSTOM QUANTITY: "
-        android:inputType="number"
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
-        android:textColor="@color/secondaryDarkColor"
-        android:textColorHint="@color/secondaryDarkColor"
+        android:layout_width="@dimen/transactionPageTextViewWidth"
+        android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:hint="ENTER CUSTOM QUANTITY: "
         android:imeActionLabel="Done"
         android:imeOptions="actionDone"
+        android:inputType="number"
         android:singleLine="true"
+        android:textAlignment="viewStart"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
+        android:backgroundTint="@color/white"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291"
+        app:layout_constraintVertical_bias="0.355"
         tools:ignore="RtlCompat" />
 
     <Switch
         android:id="@+id/buy_sell_switch"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:checked="true"
         android:onClick="onSwitch"
         android:showText="true"
         android:textOff="Sell"
         android:textOn="Buy"
-        android:checked="true"
         android:thumb="@drawable/thumb"
         android:track="@drawable/track"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <Button
         android:id="@+id/quantityOfTen"
@@ -108,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.442" />
 
     <Button
         android:id="@+id/quantityOfOneHundred"
@@ -118,10 +119,10 @@
         android:text="+100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.442" />
 
     <TextView
         android:id="@+id/buying_selling_price"
@@ -130,15 +131,15 @@
         android:gravity="center"
         android:text="Buying/Selling price: "
         android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639"
+        app:layout_constraintVertical_bias="0.741"
         tools:ignore="RtlCompat" />
 
     <TextView
@@ -148,15 +149,15 @@
         android:gravity="center"
         android:text="Cost of Trade: "
         android:textAlignment="viewStart"
-        android:textSize="@dimen/fontSize"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
+        android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755"
+        app:layout_constraintVertical_bias="0.841"
         tools:ignore="RtlCompat" />
 
     <Button
@@ -167,10 +168,10 @@
         android:text="+1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.442" />
 
     <TextView
         android:id="@+id/orderInformationTitle"
@@ -185,6 +186,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.055" />
+
+    <Button
+        android:id="@+id/clearQuantity"
+        android:layout_width="237dp"
+        android:layout_height="44dp"
+        android:onClick="clearQuantity"
+        android:text="Clear Quantity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.548" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

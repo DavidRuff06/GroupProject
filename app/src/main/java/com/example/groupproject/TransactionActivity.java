@@ -79,6 +79,13 @@ public class TransactionActivity extends AppCompatActivity {
         calculateTotal(view);
     }
 
+    public void clearQuantity(View view){
+        TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
+        totalQuantity = 0;
+        userTotalQuantity.setText("Quantity: " + totalQuantity);
+        calculateTotal(view);
+    }
+
 
     public void onSwitch(View view){
         changeTheme(view);
@@ -93,10 +100,10 @@ public class TransactionActivity extends AppCompatActivity {
             roundedTotalCost = (double) Math.round(totalCost * 100) / 100;
             if(buy_sell_switch.isChecked()){
                 // user is buying
-                totalCostTV.setText("Total Cost: $" + roundedTotalCost);;
+                totalCostTV.setText("Total Cost: $" + roundedTotalCost);
             }else{
                 // user is selling
-                totalCostTV.setText("Total Cost: ($" + totalCost + ")");
+                totalCostTV.setText("Total Cost: ($" + roundedTotalCost + ")");
             }
             changeTheme(view);
     }
@@ -116,7 +123,7 @@ public class TransactionActivity extends AppCompatActivity {
         if(buy_sell_switch.isChecked()){
             // user is buying so their cash balance will decrease
             if(cashBalance < roundedTotalCost){
-                //alert message: You have insufficient funds for this transaction
+                //user is trying to buy more than they can afford
                 Toast.makeText(this, "You have insufficient funds for this transaction", Toast.LENGTH_SHORT).show();
 
             }else{
@@ -147,16 +154,22 @@ public class TransactionActivity extends AppCompatActivity {
         Button tenQty = findViewById(R.id.quantityOfTen);
         Button hundredQty = findViewById(R.id.quantityOfOneHundred);
         Button sendOrder = findViewById(R.id.sendOrder);
+        Button clearQuantity = findViewById(R.id.clearQuantity);
+        TextView totalCostTV = findViewById(R.id.totalCost);
         if(buy_sell_switch.isChecked()){
             oneQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
             tenQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
             hundredQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
             sendOrder.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
+            clearQuantity.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.buyButtonColor));
+            totalCostTV.setText("Total Cost: $" + roundedTotalCost);
         }else{
             oneQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
             tenQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
             hundredQty.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
             sendOrder.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
+            clearQuantity.setBackgroundColor(oneQty.getContext().getResources().getColor(R.color.sellButtonColor));
+            totalCostTV.setText("Total Cost: ($" + roundedTotalCost + ")");
         }
     }
 }
