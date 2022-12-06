@@ -83,8 +83,8 @@ Try adding this to currencyRV
     }
 
     public void fillCryptoTotal(){
-        for (int i = currencyModalArrayList.size() -1; i>=0; i--){
-
+        for (int i = 0; i < currencyModalArrayList.size(); i++){
+            cryptoQuantity.add(i, 30);
         }
     }
 
