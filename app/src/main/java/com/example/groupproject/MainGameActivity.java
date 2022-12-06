@@ -48,6 +48,7 @@ public class MainGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_game_activity);
+        cryptoCount = SignInActivity.firebaseHelper.;
         currencyModalArrayList = new ArrayList<>();
         TextView count = findViewById(R.id.cryptoCount);
 

@@ -27,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.firestore.Source;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -62,6 +63,9 @@ public class FirebaseHelper {
         return mAuth;
     }
 
+    public double getCurrency(){
+        db.collection("users").document(mAuth.getUid()).get("currency");
+    }
     public void logOutUser() {
         mAuth.signOut();
         this.uid = null;
@@ -98,6 +102,7 @@ public class FirebaseHelper {
     public void updateFirebase() {
         usersCurrency = MainGameActivity.getCryptoCount();
         DocumentReference ref = db.collection("users").document(mAuth.getUid());
+        Log.d("Logan", old + " Logging");
         ref.update("currency", usersCurrency + "");
         Log.d("Logan", usersCurrency + " Added to currency");
         if (MainGameActivity.getCryptoCount() == 0) {
