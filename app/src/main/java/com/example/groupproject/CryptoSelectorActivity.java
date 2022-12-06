@@ -64,7 +64,7 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
 
         // initializing all our variables and array list.
         loadingPB = findViewById(R.id.idPBLoading);
-        currencyRV = findViewById(R.id.idRVcurrency);
+        currencyRV = findViewById(R.id .idRVcurrency);
 //        bitCointot = findViewById(R.id.bitCointotal);
         holderArrayList = new ArrayList<>();
         currencyModalArrayList = new ArrayList<>();
