@@ -53,6 +53,7 @@ public class FirebaseHelper {
     private double usersCurrency;
 
 
+
     public FirebaseHelper() {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -63,12 +64,15 @@ public class FirebaseHelper {
         return mAuth;
     }
 
-    /*
-    public double getCurrency(){
-        db.collection("users").document(mAuth.getUid());
-        return
-    }
-    */
+
+    //public double getCurrency(){
+        //String s = (String) db.collection("users").document(mAuth.getUid()).get("currency");
+        //db.collection("users").document(mAuth.getUid()).get().then(value);
+        // DocumentSnapshot s  = db.collection("users").document(mAuth.getUid()).get
+
+
+    //}
+
 
     public void logOutUser() {
         mAuth.signOut();
@@ -107,11 +111,8 @@ public class FirebaseHelper {
         usersCurrency = MainGameActivity.getCryptoCount();
         DocumentReference ref = db.collection("users").document(mAuth.getUid());
         //Log.d("Logan", old + " Logging");
-        ref.update("currency", usersCurrency + "");
+        //ref.update("currency", (usersCurrency + getCurrency()) + "");
         Log.d("Logan", usersCurrency + " Added to currency");
-        if (MainGameActivity.getCryptoCount() == 0) {
-            //MainGameActivity.setCryptoCount(Double.parseDouble();
-        }
     }
 
 
