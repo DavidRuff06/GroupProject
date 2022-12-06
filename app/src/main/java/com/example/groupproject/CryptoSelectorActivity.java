@@ -3,21 +3,13 @@ package com.example.groupproject;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,14 +20,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.checkerframework.checker.units.qual.C;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 public class CryptoSelectorActivity extends AppCompatActivity implements SelectListener{
@@ -44,16 +33,15 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     // creating variable for recycler view,
     // adapter, array list, progress bar
     private RecyclerView currencyRV;
-    private EditText searchEdt;
     private static ArrayList<CurrencyModal> currencyModalArrayList;
     private static ArrayList<CurrencyModal> holderArrayList;
     private CurrencyRVAdapter currencyRVAdapter;
     private ProgressBar loadingPB;
     private static int totalBitcoin;
-    private TextView bitCointot;
+    private RecyclerView cryptoRV;
     public static int cryptoIndex;
-    public static int[] cryptoQuantity = new int[5];
-
+    public static ArrayList<Integer> cryptoQuantity;
+    private CryptoAmountAdapter cryptoAmountAdapter;
 
 
 
@@ -61,13 +49,13 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_selector);
-
+        cryptoRV = findViewById(R.id.cryptoTotal);
         // initializing all our variables and array list.
         loadingPB = findViewById(R.id.idPBLoading);
         currencyRV = findViewById(R.id .idRVcurrency);
-//        bitCointot = findViewById(R.id.bitCointotal);
         holderArrayList = new ArrayList<>();
         currencyModalArrayList = new ArrayList<>();
+        cryptoQuantity = new ArrayList<>();
 
         // initializing our adapter class.
         currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this, this);
@@ -78,6 +66,10 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
         // setting adapter to recycler view.
         currencyRV.setAdapter(currencyRVAdapter);
 
+        cryptoAmountAdapter = new CryptoAmountAdapter(cryptoQuantity, this);
+        cryptoRV.setLayoutManager(new LinearLayoutManager(this));
+
+        cryptoRV.setAdapter(cryptoAmountAdapter);
 
 /*
 Need to research how to get an onItemClickListener for the recyclerview.  Need to add it to the recyclerview
@@ -86,14 +78,14 @@ Try adding this to currencyRV
 
         // calling get data method to get data from API.
         getData();
-       // bitSet();
-        //fillCurrencyModel();
 
 
     }
 
-    public void bitSet(){
-        bitCointot.setText("" + (int)MainGameActivity.getCryptoCount());
+    public void fillCryptoTotal(){
+        for (int i: cryptoQuantity){
+            cryptoQuantity.add(i);
+        }
     }
 
     private void getData() {
@@ -125,6 +117,7 @@ Try adding this to currencyRV
                         holderArrayList.add(new CurrencyModal(name, symbol, price));
                     }
                     fillCurrencyModel();
+                    fillCryptoTotal();
 
 
                     // notifying adapter on data change.
@@ -268,7 +261,9 @@ Try adding this to currencyRV
                 -> (int) (o1.getPrice()-(o2.getPrice())));
     }
 
-
+    public static int getCryptoQuantity(int cryptoIndex) {
+        return cryptoQuantity.get(cryptoIndex);
+    }
 
     public static ArrayList<CurrencyModal> getCurrencyModalArrayList() {
         return currencyModalArrayList;

@@ -13,9 +13,9 @@
     card_view:cardCornerRadius = "15dp">
 
     <RelativeLayout
-        android:id="@+id/idRLCurrency"
+        android:id="@+id/CryptoAmount"
         android:layout_width="75dp"
-        android:layout_height="50dp">
+        android:layout_height="75dp">
 
 
         <!--text view for displaying currency name-->
@@ -24,20 +24,21 @@
 
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="42dp"
-            android:layout_height="19dp"
+            android:id="@+id/cryptoNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="21dp"
             android:layout_marginEnd="17dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:text="0"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="25dp" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -120,6 +120,7 @@ public class TransactionActivity extends AppCompatActivity {
         double cashBalance = MainGameActivity.getCryptoCount();
         Toast.makeText(this, "testing toast", Toast.LENGTH_SHORT).show();
 
+
         if(buy_sell_switch.isChecked()){
             // user is buying so their cash balance will decrease
             if(cashBalance < roundedTotalCost){
@@ -135,10 +136,11 @@ public class TransactionActivity extends AppCompatActivity {
             }
         }else{
             // user is selling so their cash balance will increase
-            if (totalQuantity > CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()]) {
+            if (totalQuantity > CryptoSelectorActivity.cryptoQuantity.get(CryptoSelectorActivity.getCryptoIndex())) {
                 //user is trying to sell more shares than they actually own
                 Toast.makeText(this, "You are trying to sell more shares than you own", Toast.LENGTH_SHORT).show();
             }else{
+                //CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), CryptoSelectorActivity.getCryptoQuantity(CryptoSelectorActivity.getCryptoIndex()) -=totalQuantity);
                 CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] -= totalQuantity;
                 MainGameActivity.setCryptoCount(cashBalance + roundedTotalCost);
                 CryptoSelectorActivity.cryptoQuantity[CryptoSelectorActivity.getCryptoIndex()] -= totalQuantity;

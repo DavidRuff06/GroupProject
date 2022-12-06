@@ -36,7 +36,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVcurrency"
         android:layout_width="wrap_content"
-        android:layout_height="584dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -44,23 +44,24 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="2dp"
         android:layout_marginTop="145dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="6dp"
         tools:listitem="@layout/currency_rv_item" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cryptoQuantity"
-        android:layout_width="92dp"
-        android:layout_height="516dp"
+        android:id="@+id/cryptoTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="313dp"
-        android:layout_marginTop="153dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="-9dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="322dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="8dp"
         tools:listitem="@layout/crypto_cardview" />
 
     <ProgressBar
@@ -69,21 +70,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/bitCointotal"
-        android:layout_width="76dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="323dp"
-        android:layout_marginTop="162dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="516dp"
-        android:text="0"
-        android:textSize="25sp" />
 
 
 </RelativeLayout>
