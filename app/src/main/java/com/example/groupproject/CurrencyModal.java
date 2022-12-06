@@ -9,16 +9,19 @@ public class CurrencyModal {
     private String name;
     private String symbol;
     private double price;
+    private int amount;
 
-    public CurrencyModal(String name, String symbol, double price) {
+    public CurrencyModal(String name, String symbol, double price, int amount) {
         this.name = name;
         this.symbol = symbol;
         this.price = price;
+        this.amount = amount;
     }
     public CurrencyModal(){
         this.name = "";
         this.symbol = "";
         this.price = 0.0;
+        this.amount = 0;
     }
 
     // Implementation of parcel
@@ -27,11 +30,13 @@ public class CurrencyModal {
         this.name = parcel.readString();
         this.symbol = parcel.readString();
         this.price = parcel.readDouble();
+        this.amount = parcel.readInt();
     }
     public void writeToParcel(Parcel dest, int flags){
         dest.writeString(name);
         dest.writeString(symbol);
         dest.writeDouble(price);
+        dest.writeInt(amount);
     }
     public static final Parcelable.Creator<CurrencyModal> CREATOR = new
             Parcelable.Creator<CurrencyModal>() {
@@ -80,5 +85,13 @@ public class CurrencyModal {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

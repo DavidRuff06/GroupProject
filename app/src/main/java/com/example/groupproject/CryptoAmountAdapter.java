@@ -38,7 +38,7 @@ public class CryptoAmountAdapter extends RecyclerView.Adapter<com.example.groupp
 
     @Override
         public void onBindViewHolder(@NonNull com.example.groupproject.CryptoAmountAdapter.CurrencyViewholder holder, int position) {
-
+            holder.amountTV.setText(ints.get(position)+"");
             // on below line we are setting data to our item of
             // recycler view and all its views.
             int modal = ints.get(position);

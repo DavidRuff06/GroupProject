@@ -57,6 +57,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         holder.nameTV.setText(modal.getName());
         holder.rateTV.setText("$ " + df2.format(modal.getPrice()));
         holder.symbolTV.setText(modal.getSymbol());
+        holder.amountTV.setText(modal.getAmount());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +80,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
     // on below line we are creating our view holder class
     // which will be used to initialize each view of our layout file.
     public class CurrencyViewholder extends RecyclerView.ViewHolder {
-        private TextView symbolTV, rateTV, nameTV;
+        private TextView symbolTV, rateTV, nameTV, amountTV;
         public CardView cardView;
 
         public CurrencyViewholder(@NonNull View itemView) {
@@ -90,6 +91,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
             rateTV = itemView.findViewById(R.id.idTVRate);
             nameTV = itemView.findViewById(R.id.idTVName);
             cardView = itemView.findViewById(R.id.idCVCurrency);
+            amountTV = itemView.findViewById(R.id.cryptoNum);
         }
     }
 

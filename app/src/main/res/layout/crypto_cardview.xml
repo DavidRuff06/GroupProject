@@ -23,22 +23,22 @@
         <!--text view for displaying currency rate-->
 
 
-        <TextView
-            android:id="@+id/cryptoNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="17dp"
-            android:layout_marginBottom="10dp"
-            android:text="0"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/cryptoNum"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="21dp"-->
+<!--            android:layout_marginEnd="17dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:text="num"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="25dp" />-->
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

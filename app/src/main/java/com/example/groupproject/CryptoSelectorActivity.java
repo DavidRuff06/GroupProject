@@ -25,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 public class CryptoSelectorActivity extends AppCompatActivity implements SelectListener{
@@ -38,10 +39,11 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     private CurrencyRVAdapter currencyRVAdapter;
     private ProgressBar loadingPB;
     private static int totalBitcoin;
-    private RecyclerView cryptoRV;
+//    private RecyclerView cryptoRV;
+    private int x = 20;
     public static int cryptoIndex;
     public static ArrayList<Integer> cryptoQuantity;
-    private CryptoAmountAdapter cryptoAmountAdapter;
+//    private CryptoAmountAdapter cryptoAmountAdapter;
 
 
 
@@ -49,14 +51,13 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_selector);
-        cryptoRV = findViewById(R.id.cryptoTotal);
+//        cryptoRV = findViewById(R.id.cryptoTotal);
         // initializing all our variables and array list.
         loadingPB = findViewById(R.id.idPBLoading);
         currencyRV = findViewById(R.id .idRVcurrency);
         holderArrayList = new ArrayList<>();
         currencyModalArrayList = new ArrayList<>();
-        cryptoQuantity = new ArrayList<>();
-
+//        Log.i("bob", ""+(cryptoQuantity));
         // initializing our adapter class.
         currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this, this);
 
@@ -66,10 +67,10 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
         // setting adapter to recycler view.
         currencyRV.setAdapter(currencyRVAdapter);
 
-        cryptoAmountAdapter = new CryptoAmountAdapter(cryptoQuantity, this);
-        cryptoRV.setLayoutManager(new LinearLayoutManager(this));
-
-        cryptoRV.setAdapter(cryptoAmountAdapter);
+//        cryptoAmountAdapter = new CryptoAmountAdapter(cryptoQuantity, this);
+//        cryptoRV.setLayoutManager(new LinearLayoutManager(this));
+//
+//        cryptoRV.setAdapter(cryptoAmountAdapter);
 
 /*
 Need to research how to get an onItemClickListener for the recyclerview.  Need to add it to the recyclerview
@@ -78,15 +79,18 @@ Try adding this to currencyRV
 
         // calling get data method to get data from API.
         getData();
+//        fillCryptoTotal();
 
 
     }
 
-    public void fillCryptoTotal(){
-        for (int i = 0; i < currencyModalArrayList.size(); i++){
-            cryptoQuantity.add(i, 30);
-        }
-    }
+//    public void fillCryptoTotal(){
+//       Log.i("David", String.valueOf(cryptoQuantity));
+//            for (int i = 0; i < currencyModalArrayList.size(); i++){
+//                int x = 30;
+//                cryptoQuantity.add(x);
+//            }
+//        }
 
     private void getData() {
         // creating a variable for storing our string.
@@ -114,10 +118,9 @@ Try adding this to currencyRV
                         JSONObject USD = quote.getJSONObject("USD");
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
-                        holderArrayList.add(new CurrencyModal(name, symbol, price));
+                        holderArrayList.add(new CurrencyModal(name, symbol, price, x));
                     }
                     fillCurrencyModel();
-                    fillCryptoTotal();
 
 
                     // notifying adapter on data change.
@@ -204,7 +207,7 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Dogecoin")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
             }
         }
 
@@ -214,7 +217,7 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Quant")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
             }
         }
 
@@ -224,7 +227,7 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Ethereum")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x ));
             }
         }
 
@@ -234,7 +237,7 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Cosmos")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
             }
         }
 
@@ -247,7 +250,7 @@ Try adding this to currencyRV
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Bitcoin")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
             }
         }
         sort(currencyModalArrayList);
@@ -260,9 +263,9 @@ Try adding this to currencyRV
                 -> (int) (o1.getPrice()-(o2.getPrice())));
     }
 
-    public static int getCryptoQuantity(int cryptoIndex) {
-        return cryptoQuantity.get(cryptoIndex);
-    }
+//    public static int getCryptoQuantity(int cryptoIndex) {
+//        return cryptoQuantity.get(cryptoIndex);
+//    }
 
     public static ArrayList<CurrencyModal> getCurrencyModalArrayList() {
         return currencyModalArrayList;
