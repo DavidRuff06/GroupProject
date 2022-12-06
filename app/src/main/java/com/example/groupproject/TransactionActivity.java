@@ -118,9 +118,7 @@ public class TransactionActivity extends AppCompatActivity {
 
     public void sendOrder(View view){
         double cashBalance = MainGameActivity.getCryptoCount();
-        Toast.makeText(this, "testing toast", Toast.LENGTH_SHORT).show();
-
-
+        
         if(buy_sell_switch.isChecked()){
             // user is buying so their cash balance will decrease
             if(cashBalance < roundedTotalCost){
