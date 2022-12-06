@@ -52,7 +52,7 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     private static int totalBitcoin;
     private TextView bitCointot;
     public static int cryptoIndex;
-    public static int[] cryptoQuantity = new int[0];
+    public static int[] cryptoQuantity = new int[5];
 
 
 
