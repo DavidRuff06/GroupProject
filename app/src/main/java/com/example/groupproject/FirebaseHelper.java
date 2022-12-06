@@ -63,9 +63,13 @@ public class FirebaseHelper {
         return mAuth;
     }
 
+    /*
     public double getCurrency(){
-        db.collection("users").document(mAuth.getUid()).get("currency");
+        db.collection("users").document(mAuth.getUid());
+        return
     }
+    */
+
     public void logOutUser() {
         mAuth.signOut();
         this.uid = null;
@@ -102,7 +106,7 @@ public class FirebaseHelper {
     public void updateFirebase() {
         usersCurrency = MainGameActivity.getCryptoCount();
         DocumentReference ref = db.collection("users").document(mAuth.getUid());
-        Log.d("Logan", old + " Logging");
+        //Log.d("Logan", old + " Logging");
         ref.update("currency", usersCurrency + "");
         Log.d("Logan", usersCurrency + " Added to currency");
         if (MainGameActivity.getCryptoCount() == 0) {
