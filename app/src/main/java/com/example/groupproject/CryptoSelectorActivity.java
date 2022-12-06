@@ -86,7 +86,7 @@ Try adding this to currencyRV
 
         // calling get data method to get data from API.
         getData();
-        bitSet();
+       // bitSet();
         //fillCurrencyModel();
 
 
