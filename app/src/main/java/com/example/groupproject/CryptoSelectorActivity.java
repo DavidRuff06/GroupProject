@@ -83,8 +83,8 @@ Try adding this to currencyRV
     }
 
     public void fillCryptoTotal(){
-        for (int i: cryptoQuantity){
-            cryptoQuantity.add(i);
+        for (int i = currencyModalArrayList.size() -1; i>=0; i--){
+
         }
     }
 
@@ -190,7 +190,6 @@ Try adding this to currencyRV
         for (CurrencyModal c: currencyModalArrayList){
             if(c.getPrice() == currencyModalArrayList.get(CurrencyRVAdapter.getP()).getPrice())
             cryptoIndex = currencyModalArrayList.indexOf(c);
-
         }
         Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
@@ -214,7 +213,7 @@ Try adding this to currencyRV
             String newName = holderArrayList.get(a).getName();
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
-            if (newName.equals("Helium")) {
+            if (newName.equals("Quant")) {
                 currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
             }
         }
@@ -224,7 +223,7 @@ Try adding this to currencyRV
             String newName = holderArrayList.get(a).getName();
             String newSymbol = holderArrayList.get(a).getSymbol();
             double newPrice = holderArrayList.get(a).getPrice();
-            if (newName.equals("Balancer")) {
+            if (newName.equals("Ethereum")) {
                 currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice));
             }
         }
