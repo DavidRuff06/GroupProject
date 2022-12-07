@@ -71,7 +71,7 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     public void cryptoButtonClicked(View view){
-        cryptoCount += 100;
+        cryptoCount += 1000;
         TextView count = findViewById(R.id.cryptoCount);
 
         count.setText("$" + df2.format(cryptoCount));

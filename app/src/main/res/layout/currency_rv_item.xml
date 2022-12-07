@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardBackgroundColor="@color/black_shade_2"
+    app:cardBackgroundColor="@color/primaryColor"
     app:cardCornerRadius="4dp"
     app:cardElevation="3dp"
     android:background="@drawable/layout_bg"
@@ -14,7 +14,7 @@
 
     <RelativeLayout
         android:id="@+id/idRLCurrency"
-        android:layout_width="389dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp">
 
         <!--text view for displaying symbol-->
@@ -31,7 +31,8 @@
             android:layout_marginBottom="25dp"
             android:padding="3dp"
             android:text="Symbol"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/secondaryDarkColor"/>
 
         <!--text view for displaying currency name-->
         <TextView
@@ -48,7 +49,7 @@
             android:layout_marginBottom="47dp"
             android:padding="3dp"
             android:text="Name"
-            android:textColor="@color/white"
+            android:textColor="@color/secondaryDarkColor"
             android:textSize="13sp" />
 
         <!--text view for displaying currency rate-->
@@ -68,7 +69,7 @@
             android:layout_marginBottom="30dp"
             android:padding="3dp"
             android:text="123456"
-            android:textColor="@color/white" />
+            android:textColor="@color/secondaryDarkColor" />
 
         <TextView
             android:id="@+id/cryptoNum"
@@ -85,7 +86,7 @@
             android:layout_marginBottom="29dp"
             android:text="0"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/secondaryDarkColor"
             android:textSize="25dp" />
     </RelativeLayout>
 

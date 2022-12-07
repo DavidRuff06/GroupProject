@@ -132,7 +132,6 @@ public class TransactionActivity extends AppCompatActivity {
 
                 MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
 
-
                 Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
                 startActivity(intent);
             }
