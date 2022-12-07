@@ -53,11 +53,14 @@ public class MainGameActivity extends AppCompatActivity {
         TextView count = findViewById(R.id.cryptoCount);
 
         count.setText("$" + df2.format(cryptoCount));
-       //getData();
+        //updateCount();
         prefs = getSharedPreferences("com.example.groupproject", MODE_PRIVATE);
     }
 
 
+    //public void updateCount(){
+        //cryptoCount = SignInActivity.firebaseHelper.getCurrency();
+    //}
 
     public static double getCryptoCount() {
         return cryptoCount;
