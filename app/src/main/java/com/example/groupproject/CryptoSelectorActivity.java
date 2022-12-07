@@ -40,7 +40,6 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
     private ProgressBar loadingPB;
     private static int totalBitcoin;
 //    private RecyclerView cryptoRV;
-    private int x = 20;
     public static int cryptoIndex;
     public static ArrayList<Integer> cryptoQuantity;
 //    private CryptoAmountAdapter cryptoAmountAdapter;
@@ -57,6 +56,7 @@ public class CryptoSelectorActivity extends AppCompatActivity implements SelectL
         currencyRV = findViewById(R.id .idRVcurrency);
         holderArrayList = new ArrayList<>();
         currencyModalArrayList = new ArrayList<>();
+        cryptoQuantity = new ArrayList<>();
 //        Log.i("bob", ""+(cryptoQuantity));
         // initializing our adapter class.
         currencyRVAdapter = new CurrencyRVAdapter(currencyModalArrayList, this, this);
@@ -118,7 +118,7 @@ Try adding this to currencyRV
                         JSONObject USD = quote.getJSONObject("USD");
                         double price = USD.getDouble("price");
                         // adding all data to our array list.
-                        holderArrayList.add(new CurrencyModal(name, symbol, price, x));
+                        holderArrayList.add(new CurrencyModal(name, symbol, price, 20));
                     }
                     fillCurrencyModel();
 
@@ -204,40 +204,56 @@ Try adding this to currencyRV
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
-            String newSymbol = holderArrayList.get(a).getSymbol();
-            double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Dogecoin")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
+                String newSymbol = holderArrayList.get(a).getSymbol();
+                double newPrice = holderArrayList.get(a).getPrice();
+                if(cryptoQuantity.size() < currencyModalArrayList.size()|| cryptoQuantity.size() == 0)
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, 20));
+                else
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
+                break;
             }
         }
 
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
-            String newSymbol = holderArrayList.get(a).getSymbol();
-            double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Quant")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
+                String newSymbol = holderArrayList.get(a).getSymbol();
+                double newPrice = holderArrayList.get(a).getPrice();
+                if(cryptoQuantity.size() < currencyModalArrayList.size())
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, 20));
+                else
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
+                break;
             }
         }
 
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
-            String newSymbol = holderArrayList.get(a).getSymbol();
-            double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Ethereum")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x ));
+                String newSymbol = holderArrayList.get(a).getSymbol();
+                double newPrice = holderArrayList.get(a).getPrice();
+                if(cryptoQuantity.size() < currencyModalArrayList.size())
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, 20));
+                else
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
+                break;
             }
         }
 
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
-            String newSymbol = holderArrayList.get(a).getSymbol();
-            double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Cosmos")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
+                String newSymbol = holderArrayList.get(a).getSymbol();
+                double newPrice = holderArrayList.get(a).getPrice();
+                if(cryptoQuantity.size() < currencyModalArrayList.size())
+                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, 20));
+                else
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
+                break;
             }
         }
 
@@ -247,13 +263,22 @@ Try adding this to currencyRV
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
             Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
-            String newSymbol = holderArrayList.get(a).getSymbol();
-            double newPrice = holderArrayList.get(a).getPrice();
             if (newName.equals("Bitcoin")) {
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, x));
+                String newSymbol = holderArrayList.get(a).getSymbol();
+                double newPrice = holderArrayList.get(a).getPrice();
+                if(cryptoQuantity.size() < currencyModalArrayList.size())
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, 20));
+                else
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
+                break;
             }
         }
         sort(currencyModalArrayList);
+        for (int i = 0; i < currencyModalArrayList.size(); i++) {
+            if(cryptoQuantity.size() < currencyModalArrayList.size())
+            cryptoQuantity.add(currencyModalArrayList.get(i).getAmount());
+            Log.i("work", cryptoQuantity+"");
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

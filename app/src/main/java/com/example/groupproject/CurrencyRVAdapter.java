@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,14 +51,14 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CurrencyRVAdapter.CurrencyViewholder holder, int position) {
+    public void onBindViewHolder(@NonNull CurrencyRVAdapter.CurrencyViewholder holder, @SuppressLint("RecyclerView") int position) {
         // on below line we are setting data to our item of
         // recycler view and all its views.
         CurrencyModal modal = currencyModals.get(position);
         holder.nameTV.setText(modal.getName());
         holder.rateTV.setText("$ " + df2.format(modal.getPrice()));
         holder.symbolTV.setText(modal.getSymbol());
-        holder.amountTV.setText(modal.getAmount());
+        holder.amountTV.setText("" + modal.getAmount());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
