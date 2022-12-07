@@ -130,6 +130,7 @@ public class SignInActivity extends AppCompatActivity  {
         else {
             Log.d(TAG, "Failed to pass getValues() method");
         }
+        MainGameActivity.setCryptoCount(0);
     }
 
     public void logInClicked(View view) {

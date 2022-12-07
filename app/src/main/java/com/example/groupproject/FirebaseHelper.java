@@ -28,6 +28,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.Source;
+import com.google.firestore.v1.WriteResult;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -64,12 +65,9 @@ public class FirebaseHelper {
         return mAuth;
     }
 
-
-    //public double getCurrency(){
-        //String s = (String) db.collection("users").document(mAuth.getUid()).get("currency");
-        //db.collection("users").document(mAuth.getUid()).get().then(value);
-        // DocumentSnapshot s  = db.collection("users").document(mAuth.getUid()).get
-
+    //public double geCurrencyFromFirestore(){
+        //DocumentReference ref = db.collection("users").document(mAuth.getUid()).;
+        //ref.getFirestore().document("");
 
     //}
 
@@ -87,7 +85,8 @@ public class FirebaseHelper {
         Map<String, Object> user = new HashMap<>();
         user.put("name", name);
         user.put("uid", newUID);
-        user.put("currency", "" + usersCurrency);
+        user.put("currency", usersCurrency);
+        user.put("cryptoQuant", CryptoSelectorActivity.cryptoQuantity);
         // Add a new document with a docID = to the authenticated user's UID
         db.collection("users").document(newUID)
                 .set(user)
@@ -111,8 +110,10 @@ public class FirebaseHelper {
         usersCurrency = MainGameActivity.getCryptoCount();
         DocumentReference ref = db.collection("users").document(mAuth.getUid());
         //Log.d("Logan", old + " Logging");
-        //ref.update("currency", (usersCurrency + getCurrency()) + "");
+        ref.update("currency", usersCurrency);
+        ref.update("cryptoQuant", CryptoSelectorActivity.cryptoQuantity);
         Log.d("Logan", usersCurrency + " Added to currency");
+        Log.d("Logan", CryptoSelectorActivity.cryptoQuantity + " Cypto bought");
     }
 
 
