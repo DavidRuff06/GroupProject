@@ -86,7 +86,7 @@ public class FirebaseHelper {
         user.put("uid", newUID);
         user.put("currency", usersCurrency);
         user.put("cryptoQuant", CryptoSelectorActivity.cryptoQuantity);
-        user.put("cryptoUpgrade", UpgradesActivity);
+        //user.put("cryptoUpgrade", UpgradesActivity);
         // Add a new document with a docID = to the authenticated user's UID
         db.collection("users").document(newUID)
                 .set(user)
