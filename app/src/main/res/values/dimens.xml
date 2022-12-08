@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="transactionPageTextViewWidth">350dp</dimen>
-    <dimen name="transactionPageTextViewHeight">50dp</dimen>
+    <dimen name="transactionPageTextViewHeight">40dp</dimen>
     <dimen name="avgPadding">10dp</dimen>
     <dimen name="avgMainGamePadding">30dp</dimen>
-
-
-
     <dimen name="fontSize">17sp</dimen>
     <dimen name="fontLarge">35sp</dimen>
 </resources>

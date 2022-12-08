@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649"
+        app:layout_constraintVertical_bias="0.671"
         tools:ignore="RtlCompat" />
 
     <Button
@@ -37,14 +37,14 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.923" />
+        app:layout_constraintVertical_bias="0.932" />
 
     <TextView
         android:id="@+id/cryptoName"
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
         android:gravity="center"
-        android:text="Crypto Name: "
+        android:text="Crypto: "
         android:textAlignment="textStart"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
@@ -54,14 +54,15 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171"
+        app:layout_constraintVertical_bias="0.196"
         tools:ignore="RtlCompat" />
 
     <EditText
         android:id="@+id/customQuantity"
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
-        android:hint="ENTER CUSTOM QUANTITY: "
+        android:backgroundTint="@color/white"
+        android:hint="CUSTOM QUANTITY: "
         android:imeActionLabel="Done"
         android:imeOptions="actionDone"
         android:inputType="number"
@@ -69,14 +70,13 @@
         android:textAlignment="viewStart"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        android:backgroundTint="@color/white"
         android:textSize="@dimen/fontSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355"
+        app:layout_constraintVertical_bias="0.376"
         tools:ignore="RtlCompat" />
 
     <Switch
@@ -97,7 +97,7 @@
         app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintVertical_bias="0.286" />
 
     <Button
         android:id="@+id/quantityOfTen"
@@ -107,10 +107,10 @@
         android:text="+10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
+        app:layout_constraintVertical_bias="0.471" />
 
     <Button
         android:id="@+id/quantityOfOneHundred"
@@ -123,14 +123,14 @@
         app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
+        app:layout_constraintVertical_bias="0.471" />
 
     <TextView
         android:id="@+id/buying_selling_price"
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
         android:gravity="center"
-        android:text="Buying/Selling price: "
+        android:text="Buy/Sell Price: "
         android:textAlignment="viewStart"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
@@ -140,7 +140,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741"
+        app:layout_constraintVertical_bias="0.753"
         tools:ignore="RtlCompat" />
 
     <TextView
@@ -148,7 +148,7 @@
         android:layout_width="@dimen/transactionPageTextViewWidth"
         android:layout_height="@dimen/transactionPageTextViewHeight"
         android:gravity="center"
-        android:text="Cost of Trade: "
+        android:text="Final Cost: "
         android:textAlignment="viewStart"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
@@ -159,6 +159,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.841"
+        tools:ignore="RtlCompat" />
+
+
+    <TextView
+        android:id="@+id/cryptoCount"
+        android:layout_width="@dimen/transactionPageTextViewWidth"
+        android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:gravity="center"
+        android:text="Balance: "
+        android:textAlignment="viewStart"
+        android:textColor="@color/secondaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
+        android:textSize="@dimen/fontSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.107"
         tools:ignore="RtlCompat" />
 
     <Button
@@ -172,22 +191,7 @@
         app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
-
-    <TextView
-        android:id="@+id/cryptoCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Crypto Count"
-        android:textColor="@color/secondaryDarkColor"
-        android:textSize="25sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
+        app:layout_constraintVertical_bias="0.471" />
 
     <TextView
         android:id="@+id/orderInformationTitle"
@@ -196,7 +200,7 @@
         android:text="Order Summary"
         android:textColor="@color/secondaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        android:textSize="35sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
@@ -215,7 +219,7 @@
         app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.548" />
+        app:layout_constraintVertical_bias="0.576" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
