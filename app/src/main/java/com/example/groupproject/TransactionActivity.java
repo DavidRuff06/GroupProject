@@ -39,7 +39,7 @@ public class TransactionActivity extends AppCompatActivity {
         });
     }
 
-    int totalQuantity = 0;
+    int totalPurchaseQuantity = 0;
     double totalCost;
     double roundedCryptoValue = (double) Math.round(CryptoSelectorActivity.
             getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).
@@ -51,22 +51,22 @@ public class TransactionActivity extends AppCompatActivity {
     // These methods will keep track of the user's total purchase quantity and add to int totalQuantity
     public void addOneQuantity(View view){
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
-        totalQuantity += 1;
-        userTotalQuantity.setText("Quantity: " + totalQuantity);
+        totalPurchaseQuantity += 1;
+        userTotalQuantity.setText("Quantity: " + totalPurchaseQuantity);
         calculateTotal(view);
     }
 
     public void addTenQuantity(View view){
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
-        totalQuantity += 10;
-        userTotalQuantity.setText("Quantity: " + totalQuantity);
+        totalPurchaseQuantity += 10;
+        userTotalQuantity.setText("Quantity: " + totalPurchaseQuantity);
         calculateTotal(view);
     }
 
     public void addOneHundredQuantity(View view){
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
-        totalQuantity += 100;
-        userTotalQuantity.setText("Quantity: " + totalQuantity);
+        totalPurchaseQuantity += 100;
+        userTotalQuantity.setText("Quantity: " + totalPurchaseQuantity);
         calculateTotal(view);
     }
 
@@ -74,15 +74,15 @@ public class TransactionActivity extends AppCompatActivity {
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
         EditText customQuantity = findViewById(R.id.customQuantity);
         int customQty = Integer.parseInt(customQuantity.getText().toString());
-        totalQuantity += customQty;
-        userTotalQuantity.setText("Quantity: " + totalQuantity);
+        totalPurchaseQuantity += customQty;
+        userTotalQuantity.setText("Quantity: " + totalPurchaseQuantity);
         calculateTotal(view);
     }
 
     public void clearQuantity(View view){
         TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
-        totalQuantity = 0;
-        userTotalQuantity.setText("Quantity: " + totalQuantity);
+        totalPurchaseQuantity = 0;
+        userTotalQuantity.setText("Quantity: " + totalPurchaseQuantity);
         calculateTotal(view);
     }
 
@@ -94,9 +94,9 @@ public class TransactionActivity extends AppCompatActivity {
     public void calculateTotal(View view) {
             TextView userTotalQuantity = findViewById(R.id.totalQuantityTextView);
             TextView totalCostTV = findViewById(R.id.totalCost);
-            userTotalQuantity.setText("Quantity: " + totalQuantity);
+            userTotalQuantity.setText("Quantity: " + totalPurchaseQuantity);
 
-            totalCost = totalQuantity * roundedCryptoValue;
+            totalCost = totalPurchaseQuantity * roundedCryptoValue;
             roundedTotalCost = (double) Math.round(totalCost * 100) / 100;
             if(buy_sell_switch.isChecked()){
                 // user is buying
@@ -118,38 +118,54 @@ public class TransactionActivity extends AppCompatActivity {
 
     public void sendOrder(View view){
         double cashBalance = MainGameActivity.getCryptoCount();
-
+        int cryptoQuan = CryptoSelectorActivity.cryptoQuantity.get(CryptoSelectorActivity.getCryptoIndex());
         if(buy_sell_switch.isChecked()){
             // user is buying so their cash balance will decrease
             if(cashBalance < roundedTotalCost){
                 //user is trying to buy more than they can afford
                 Toast.makeText(this, "You have insufficient funds for this transaction", Toast.LENGTH_SHORT).show();
-
             }else{
-                int i = CryptoSelectorActivity.cryptoQuantity.get(CryptoSelectorActivity.getCryptoIndex());
-                i += totalQuantity;
-                CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), i);
-
+                addCashMultiplier(totalPurchaseQuantity);
                 MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
-
+                cryptoQuan += totalPurchaseQuantity;
+                CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), cryptoQuan);
                 Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
                 startActivity(intent);
             }
         }else{
             // user is selling so their cash balance will increase
-            if (totalQuantity > CryptoSelectorActivity.cryptoQuantity.get(CryptoSelectorActivity.getCryptoIndex())) {
+            if (totalPurchaseQuantity > CryptoSelectorActivity.cryptoQuantity.get(CryptoSelectorActivity.getCryptoIndex())) {
                 //user is trying to sell more shares than they actually own
                 Toast.makeText(this, "You are trying to sell more shares than you own", Toast.LENGTH_SHORT).show();
             }else{
-                //CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), CryptoSelectorActivity.getCryptoQuantity(CryptoSelectorActivity.getCryptoIndex()) -=totalQuantity);
-                int i = CryptoSelectorActivity.cryptoQuantity.get(CryptoSelectorActivity.getCryptoIndex());
-                i -= totalQuantity;
-                CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), i);
+                cryptoQuan -= totalPurchaseQuantity;
+                CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), cryptoQuan);
                 Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
                 startActivity(intent);
             }
         }
+    }
 
+    public void addCashMultiplier(int q){
+        String cryptoName = CryptoSelectorActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getName();
+        double multplierTemp = 1;
+        if(cryptoName.equals("Dogecoin")){
+            multplierTemp += 0.000001 * q;
+        }
+        if (cryptoName.equals("Cosmos")) {
+            multplierTemp += 0.0000956 * q;
+        }
+        if(cryptoName.equals("Quant")){
+            multplierTemp += 0.0011852 * q;
+        }
+        if (cryptoName.equals("Ethereum")) {
+            multplierTemp += 0.0122938 * q;
+        }
+        if (cryptoName.equals("Bitcoin")) {
+            multplierTemp += 0.1683048 * q;
+        }
+
+        MainGameActivity.setMoneyMultiplier(MainGameActivity.getMoneyMultiplier() + multplierTemp);
     }
 
     public void changeTheme(View view) {

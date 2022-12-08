@@ -33,6 +33,8 @@ public class MainGameActivity extends AppCompatActivity {
     private static ArrayList<CurrencyModal> currencyModalArrayList;
     private static boolean bitCoinOn = true;
     private static boolean dogeCoinOn;
+    public static double moneyPerClick = 1;
+    public static double moneyMultiplier = 1;
     private CurrencyRVAdapter currencyRVAdapter;
 
 
@@ -70,20 +72,26 @@ public class MainGameActivity extends AppCompatActivity {
         MainGameActivity.cryptoCount = cryptoCount;
     }
 
+    public static double getMoneyPerClick() {
+        return moneyPerClick;
+    }
+
+    public static void setMoneyPerClick(double moneyPerClick) {
+        MainGameActivity.moneyPerClick = moneyPerClick;
+    }
+
+    public static double getMoneyMultiplier() {
+        return moneyMultiplier;
+    }
+
+    public static void setMoneyMultiplier(double moneyMultiplier) {
+        MainGameActivity.moneyMultiplier = moneyMultiplier;
+    }
+
     public void cryptoButtonClicked(View view){
-        cryptoCount += 1000;
+        cryptoCount += moneyPerClick * moneyMultiplier;
         TextView count = findViewById(R.id.cryptoCount);
-
         count.setText("$" + df2.format(cryptoCount));
-        /*
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int width = displayMetrics.widthPixels;
-        if(count.getTextSize() > 1){
-            count.setTextSize(count.getTextSize()-);
-        }
-        */
-
     }
     public void cryptoSelectorClicked(View view){
         Intent intent = new Intent(this, CryptoSelectorActivity.class);

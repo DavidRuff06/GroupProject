@@ -12,22 +12,23 @@
         android:id="@+id/logOutButton"
         android:layout_width="172dp"
         android:layout_height="44dp"
+        android:backgroundTint="@color/primaryColor"
         android:onClick="logOutClicked"
         android:text="Log Out"
         android:textColor="@color/secondaryDarkColor"
-        android:backgroundTint="@color/primaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <TextView
         android:id="@+id/cryptoCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Crypto Count"
-        android:textSize="50dp"
+        android:textSize="40dp"
         android:textColor="@color/secondaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,16 +53,15 @@
         android:id="@+id/cryptoSelectorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/primaryColor"
         android:onClick="cryptoSelectorClicked"
         android:text="Go to Currencies"
         android:textColor="@color/secondaryDarkColor"
-        android:backgroundTint="@color/primaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868" />
+        app:layout_constraintVertical_bias="0.834" />
 
     <ImageButton
         android:id="@+id/upgradesButton"
