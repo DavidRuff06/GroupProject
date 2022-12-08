@@ -56,7 +56,7 @@ public class CurrencyRVAdapter extends RecyclerView.Adapter<CurrencyRVAdapter.Cu
         // recycler view and all its views.
         CurrencyModal modal = currencyModals.get(position);
         holder.nameTV.setText(modal.getName());
-        holder.rateTV.setText("$ " + df2.format(modal.getPrice()));
+        holder.rateTV.setText("$" + df2.format(modal.getPrice()));
         holder.symbolTV.setText(modal.getSymbol());
         holder.amountTV.setText("" + modal.getAmount());
         holder.cardView.setOnClickListener(new View.OnClickListener() {

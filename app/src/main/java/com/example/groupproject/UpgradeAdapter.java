@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHolder> {
-    private final Context context;
-    private final ArrayList<Upgrade> UpgradeArrayList;
+    private Context context;
+    private ArrayList<Upgrade> UpgradeArrayList;
     private SelectListenerUpgrades listener;
     private static int p;
 
     //Constructor
     public UpgradeAdapter(Context context, ArrayList<Upgrade> upgradeArrayList, SelectListenerUpgrades listener) {
         this.context = context;
-        UpgradeArrayList = upgradeArrayList;
+        this.UpgradeArrayList = upgradeArrayList;
         this.listener = listener;
     }
 
@@ -28,12 +29,12 @@ public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHold
     @Override
     public UpgradeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // to inflate the layout for each item of recycler view.
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_card_upgrade, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_card_upgrade, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UpgradeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UpgradeAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         // to set data to textview and imageview of each card layout
         Upgrade upgrade = UpgradeArrayList.get(position);
         holder.TVUpgradeName.setText(upgrade.getUpgradeName());

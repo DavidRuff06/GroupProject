@@ -16,8 +16,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TransactionActivity extends AppCompatActivity {
+import java.text.DecimalFormat;
 
+public class TransactionActivity extends AppCompatActivity {
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
     private Switch buy_sell_switch;
 
 
@@ -28,6 +30,8 @@ public class TransactionActivity extends AppCompatActivity {
         buy_sell_switch = findViewById(R.id.buy_sell_switch);
         displayCurrentInfo();
         EditText customQuantity = findViewById(R.id.customQuantity);
+        TextView cryptoCount = findViewById(R.id.cryptoCount);
+        cryptoCount.setText("$" + df2.format(MainGameActivity.getCryptoCount()));
         customQuantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
