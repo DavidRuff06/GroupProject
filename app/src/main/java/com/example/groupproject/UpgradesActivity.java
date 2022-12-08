@@ -57,7 +57,7 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
             upgrade.setAmtOwned(upgrade.getAmtOwned() + 1);
             TextView count = findViewById(R.id.amtOwned);
             count.setText("Own: " + upgrade.getAmtOwned() + "");
-            cryptoCount.setText("Balance: $" + (MainGameActivity.getCryptoCount()) + "");
+            cryptoCount.setText("Balance: $" + (df2.format(MainGameActivity.getCryptoCount())) + "");
             Log.i("Logan", upgrade.getAmtOwned() + " Of this upgrade owned");
             timer.scheduleAtFixedRate(new TimerTask() {
                 public void run() {
