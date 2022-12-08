@@ -1,139 +1,73 @@
 package com.example.groupproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.os.Bundle;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class UpgradesActivity extends AppCompatActivity implements UpgradeSelectListener{
-    private RecyclerView upgradesRV;
-    private static ArrayList<Upgrade> upgradeArrayList;
-    private static ArrayList<Upgrade> upgradeHolderArrayList;
-    private UpgradeRVAdapter upgradeRVAdapter;
-    public static int upgradeIndex;
+import androidx.appcompat.app.AppCompatActivity;
 
-    public static int[] upgradeCount = new int[3];
+public class UpgradesActivity extends AppCompatActivity implements SelectListenerUpgrades{
+
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upgrades);
-        upgradeArrayList = new ArrayList<>();
-        upgradeHolderArrayList = new ArrayList<>();
-        upgradesRV = findViewById(R.id.upgradeList);
 
-        upgradeRVAdapter = new UpgradeRVAdapter(upgradeArrayList, this, this);
+        RecyclerView upgradesRV = findViewById(R.id.idRVUpgrades);
 
-        upgradesRV.setLayoutManager(new LinearLayoutManager(this));
 
-        upgradesRV.setAdapter(upgradeRVAdapter);
 
-        // fillIn();
+        ArrayList<Upgrade> upgradeArrayList = new ArrayList<Upgrade>();
+        upgradeArrayList.add(new Upgrade("Miner",10,.1, 0, R.drawable.miner_200x200));
+        upgradeArrayList.add(new Upgrade("Up2",100,1,0, R.drawable.miner_200x200));
+        upgradeArrayList.add(new Upgrade("Up3",1000,10,0, R.drawable.miner_200x200));
 
+        UpgradeAdapter upgradeAdapter = new UpgradeAdapter(this, upgradeArrayList, this);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+        upgradesRV.setLayoutManager(linearLayoutManager);
+        upgradesRV.setAdapter(upgradeAdapter);
     }
 
-
-    //public void fillIn(){
-    //    upgradeHolderArrayList.add(new Upgrade("Miner", 0.1, 0));
-    //    upgradeHolderArrayList.add(new Upgrade("Up2", 1, 0));
-    //    upgradeHolderArrayList.add(new Upgrade("Up3", 10, 0));
-    //fillUpgrade();
-    //}
-
-    public static int getUpgradeIndex() {
-        return upgradeIndex;
-    }
 
     @Override
     public void onItemClicked(Upgrade upgrade) {
-        Toast.makeText(this, upgrade.getUpgradeName(), Toast.LENGTH_SHORT).show();
-        if(upgrade.getUpgradeName().equals("Miner"))
-            upgradeIndex = 0;
-        else if(upgrade.getUpgradeName().equals("Up2"))
-            upgradeIndex = 1;
-        else if(upgrade.getUpgradeName().equals("Up3"))
-            upgradeIndex = 2;
+        int delay = 5000; // delay for 5 sec.
+        int period = 1000; // repeat every sec.
+        Timer timer = new Timer();
+        if(MainGameActivity.getCryptoCount() - upgrade.getPrice() < 0){
+            Toast.makeText(this, "Insufficient Funds",Toast.LENGTH_SHORT).show();
+        }else {
+            MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() - upgrade.getPrice());
+            upgrade.setAmtOwned(upgrade.getAmtOwned() + 1);
+            TextView count = findViewById(R.id.mult);
+            count.setText(upgrade.getAmtOwned() + "");
 
-    }
+            Log.i("Logan", upgrade.getAmtOwned() + " Of this upgrade owned");
+            timer.scheduleAtFixedRate(new TimerTask() {
+                public void run() {
+                    MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() + upgrade.getCpsMult());
+                    Log.i("Logan", MainGameActivity.getCryptoCount() + " currency");
 
-    public void fillUpgrade(){
-
-        for (int a = upgradeHolderArrayList.size()-1; a >= 0; a-- ) {
-            String newName = upgradeHolderArrayList.get(a).getUpgradeName();
-            double newMult = upgradeHolderArrayList.get(a).getCpsMult();
-            int amtOwned = upgradeHolderArrayList.get(a).getAmtOwned();
-            if (newName.equals("Miner")) {
-                upgradeArrayList.add(0, new Upgrade(newName, newMult, amtOwned));
-            }
-        }
-
-        for (int a = upgradeHolderArrayList.size()-1; a >= 0; a-- ) {
-            String newName = upgradeHolderArrayList.get(a).getUpgradeName();
-            double newMult = upgradeHolderArrayList.get(a).getCpsMult();
-            int amtOwned = upgradeHolderArrayList.get(a).getAmtOwned();
-            if (newName.equals("Up2")) {
-                upgradeArrayList.add(1, new Upgrade(newName, newMult, amtOwned));
-            }
-        }
-
-        for (int a = upgradeHolderArrayList.size()-1; a >= 0; a-- ) {
-            String newName = upgradeHolderArrayList.get(a).getUpgradeName();
-            double newMult = upgradeHolderArrayList.get(a).getCpsMult();
-            int amtOwned = upgradeHolderArrayList.get(a).getAmtOwned();
-            if (newName.equals("Up3")) {
-                upgradeArrayList.add(2, new Upgrade(newName, newMult, amtOwned));
-            }
+                }
+            }, delay, period);
         }
     }
-
-
-
-    public RecyclerView getUpgradesRV() {
-        return upgradesRV;
-    }
-
-    public void setUpgradesRV(RecyclerView upgradesRV) {
-        this.upgradesRV = upgradesRV;
-    }
-
-    public static ArrayList<Upgrade> getUpgradeArrayList() {
-        return upgradeArrayList;
-    }
-
-    public static void setUpgradeArrayList(ArrayList<Upgrade> upgradeArrayList) {
-        UpgradesActivity.upgradeArrayList = upgradeArrayList;
-    }
-
-    public static ArrayList<Upgrade> getUpgradeHolderArrayList() {
-        return upgradeHolderArrayList;
-    }
-
-    public static void setUpgradeHolderArrayList(ArrayList<Upgrade> upgradeHolderArrayList) {
-        UpgradesActivity.upgradeHolderArrayList = upgradeHolderArrayList;
-    }
-
-    public UpgradeRVAdapter getUpgradeRVAdapter() {
-        return upgradeRVAdapter;
-    }
-
-    public void setUpgradeRVAdapter(UpgradeRVAdapter upgradeRVAdapter) {
-        this.upgradeRVAdapter = upgradeRVAdapter;
-    }
-
-    public static int[] getUpgradeCount() {
-        return upgradeCount;
-    }
-
-    public static void setUpgradeCount(int[] upgradeCount) {
-        UpgradesActivity.upgradeCount = upgradeCount;
-    }
-
 
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.text.method.SingleLineTransformationMethod;
 import android.util.Log;
@@ -26,7 +27,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Timer;
 
 
 public class MainGameActivity extends AppCompatActivity {
@@ -35,6 +36,9 @@ public class MainGameActivity extends AppCompatActivity {
     private static boolean dogeCoinOn;
     public static double moneyPerClick = 1;
     public static double moneyMultiplier = 1;
+    private boolean timerOn = false;
+    private int timerSpeed = 1000;
+    private Timer timer;
     private CurrencyRVAdapter currencyRVAdapter;
 
 
@@ -53,6 +57,7 @@ public class MainGameActivity extends AppCompatActivity {
         //cryptoCount = SignInActivity.firebaseHelper.;
         currencyModalArrayList = new ArrayList<>();
         TextView count = findViewById(R.id.cryptoCount);
+
 
         count.setText("$" + df2.format(cryptoCount));
         //updateCount();

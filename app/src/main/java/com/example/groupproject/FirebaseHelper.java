@@ -54,7 +54,6 @@ public class FirebaseHelper {
     private double usersCurrency;
 
 
-
     public FirebaseHelper() {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();

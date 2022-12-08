@@ -1,6 +1,5 @@
 package com.example.groupproject;
 
-public interface UpgradeSelectListener {
-
+public interface SelectListenerUpgrades {
     void onItemClicked(Upgrade upgrade);
 }
