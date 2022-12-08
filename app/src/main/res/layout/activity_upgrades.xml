@@ -10,7 +10,6 @@
         android:id="@+id/idRVUpgrades"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/row_card_upgrade"
-        />
+        tools:listitem="@layout/row_card_upgrade" />
 
 </RelativeLayout>

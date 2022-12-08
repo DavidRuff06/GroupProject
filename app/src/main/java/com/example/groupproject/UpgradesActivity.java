@@ -31,11 +31,11 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
         RecyclerView upgradesRV = findViewById(R.id.idRVUpgrades);
 
 
-
-        upgradeArrayList.add(new Upgrade("Miner",10,.1, 0, R.drawable.miner_200x200));
-        upgradeArrayList.add(new Upgrade("Up2",100,1,0, R.drawable.miner_200x200));
-        upgradeArrayList.add(new Upgrade("Up3",1000,10,0, R.drawable.miner_200x200));
-
+        if(upgradeArrayList.size() == 0) {
+            upgradeArrayList.add(new Upgrade("Miner", 10, .1, 0, R.drawable.miner_200x200));
+            upgradeArrayList.add(new Upgrade("Up2", 100, 1, 0, R.drawable.miner_200x200));
+            upgradeArrayList.add(new Upgrade("Up3", 1000, 10, 0, R.drawable.miner_200x200));
+        }
         UpgradeAdapter upgradeAdapter = new UpgradeAdapter(this, upgradeArrayList, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

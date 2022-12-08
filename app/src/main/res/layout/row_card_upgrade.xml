@@ -51,8 +51,8 @@
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@id/upgradeImage"
             android:drawablePadding="2dp"
-            android:textColor="@color/secondaryDarkColor"
-            android:text="Mult" />
+            android:text="Mult"
+            android:textColor="@color/secondaryDarkColor" />
 
 
         <TextView
