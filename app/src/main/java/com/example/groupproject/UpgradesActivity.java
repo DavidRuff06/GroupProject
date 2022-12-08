@@ -56,7 +56,7 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
         }else {
             MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() - upgrade.getPrice());
             upgrade.setAmtOwned(upgrade.getAmtOwned() + 1);
-            TextView count = findViewById(R.id.mult);
+            TextView count = findViewById(R.id.amtOwned);
             count.setText(upgrade.getAmtOwned() + "");
 
             Log.i("Logan", upgrade.getAmtOwned() + " Of this upgrade owned");
