@@ -119,6 +119,7 @@ Try adding this to currencyRV
                         // adding all data to our array list.
                         holderArrayList.add(new CurrencyModal(name, symbol, price, 0));
                     }
+                    sort(holderArrayList);
                     fillCurrencyModel();
 
 
@@ -213,6 +214,20 @@ Try adding this to currencyRV
                 break;
             }
         }
+        for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
+//            Log.i("David", "Cool");
+            String newName = holderArrayList.get(a).getName();
+            if (newName.equals("Cosmos")) {
+                String newSymbol = holderArrayList.get(a).getSymbol();
+                double newPrice = holderArrayList.get(a).getPrice();
+                if(cryptoQuantity.size() < currencyModalArrayList.size()|| cryptoQuantity.size() == 0)
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, 0));
+                else
+                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
+                break;
+            }
+        }
+
 
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
@@ -242,19 +257,6 @@ Try adding this to currencyRV
             }
         }
 
-        for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
-//            Log.i("David", "Cool");
-            String newName = holderArrayList.get(a).getName();
-            if (newName.equals("Cosmos")) {
-                String newSymbol = holderArrayList.get(a).getSymbol();
-                double newPrice = holderArrayList.get(a).getPrice();
-                if(cryptoQuantity.size() < currencyModalArrayList.size()|| cryptoQuantity.size() == 0)
-                currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, 0));
-                else
-                    currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
-                break;
-            }
-        }
 
 
 
