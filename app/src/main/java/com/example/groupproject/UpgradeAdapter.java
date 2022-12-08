@@ -38,8 +38,9 @@ public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHold
         // to set data to textview and imageview of each card layout
         Upgrade upgrade = UpgradeArrayList.get(position);
         holder.TVUpgradeName.setText(upgrade.getUpgradeName());
-        holder.TVmult.setText("" + upgrade.getCpsMult());
-        holder.TVAmtOwned.setText("" + upgrade.getAmtOwned());
+        holder.TVmult.setText("CPS: " + upgrade.getCpsMult());
+        holder.TVAmtOwned.setText("Own: " + upgrade.getAmtOwned());
+        holder.TVPrice.setText("Price $"+ upgrade.getPrice());
         holder.upgradeImage.setImageResource(upgrade.getImageResourceId());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +65,7 @@ public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHold
         private final TextView TVUpgradeName;
         private final TextView TVmult;
         private final TextView TVAmtOwned;
+        private final TextView TVPrice;
         public CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -72,6 +74,7 @@ public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHold
             TVUpgradeName = itemView.findViewById(R.id.TVUpgradeName);
             TVmult = itemView.findViewById(R.id.mult);
             TVAmtOwned = itemView.findViewById(R.id.amtOwned);
+            TVPrice = itemView.findViewById(R.id.price);
             cardView = itemView.findViewById(R.id.upgradeRow);
         }
     }

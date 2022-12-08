@@ -31,7 +31,7 @@ public class TransactionActivity extends AppCompatActivity {
         displayCurrentInfo();
         EditText customQuantity = findViewById(R.id.customQuantity);
         TextView cryptoCount = findViewById(R.id.cryptoCount);
-        cryptoCount.setText("Current Balance: $" + df2.format(MainGameActivity.getCryptoCount()));
+        cryptoCount.setText("Balance: $" + df2.format(MainGameActivity.getCryptoCount()));
         customQuantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
