@@ -18,6 +18,8 @@
         android:layout_height="75dp">
 
         <!--text view for displaying symbol-->
+
+        <!--text view for displaying currency name-->
         <TextView
             android:id="@+id/idTVSymbol"
             android:layout_width="match_parent"
@@ -28,13 +30,13 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="27dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="10dp"
             android:padding="3dp"
             android:text="Symbol"
-            android:textStyle="bold"
-            android:textColor="@color/secondaryDarkColor"/>
+            android:textColor="@color/secondaryDarkColor"
+            android:textStyle="bold" />
 
-        <!--text view for displaying currency name-->
+        <!--text view for displaying currency rate-->
         <TextView
             android:id="@+id/idTVName"
             android:layout_width="197dp"
@@ -43,16 +45,15 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="47dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="43dp"
             android:padding="3dp"
             android:text="Name"
             android:textColor="@color/secondaryDarkColor"
             android:textSize="13sp" />
 
-        <!--text view for displaying currency rate-->
         <TextView
             android:id="@+id/idTVRate"
             android:layout_width="wrap_content"
@@ -69,6 +70,7 @@
             android:layout_marginBottom="30dp"
             android:padding="3dp"
             android:text="123456"
+            android:textSize="@dimen/fontSize"
             android:textColor="@color/secondaryDarkColor" />
 
         <TextView
