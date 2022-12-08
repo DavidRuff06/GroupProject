@@ -22,7 +22,10 @@
             android:id="@+id/upgradeImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:contentDescription="@string/app_name"
             android:padding="5dp"
             android:src="@drawable/miner_200x200" />
@@ -32,40 +35,51 @@
             android:id="@+id/TVUpgradeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/avgPadding"
+            android:layout_marginTop="@dimen/avgPadding"
             android:layout_toEndOf="@id/upgradeImage"
             android:text="name"
             android:textColor="@color/secondaryDarkColor"
             android:textSize="18sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/TVUpgradeName"
+            android:layout_marginStart="@dimen/avgPadding"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/upgradeImage"
+            android:drawablePadding="2dp"
+            android:text="Price"
+            android:textColor="@color/secondaryDarkColor" />
 
 
         <TextView
             android:id="@+id/mult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/TVUpgradeName"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_below="@id/price"
+            android:layout_marginStart="@dimen/avgPadding"
+            android:layout_marginTop="@dimen/avgPadding"
             android:layout_toEndOf="@id/upgradeImage"
             android:drawablePadding="2dp"
-            android:text="Mult"
-            android:textColor="@color/secondaryDarkColor" />
-
+            android:textColor="@color/secondaryDarkColor"
+            android:text="Mult" />
 
         <TextView
             android:id="@+id/amtOwned"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/mult"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/avgPadding"
+            android:layout_marginTop="@dimen/avgPadding"
             android:layout_toEndOf="@id/upgradeImage"
             android:drawablePadding="2dp"
-            android:textColor="@color/secondaryDarkColor"
-            android:text="AmtOwned" />
+            android:text="AmtOwned"
+            android:textColor="@color/secondaryDarkColor" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -1,17 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainGameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryDarkColor"
+    android:orientation="vertical"
     tools:context=".MainGameActivity">
+
+    <TextView
+        android:id="@+id/cryptoCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crypto Count"
+        android:textSize="40dp"
+        android:textColor="@color/secondaryDarkColor"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <Button
+        android:id="@+id/saveProgressButton"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cryptoClicker"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/primaryColor"
+        android:onClick="saveProgressButtonClicked"
+        android:text="Save"
+        android:layout_marginTop="@dimen/avgMainGamePadding"
+        android:textColor="@color/secondaryDarkColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.267" />
+
+    <ImageButton
+        android:id="@+id/cryptoClicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cryptoButtonClicked"
+        android:src="@drawable/ic_dogecoin_doge_logo"
+        android:text="Dodge Coin"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/primaryDarkColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
+
+    <Button
+        android:id="@+id/cryptoSelectorButton"
+        android:layout_width="193dp"
+        android:layout_height="64dp"
+        android:layout_below="@id/upgradesButton"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/avgMainGamePadding"
+        android:backgroundTint="@color/primaryColor"
+        android:onClick="cryptoSelectorClicked"
+        android:text="Currencies"
+
+        android:textColor="@color/secondaryDarkColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.834" />
+
+    <Button
+        android:id="@+id/upgradesButton"
+        android:layout_width="192dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/avgMainGamePadding"
+        android:backgroundTint="@color/primaryColor"
+        android:onClick="upgradesButtonClicked"
+        android:src="@android:drawable/arrow_up_float"
+        android:text="Upgrades"
+
+        android:layout_gravity="center"
+        android:textColor="@color/secondaryDarkColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752" />
 
     <Button
         android:id="@+id/logOutButton"
         android:layout_width="172dp"
         android:layout_height="44dp"
+        android:layout_below="@id/cryptoSelectorButton"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/avgMainGamePadding"
         android:backgroundTint="@color/primaryColor"
         android:onClick="logOutClicked"
         android:text="Log Out"
@@ -23,74 +113,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.944" />
 
-    <TextView
-        android:id="@+id/cryptoCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Crypto Count"
-        android:textSize="40dp"
-        android:textColor="@color/secondaryDarkColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
 
-    <ImageButton
-        android:id="@+id/cryptoClicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="cryptoButtonClicked"
-        android:src="@drawable/ic_dogecoin_doge_logo"
-        android:text="Dodge Coin"
-        android:backgroundTint="@color/primaryDarkColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/cryptoSelectorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/primaryColor"
-        android:onClick="cryptoSelectorClicked"
-        android:text="Go to Currencies"
-        android:textColor="@color/secondaryDarkColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
-
-    <ImageButton
-        android:id="@+id/upgradesButton"
-        android:layout_width="52dp"
-        android:layout_height="51dp"
-        android:src="@android:drawable/arrow_up_float"
-        android:onClick="upgradesButtonClicked"
-        android:backgroundTint="@color/primaryColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.867" />
-
-    <Button
-        android:id="@+id/saveProgressButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:onClick="saveProgressButtonClicked"
-        android:textColor="@color/secondaryDarkColor"
-        android:backgroundTint="@color/primaryColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
