@@ -50,21 +50,21 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
         int delay = 5000; // delay for 5 sec.
         int period = 1000; // repeat every sec.
         Timer timer = new Timer();
-        if(MainGameActivity.getCryptoCount() - upgrade.getPrice() < 0){
+        if(MainGameActivity.getCryptoCount() - upgradeArrayList.get(UpgradeAdapter.getP()).getPrice() < 0){
             Toast.makeText(this, "Insufficient Funds",Toast.LENGTH_SHORT).show();
         }else {
-            MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() - upgrade.getPrice());
-            upgrade.setAmtOwned(upgrade.getAmtOwned() + 1);
+            MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() - upgradeArrayList.get(UpgradeAdapter.getP()).getPrice());
+            upgradeArrayList.get(UpgradeAdapter.getP()).setAmtOwned(upgradeArrayList.get(UpgradeAdapter.getP()).getAmtOwned() + 1);
             TextView count = findViewById(R.id.amtOwned);
-            count.setText(upgrade.getAmtOwned() + "");
+            count.setText(upgradeArrayList.get(UpgradeAdapter.getP()).getAmtOwned() + "");
 
-            Log.i("Logan", upgrade.getAmtOwned() + " Of this upgrade owned");
+            Log.i("Logan", upgradeArrayList.get(UpgradeAdapter.getP()).getAmtOwned() + " Of this upgrade owned");
             timer.scheduleAtFixedRate(new TimerTask() {
                 public void run() {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            double d = MainGameActivity.getCryptoCount() + upgrade.getCpsMult();
+                            double d = MainGameActivity.getCryptoCount() + upgradeArrayList.get(UpgradeAdapter.getP()).getCpsMult();
                             MainGameActivity.setCryptoCount(d);
                             Log.i("Logan", MainGameActivity.getCryptoCount() + " currency");
                         }
@@ -77,4 +77,7 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
         }
     }
 
+    public static ArrayList<Upgrade> getUpgradeArrayList() {
+        return upgradeArrayList;
+    }
 }

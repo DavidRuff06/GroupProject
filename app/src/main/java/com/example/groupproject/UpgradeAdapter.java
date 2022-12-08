@@ -15,6 +15,7 @@ public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHold
     private final Context context;
     private final ArrayList<Upgrade> UpgradeArrayList;
     private SelectListenerUpgrades listener;
+    private static int p;
 
     //Constructor
     public UpgradeAdapter(Context context, ArrayList<Upgrade> upgradeArrayList, SelectListenerUpgrades listener) {
@@ -43,6 +44,7 @@ public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHold
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                p = position;
                 listener.onItemClicked(UpgradeArrayList.get(position));
             }
         });
@@ -73,4 +75,7 @@ public class UpgradeAdapter extends RecyclerView.Adapter<UpgradeAdapter.ViewHold
         }
     }
 
+    public static int getP() {
+        return p;
+    }
 }
