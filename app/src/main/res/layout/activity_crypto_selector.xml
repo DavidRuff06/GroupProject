@@ -56,5 +56,23 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/cashBalance"
+        android:layout_width="@dimen/transactionPageTextViewWidth"
+        android:layout_height="@dimen/transactionPageTextViewHeight"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="612dp"
+        android:gravity="center"
+        android:text="Select a crypto to buy"
+        android:textColor="@color/secondaryDarkColor"
+        android:textSize="20sp"
+        tools:ignore="RtlCompat" />
+
 
 </RelativeLayout>
