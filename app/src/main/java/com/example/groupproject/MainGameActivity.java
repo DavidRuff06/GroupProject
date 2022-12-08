@@ -36,6 +36,7 @@ public class MainGameActivity extends AppCompatActivity {
     private static boolean dogeCoinOn;
     public static double moneyPerClick = 1;
     public static double moneyMultiplier = 1;
+    static private TextView count;
     private boolean timerOn = false;
     private int timerSpeed = 1000;
     private Timer timer;
@@ -56,8 +57,7 @@ public class MainGameActivity extends AppCompatActivity {
         setContentView(R.layout.main_game_activity);
         //cryptoCount = SignInActivity.firebaseHelper.;
         currencyModalArrayList = new ArrayList<>();
-        TextView count = findViewById(R.id.cryptoCount);
-
+        count = findViewById(R.id.cryptoCount);
 
         count.setText("$" + df2.format(cryptoCount));
         //updateCount();
@@ -75,6 +75,7 @@ public class MainGameActivity extends AppCompatActivity {
 
     public static void setCryptoCount(double cryptoCount) {
         MainGameActivity.cryptoCount = cryptoCount;
+        count.setText("$" + df2.format(cryptoCount));
     }
 
     public static double getMoneyPerClick() {
@@ -158,5 +159,6 @@ public class MainGameActivity extends AppCompatActivity {
         CurrencyModal dogeCoin = currencyModalArrayList.get(1);
         return dogeCoin.getPrice();
     }
+
 
 }

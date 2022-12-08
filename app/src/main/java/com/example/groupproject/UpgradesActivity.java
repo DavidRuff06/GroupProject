@@ -22,7 +22,7 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
 
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-
+    private static ArrayList<Upgrade> upgradeArrayList = new ArrayList<Upgrade>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,6 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
 
 
 
-        ArrayList<Upgrade> upgradeArrayList = new ArrayList<Upgrade>();
         upgradeArrayList.add(new Upgrade("Miner",10,.1, 0, R.drawable.miner_200x200));
         upgradeArrayList.add(new Upgrade("Up2",100,1,0, R.drawable.miner_200x200));
         upgradeArrayList.add(new Upgrade("Up3",1000,10,0, R.drawable.miner_200x200));
@@ -62,8 +61,16 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
             Log.i("Logan", upgrade.getAmtOwned() + " Of this upgrade owned");
             timer.scheduleAtFixedRate(new TimerTask() {
                 public void run() {
-                    MainGameActivity.setCryptoCount(MainGameActivity.getCryptoCount() + upgrade.getCpsMult());
-                    Log.i("Logan", MainGameActivity.getCryptoCount() + " currency");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            double d = MainGameActivity.getCryptoCount() + upgrade.getCpsMult();
+                            MainGameActivity.setCryptoCount(d);
+                            Log.i("Logan", MainGameActivity.getCryptoCount() + " currency");
+                        }
+                    });
+//                    MainGameActivity.setCryptoCount(d);
+//                    Log.i("Logan", MainGameActivity.getCryptoCount() + " currency");
 
                 }
             }, delay, period);
