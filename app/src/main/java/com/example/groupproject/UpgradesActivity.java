@@ -33,9 +33,9 @@ public class UpgradesActivity extends AppCompatActivity implements SelectListene
         cryptoCount.setText("Balance: $" + df2.format(MainGameActivity.getCryptoCount()));
 
         if(upgradeArrayList.size() == 0) {
-            upgradeArrayList.add(new Upgrade("Miner", 10, .1, 0, R.drawable.miner_200x200));
-            upgradeArrayList.add(new Upgrade("Up2", 100, 1, 0, R.drawable.miner_200x200));
-            upgradeArrayList.add(new Upgrade("Up3", 1000, 10, 0, R.drawable.miner_200x200));
+            upgradeArrayList.add(new Upgrade("Miner", 10, .01, 0, R.drawable.miner_200x200));
+            upgradeArrayList.add(new Upgrade("Up2", 100, .15, 0, R.drawable.miner_200x200));
+            upgradeArrayList.add(new Upgrade("Up3", 1000, 2.0, 0, R.drawable.miner_200x200));
         }
         UpgradeAdapter upgradeAdapter = new UpgradeAdapter(this, upgradeArrayList, this);
 
