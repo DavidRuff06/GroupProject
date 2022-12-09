@@ -21,6 +21,7 @@ import java.text.DecimalFormat;
 public class TransactionActivity extends AppCompatActivity {
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     private Switch buy_sell_switch;
+    private static double multplierTemp = 0;
 
 
     @Override
@@ -142,7 +143,7 @@ public class TransactionActivity extends AppCompatActivity {
                 //user is trying to sell more shares than they actually own
                 Toast.makeText(this, "You are trying to sell more shares than you own", Toast.LENGTH_SHORT).show();
             }else{
-                MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
+                MainGameActivity.setCryptoCount(cashBalance + roundedTotalCost);
                 cryptoQuan -= totalPurchaseQuantity;
                 CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), cryptoQuan);
                 Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
@@ -153,7 +154,6 @@ public class TransactionActivity extends AppCompatActivity {
 
     public void addCashMultiplier(int q){
         String cryptoName = CryptoSelectorActivity.getCurrencyModalArrayList().get(CryptoSelectorActivity.getCryptoIndex()).getName();
-        double multplierTemp = 1;
         if(cryptoName.equals("Dogecoin")){
             multplierTemp += 0.000001 * q;
         }
