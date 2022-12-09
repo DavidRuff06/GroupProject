@@ -212,8 +212,7 @@ Try adding this to currencyRV
                 else
                     currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
                 break;
-            }
-        }
+            }}
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
@@ -225,10 +224,7 @@ Try adding this to currencyRV
                 else
                     currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
                 break;
-            }
-        }
-
-
+            }}
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
@@ -240,9 +236,7 @@ Try adding this to currencyRV
                 else
                     currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
                 break;
-            }
-        }
-
+            }}
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
 //            Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
@@ -254,13 +248,7 @@ Try adding this to currencyRV
                 else
                     currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
                 break;
-            }
-        }
-
-
-
-
-
+            }}
         for (int a = holderArrayList.size()-1; a >= 0; a-- ) {
             Log.i("David", "Cool");
             String newName = holderArrayList.get(a).getName();
@@ -272,15 +260,13 @@ Try adding this to currencyRV
                 else
                     currencyModalArrayList.add(new CurrencyModal(newName, newSymbol, newPrice, cryptoQuantity.get(currencyModalArrayList.size())));
                 break;
-            }
-        }
+            }}
         sort(currencyModalArrayList);
         for (int i = 0; i < currencyModalArrayList.size(); i++) {
             if(cryptoQuantity.size() < currencyModalArrayList.size())
             cryptoQuantity.add(currencyModalArrayList.get(i).getAmount());
             Log.i("work", cryptoQuantity+"");
-        }
-    }
+        }}
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void sort(ArrayList<CurrencyModal> list) {

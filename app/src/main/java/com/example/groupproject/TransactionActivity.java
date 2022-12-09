@@ -142,6 +142,7 @@ public class TransactionActivity extends AppCompatActivity {
                 //user is trying to sell more shares than they actually own
                 Toast.makeText(this, "You are trying to sell more shares than you own", Toast.LENGTH_SHORT).show();
             }else{
+                MainGameActivity.setCryptoCount(cashBalance - roundedTotalCost);
                 cryptoQuan -= totalPurchaseQuantity;
                 CryptoSelectorActivity.cryptoQuantity.set(CryptoSelectorActivity.getCryptoIndex(), cryptoQuan);
                 Intent intent = new Intent(TransactionActivity.this, MainGameActivity.class);
